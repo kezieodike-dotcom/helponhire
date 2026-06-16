@@ -238,7 +238,7 @@ export const BookingFlow: React.FC<BookingFlowProps> = ({
                   </div>
                   <div className="flex justify-between border-t border-zinc-150 pt-2.5 text-[11px] font-bold">
                     <span className="text-zinc-500">Estimated Total Rate:</span>
-                    <span className="text-zinc-900">${(assignedPro.hourlyRate * jobSizeHours).toLocaleString()}</span>
+                    <span className="text-zinc-900">₦{(assignedPro.hourlyRate * jobSizeHours).toLocaleString()}</span>
                   </div>
                 </div>
 
@@ -284,7 +284,7 @@ export const BookingFlow: React.FC<BookingFlowProps> = ({
                     id="booking-service-selector"
                   >
                     {SERVICES.map(s => (
-                      <option key={s.id} value={s.id}>{s.name} (Estimated ${s.basePrice}/{s.unit})</option>
+                      <option key={s.id} value={s.id}>{s.name} (Estimated ₦{s.basePrice}/{s.unit})</option>
                     ))}
                   </select>
                 </div>

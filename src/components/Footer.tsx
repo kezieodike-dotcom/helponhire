@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Briefcase, ArrowRight, ShieldCheck, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 // @ts-ignore
 import logoImg from '../logo.jpg';
 
@@ -33,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             </span>
             <div>
               <h4 className="text-sm font-semibold text-white tracking-wider">Comprehensive Insurance</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Every booking is backed by our $1M guarantee.</p>
+              <p className="text-xs text-zinc-500 mt-0.5">Every booking is backed by our service guarantee.</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -114,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-[#C1E929] shrink-0" />
-                <a href="tel:+2348001234567" className="hover:text-white transition">+234 800 123 4567</a>
+                <a href={`tel:${WHATSAPP_PHONE_TEL}`} className="hover:text-white transition">{WHATSAPP_PHONE_DISPLAY}</a>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-[#C1E929] shrink-0" />
@@ -122,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </li>
               <li className="flex items-center space-x-2">
                 <a
-                  href="https://wa.me/2348001234567"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center space-x-2 hover:text-[#C1E929] transition"

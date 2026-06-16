@@ -33,25 +33,21 @@ export const AboutTab: React.FC = () => {
 
   const team = [
     {
-      name: 'Emeka Okafor',
+      name: 'Oluchukwu',
       role: 'Founder & Chief Executive Officer',
-      bio: 'Entrepreneur and operations specialist passionate about creating economic opportunities in Port Harcourt. Emeka founded HOH to solve the local gap between trusted service providers and clients who need them.',
-      img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=250&h=250',
-      initials: 'EO'
+      bio: 'Entrepreneur and operations specialist passionate about creating economic opportunities in Port Harcourt. Oluchukwu founded HOH to solve the local gap between trusted service providers and clients who need them.',
+      img: 'https://images.pexels.com/photos/33967795/pexels-photo-33967795.jpeg?auto=compress&cs=tinysrgb&w=250&h=250&fit=crop',
+      initials: 'O'
     },
     {
-      name: 'Adaeze Nwosu',
       role: 'Head of Operations & Client Success',
-      bio: 'Former HR and staffing professional with a deep understanding of quality assurance and workforce management. Adaeze leads our vetting and coordinator teams.',
-      img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=250&h=250',
-      initials: 'AN'
+      bio: 'Portfolio details will be added soon.',
+      placeholder: true
     },
     {
-      name: 'Chidi Eze',
       role: 'Head of Professional Recruitment',
-      bio: 'Veteran talent acquisition leader who built HOH\'s screening infrastructure from the ground up. Chidi ensures every professional in our network meets our rigorous standards.',
-      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250&h=250',
-      initials: 'CE'
+      bio: 'Portfolio details will be added soon.',
+      placeholder: true
     }
   ];
 
@@ -72,7 +68,7 @@ export const AboutTab: React.FC = () => {
             <span className="text-[#C1E929]">Built for Port Harcourt.</span>
           </h1>
           <p className="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Help On Hire was founded with a clear mission: to make it easy for individuals, households, and businesses in Port Harcourt to access reliable, professional, and trustworthy service providers — without the uncertainty.
+            Helponhire was founded with a clear mission: to make it easy for individuals, households, and businesses in Port Harcourt and across Nigeria to access reliable, professional, and trustworthy service providers without the uncertainty.
           </p>
         </div>
       </section>
@@ -212,13 +208,19 @@ export const AboutTab: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div key={index} className="bg-white border border-zinc-200 rounded-3xl p-6 shadow-sm text-center hover:shadow-md transition">
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="h-28 w-28 rounded-full object-cover mx-auto mb-4 border-4 border-[#EBF3F0] shadow-sm"
-                  referrerPolicy="no-referrer"
-                />
-                <h3 className="text-base font-bold text-zinc-900 tracking-tight">{member.name}</h3>
+                {member.placeholder ? (
+                  <div className="h-28 w-28 rounded-full mx-auto mb-4 border-4 border-dashed border-[#EBF3F0] bg-zinc-50 shadow-sm" aria-label="Blank picture frame" />
+                ) : (
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="h-28 w-28 rounded-full object-cover mx-auto mb-4 border-4 border-[#EBF3F0] shadow-sm"
+                    referrerPolicy="no-referrer"
+                  />
+                )}
+                {!member.placeholder && (
+                  <h3 className="text-base font-bold text-zinc-900 tracking-tight">{member.name}</h3>
+                )}
                 <p className="text-xs font-semibold text-emerald-700 mt-0.5">{member.role}</p>
                 <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed bg-zinc-50 p-3.5 rounded-2xl border border-zinc-100 italic text-left">
                   "{member.bio}"

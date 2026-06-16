@@ -292,7 +292,7 @@ export const FAQS = [
   },
   {
     question: 'Is my scheduled hire covered by insurance?',
-    answer: 'Absolutely. Every service booked on "Help On Hire" is supported by our comprehensive $1M General Liability Protection and a 100% Quality Satisfaction Guarantee. If you are not satisfied, we will send another specialist to make it right.'
+    answer: 'Absolutely. Every service booked on "Help On Hire" is supported by comprehensive liability protection and a 100% Quality Satisfaction Guarantee. If you are not satisfied, we will send another specialist to make it right.'
   },
   {
     question: 'Can I request same-day emergency staffing?',

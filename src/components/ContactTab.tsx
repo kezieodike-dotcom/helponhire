@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 
 export const ContactTab: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -68,7 +69,7 @@ export const ContactTab: React.FC = () => {
                 </span>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Hotline Phone Support</h4>
-                  <a href="tel:+2348001234567" className="text-[#0A201C] font-semibold mt-0.5 hover:text-emerald-700 transition block">+234 800 123 4567</a>
+                  <a href={`tel:${WHATSAPP_PHONE_TEL}`} className="text-[#0A201C] font-semibold mt-0.5 hover:text-emerald-700 transition block">{WHATSAPP_PHONE_DISPLAY}</a>
                   <p className="text-xs text-zinc-505">Mon–Sun, 24/7 client concierge support desk</p>
                 </div>
               </div>
@@ -91,14 +92,15 @@ export const ContactTab: React.FC = () => {
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">WhatsApp Instant Connect</h4>
                   <a
-                    href="https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20have%20an%20inquiry."
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="text-emerald-600 font-semibold mt-0.5 hover:text-emerald-800 transition block"
                     id="contact-whatsapp-link"
                   >
-                    Chat with us on WhatsApp →
+                    Chat with us on WhatsApp
                   </a>
+                  <p className="text-[#0A201C] font-semibold mt-0.5">{WHATSAPP_PHONE_DISPLAY}</p>
                   <p className="text-xs text-zinc-505">Direct routing to local operational dispatcher coordinators</p>
                 </div>
               </div>

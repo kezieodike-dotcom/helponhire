@@ -360,7 +360,7 @@ export const JoinProTab: React.FC = () => {
                 <div className="mt-8 p-6 bg-emerald-950/40 rounded-2xl border border-emerald-900/30 text-left max-w-sm mx-auto text-xs space-y-2">
                   <span className="font-bold text-zinc-150 uppercase tracking-widest block mb-2 text-[10px]">Your Profile Summary:</span>
                   <div>• Category Focus: <span className="text-[#C1E929] font-medium">{formData.specialty}</span></div>
-                  <div>• Target Hourly: <span className="text-[#C1E929] font-medium">${formData.hourlyRate}/hr</span></div>
+                  <div>• Target Hourly: <span className="text-[#C1E929] font-medium">₦{formData.hourlyRate}/hr</span></div>
                   <div>• Vetting Authorization: <span className="text-emerald-400 font-bold">Granted</span></div>
                 </div>
 
@@ -510,9 +510,9 @@ export const JoinProTab: React.FC = () => {
                         </div>
                       </div>
                       <div>
-                        <label className="text-[10px] sm:text-[11px] font-bold text-[#C1E929] uppercase tracking-wider block mb-2">Hourly Target Rate ($)</label>
+                        <label className="text-[10px] sm:text-[11px] font-bold text-[#C1E929] uppercase tracking-wider block mb-2">Hourly Target Rate (NGN)</label>
                         <div className="relative">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs">$</span>
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs">₦</span>
                           <input
                             type="number"
                             min="15"

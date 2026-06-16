@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, MapPin, User, Phone, FileText, CheckCircle2, Send, ArrowRight } from 'lucide-react';
+import { WHATSAPP_URL } from '../constants';
 
 interface RequestServiceTabProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -108,7 +109,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ onOpenBook
               New Request
             </button>
             <a
-              href="https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20just%20submitted%20a%20service%20request."
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="flex-1 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white py-3 text-xs font-bold transition text-center"
@@ -348,7 +349,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ onOpenBook
             <div className="text-center">
               <p className="text-xs text-zinc-400 mb-3">Prefer to chat directly?</p>
               <a
-                href="https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20would%20like%20to%20request%20a%20service."
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center space-x-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 text-xs font-bold transition"

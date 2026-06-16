@@ -22,10 +22,9 @@ import {
   ThumbsUp,
   Award
 } from 'lucide-react';
-import { PROFESSIONALS, REVIEWS } from '../data';
-import { Professional } from '../types';
 import { TestimonialsColumn } from '../../components/ui/testimonials-columns-1';
 import { motion } from 'motion/react';
+import { WHATSAPP_URL } from '../constants';
 
 interface FindProsTabProps {
   onOpenBooking: (serviceId?: string, proId?: string) => void;
@@ -35,7 +34,6 @@ interface FindProsTabProps {
 export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab }) => {
   // Local active states for interactive sections
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
-  const [activeReview, setActiveReview] = useState<number>(0);
 
   // FAQS as per PRD specifications
   const faqData = [
@@ -150,25 +148,15 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
-              <button
-                onClick={() => onOpenBooking()}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
                 className="rounded-full bg-[#C1E929] hover:bg-white text-[#0A201C] px-8 py-4 text-xs font-bold uppercase tracking-widest transition duration-300 shadow-lg shadow-[#C1E929]/15 flex items-center space-x-2 border-2 border-transparent hover:border-[#0A201C]"
                 id="hero-request-btn"
               >
                 <span>Request a Service</span>
                 <ArrowRight className="h-4 w-4 text-[#0A201C]" />
-              </button>
-              <a
-                href="https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-transparent hover:bg-white/10 text-[#C1E929] border-2 border-[#C1E929]/30 hover:border-white px-8 py-4 text-xs font-bold uppercase tracking-widest transition duration-300 flex items-center space-x-2"
-                id="hero-whatsapp-btn"
-              >
-                <svg className="h-4 w-4 fill-current text-[#C1E929]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.705 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                <span>Chat on WhatsApp</span>
               </a>
             </div>
 
@@ -547,7 +535,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               </div>
               <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group pt-8">
                 <img 
-                  src="https://images.unsplash.com/photo-1521791136368-1a46827d0adf?auto=format&fit=crop&q=80&w=250" 
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=500" 
                   alt="Vetted support personnel" 
                   className="w-full h-full object-cover group-hover:scale-105 transition"
                   referrerPolicy="no-referrer"
@@ -701,20 +689,20 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "This platform revolutionized our operations, streamlining home service dispatching and temporary event staffing. The vetted specialists keep us productive, even on short notice.",
-                  image: "https://randomuser.me/api/portraits/women/1.jpg",
-                  name: "Briana Patton",
+                  image: "https://images.pexels.com/photos/33967796/pexels-photo-33967796.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Amaka Okafor",
                   role: "Operations Manager",
                 },
                 {
                   text: "Implementing Help On Hire was smooth and quick. The pre-screened professionals made team training and onboarding effortless.",
-                  image: "https://randomuser.me/api/portraits/men/2.jpg",
-                  name: "Bilal Ahmed",
+                  image: "https://images.pexels.com/photos/30021120/pexels-photo-30021120.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Chinedu Nwosu",
                   role: "IT Manager",
                 },
                 {
                   text: "The support desk is exceptional, guiding us through match selection and providing fast, friendly dispatch assistance.",
-                  image: "https://randomuser.me/api/portraits/women/3.jpg",
-                  name: "Saman Malik",
+                  image: "https://images.pexels.com/photos/32652291/pexels-photo-32652291.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Aisha Bello",
                   role: "Customer Support Lead",
                 }
               ]} 
@@ -724,20 +712,20 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "Help On Hire's seamless integration enhanced our office administration and corporate operations. Highly recommend their vetted specialists.",
-                  image: "https://randomuser.me/api/portraits/men/4.jpg",
-                  name: "Omar Raza",
+                  image: "https://images.pexels.com/photos/30021117/pexels-photo-30021117.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Tunde Adebayo",
                   role: "CEO",
                 },
                 {
                   text: "Its robust vetted network and quick support have transformed our workflow, making home cleaning and repairs effortless.",
-                  image: "https://randomuser.me/api/portraits/women/5.jpg",
-                  name: "Zainab Hussain",
+                  image: "https://images.pexels.com/photos/28843001/pexels-photo-28843001.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Ngozi Eze",
                   role: "Project Manager",
                 },
                 {
                   text: "The smooth dispatch exceeded expectations. It streamlined our event ushers team, improving overall guest feedback.",
-                  image: "https://randomuser.me/api/portraits/women/6.jpg",
-                  name: "Aliza Khan",
+                  image: "https://images.pexels.com/photos/33967505/pexels-photo-33967505.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Kemi Balogun",
                   role: "Business Analyst",
                 }
               ]} 
@@ -748,20 +736,20 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "Our business functions improved significantly with their temporary admin staff and welcoming corporate support team.",
-                  image: "https://randomuser.me/api/portraits/men/7.jpg",
-                  name: "Farhan Siddiqui",
+                  image: "https://images.pexels.com/photos/30021118/pexels-photo-30021118.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Emeka Obi",
                   role: "Marketing Director",
                 },
                 {
                   text: "They delivered a staffing solution that exceeded expectations, understanding our Port Harcourt operations perfectly.",
-                  image: "https://randomuser.me/api/portraits/women/8.jpg",
-                  name: "Sana Sheikh",
+                  image: "https://images.pexels.com/photos/33967797/pexels-photo-33967797.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Fatima Musa",
                   role: "Sales Manager",
                 },
                 {
                   text: "Using Help On Hire, our on-demand cleaning and handyman repairs significantly improved, boosting overall home comfort.",
-                  image: "https://randomuser.me/api/portraits/men/9.jpg",
-                  name: "Hassan Ali",
+                  image: "https://images.pexels.com/photos/30021119/pexels-photo-30021119.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  name: "Ifeanyi Uche",
                   role: "E-commerce Manager",
                 }
               ]} 
@@ -794,7 +782,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               Request a Service
             </button>
             <a
-              href="https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20need%20reliable%20help%20today."
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition flex items-center space-x-2"
@@ -809,72 +797,6 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
       {/* ========================================================= */}
       {/* SECTION 10 — PROFESSIONALS SHOWCASE                        */}
       {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-y border-zinc-200/60" id="professionals-showcase-section">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-700">
-              MEET OUR VETTED PROFESSIONALS
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight mt-3">
-              Meet Some of Our Professionals
-            </h2>
-            <p className="text-xs text-zinc-550 mt-1">
-              Fully checked, reviewed, and active, delivering service.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {PROFESSIONALS.slice(0, 4).map((pro: Professional) => (
-              <div 
-                key={pro.id} 
-                className="bg-[#F9FBFB] border border-zinc-200 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group hover:shadow-md transition"
-              >
-                <div>
-                  <div className="h-56 relative overflow-hidden bg-zinc-100">
-                    <img 
-                      src={pro.avatar} 
-                      alt={pro.name} 
-                      className="w-full h-full object-cover filter grayscale-[10%] group-hover:scale-105 transition duration-300" 
-                      referrerPolicy="no-referrer"
-                    />
-                    <span className="absolute top-3 left-3 bg-[#0A201C]/80 backdrop-blur-md text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/5 flex items-center">
-                      <ShieldCheck className="h-3 w-3 mr-1 text-[#C1E929]" />
-                      Verified
-                    </span>
-                  </div>
-
-                  <div className="p-6 space-y-2 text-left">
-                    <h4 className="text-sm font-bold text-[#0A201C]">{pro.name}</h4>
-                    <span className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider block">
-                      {pro.role}
-                    </span>
-                    <p className="text-xs text-zinc-500 leading-relaxed line-clamp-3 pt-2">
-                      {pro.bio}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="px-6 pb-6 pt-4 border-t border-zinc-105/50 bg-white flex items-center justify-between">
-                  <div>
-                    <span className="text-[#0A201C] font-extrabold text-sm">${pro.hourlyRate}/hr</span>
-                    <span className="text-[10px] font-medium block text-zinc-400">Target Rate</span>
-                  </div>
-                  <button 
-                    onClick={() => onOpenBooking(undefined, pro.id)}
-                    className="p-2.5 rounded-full bg-[#0A201C] text-white hover:bg-[#C1E929] hover:text-[#0A201C] transition-colors"
-                    aria-label={`Book ${pro.name}`}
-                  >
-                    <Check className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
       {/* ========================================================= */}
       {/* SECTION 11 — FAQ                                          */}
       {/* ========================================================= */}

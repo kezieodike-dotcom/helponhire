@@ -14,7 +14,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
 
   const navItems = [
     { id: 'services', label: 'Services' },
-    { id: 'how-it-works', label: 'How It Works' },
     { id: 'business', label: 'For Businesses' },
     { id: 'join', label: 'Become a Professional' },
     { id: 'about', label: 'About Us' },

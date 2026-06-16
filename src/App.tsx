@@ -10,9 +10,7 @@ import { ContactTab } from './components/ContactTab';
 import { RequestServiceTab } from './components/RequestServiceTab';
 import { BookingFlow } from './components/BookingFlow';
 import { MessageCircle } from 'lucide-react';
-
-// Help On Hire WhatsApp Business number (update with real number)
-const HOH_WHATSAPP = 'https://wa.me/2348001234567?text=Hello%20Help%20On%20Hire%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services.';
+import { WHATSAPP_URL } from './constants';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('find-pros');
@@ -93,7 +91,7 @@ export default function App() {
       {/* Floating WhatsApp Button — links to real WhatsApp Business */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" id="whatsapp-floating-portal">
         <a
-          href={HOH_WHATSAPP}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 hover:scale-105 active:scale-95 text-white shadow-xl hover:shadow-emerald-500/30 transition-all duration-200 group"

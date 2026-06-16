@@ -15,6 +15,7 @@ import {
   ThumbsUp,
   Award
 } from 'lucide-react';
+import { WHATSAPP_URL } from '../constants';
 
 interface ServicesTabProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -129,7 +130,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
                   referrerPolicy="no-referrer"
                 />
                 <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
-                  From $40/hr
+                  From ₦40/hr
                 </span>
               </div>
 
@@ -167,7 +168,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
                   referrerPolicy="no-referrer"
                 />
                 <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
-                  From $30/hr
+                  From ₦30/hr
                 </span>
               </div>
 
@@ -485,16 +486,15 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
             >
               Get Started Now
             </button>
-            <button
-              onClick={() => {
-                const el = document.getElementById('whatsapp-trigger-btn');
-                if (el) el.click();
-              }}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
               className="rounded-full bg-white hover:bg-zinc-50 text-zinc-800 border border-zinc-200 px-8 py-4 text-xs font-bold uppercase tracking-widest transition"
               id="cta-contact-sales-btn"
             >
               Contact Sales
-            </button>
+            </a>
           </div>
         </div>
       </section>
