@@ -689,19 +689,19 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "This platform revolutionized our operations, streamlining home service dispatching and temporary event staffing. The vetted specialists keep us productive, even on short notice.",
-                  image: "https://images.pexels.com/photos/33967796/pexels-photo-33967796.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/amaka-okafor.jpg",
                   name: "Amaka Okafor",
                   role: "Operations Manager",
                 },
                 {
                   text: "Implementing Help On Hire was smooth and quick. The pre-screened professionals made team training and onboarding effortless.",
-                  image: "https://images.pexels.com/photos/30021120/pexels-photo-30021120.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/chinedu-nwosu.jpg",
                   name: "Chinedu Nwosu",
                   role: "IT Manager",
                 },
                 {
                   text: "The support desk is exceptional, guiding us through match selection and providing fast, friendly dispatch assistance.",
-                  image: "https://images.pexels.com/photos/32652291/pexels-photo-32652291.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/aisha-bello.jpg",
                   name: "Aisha Bello",
                   role: "Customer Support Lead",
                 }
@@ -712,19 +712,19 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "Help On Hire's seamless integration enhanced our office administration and corporate operations. Highly recommend their vetted specialists.",
-                  image: "https://images.pexels.com/photos/30021117/pexels-photo-30021117.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/tunde-adebayo.jpg",
                   name: "Tunde Adebayo",
                   role: "CEO",
                 },
                 {
                   text: "Its robust vetted network and quick support have transformed our workflow, making home cleaning and repairs effortless.",
-                  image: "https://images.pexels.com/photos/28843001/pexels-photo-28843001.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/ngozi-eze.jpg",
                   name: "Ngozi Eze",
                   role: "Project Manager",
                 },
                 {
                   text: "The smooth dispatch exceeded expectations. It streamlined our event ushers team, improving overall guest feedback.",
-                  image: "https://images.pexels.com/photos/33967505/pexels-photo-33967505.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/kemi-balogun.jpg",
                   name: "Kemi Balogun",
                   role: "Business Analyst",
                 }
@@ -736,19 +736,19 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               testimonials={[
                 {
                   text: "Our business functions improved significantly with their temporary admin staff and welcoming corporate support team.",
-                  image: "https://images.pexels.com/photos/30021118/pexels-photo-30021118.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/emeka-obi.jpg",
                   name: "Emeka Obi",
                   role: "Marketing Director",
                 },
                 {
                   text: "They delivered a staffing solution that exceeded expectations, understanding our Port Harcourt operations perfectly.",
-                  image: "https://images.pexels.com/photos/33967797/pexels-photo-33967797.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/fatima-musa.jpg",
                   name: "Fatima Musa",
                   role: "Sales Manager",
                 },
                 {
                   text: "Using Help On Hire, our on-demand cleaning and handyman repairs significantly improved, boosting overall home comfort.",
-                  image: "https://images.pexels.com/photos/30021119/pexels-photo-30021119.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop",
+                  image: "/testimonials/ifeanyi-uche.jpg",
                   name: "Ifeanyi Uche",
                   role: "E-commerce Manager",
                 }
