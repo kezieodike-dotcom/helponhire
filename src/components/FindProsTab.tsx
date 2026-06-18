@@ -113,11 +113,11 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               className="flex flex-col gap-4 pb-4"
             >
               {[
-                { src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=400", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
-                { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", role: "Errands", title: "DELIVERY COORDINATOR" },
+                { src: "/images/eco-cleaning-specialist.jpg", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
+                { src: "/images/errands-delivery-coordinator.jpg", role: "Errands", title: "DELIVERY COORDINATOR" },
                 { src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=400", role: "Repairs", title: "SMART HANDYMAN" },
-                { src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=400", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
-                { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", role: "Errands", title: "DELIVERY COORDINATOR" },
+                { src: "/images/eco-cleaning-specialist.jpg", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
+                { src: "/images/errands-delivery-coordinator.jpg", role: "Errands", title: "DELIVERY COORDINATOR" },
                 { src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=400", role: "Repairs", title: "SMART HANDYMAN" },
               ].map((img, idx) => (
                 <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] relative shadow-lg shrink-0">
@@ -183,12 +183,12 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 className="flex flex-col gap-4 pb-4"
               >
                 {[
-                  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=400", role: "Events", title: "HOSPITALITY USHER" },
-                  { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", role: "Office", title: "ADMIN EXECUTIVE" },
-                  { src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400", role: "Corporate", title: "BUSINESS ASSISTANT" },
-                  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=400", role: "Events", title: "HOSPITALITY USHER" },
-                  { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", role: "Office", title: "ADMIN EXECUTIVE" },
-                  { src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400", role: "Corporate", title: "BUSINESS ASSISTANT" },
+                  { src: "/images/hospitality-usher.jpg", role: "Events", title: "HOSPITALITY USHER" },
+                  { src: "/images/admin-executive.jpg", role: "Office", title: "ADMIN EXECUTIVE" },
+                  { src: "/images/corporate-assistant.jpg", role: "Corporate", title: "BUSINESS ASSISTANT" },
+                  { src: "/images/hospitality-usher.jpg", role: "Events", title: "HOSPITALITY USHER" },
+                  { src: "/images/admin-executive.jpg", role: "Office", title: "ADMIN EXECUTIVE" },
+                  { src: "/images/corporate-assistant.jpg", role: "Corporate", title: "BUSINESS ASSISTANT" },
                 ].map((img, idx) => (
                   <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] relative shadow-lg shrink-0">
                     <img src={img.src} alt={img.role} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -258,7 +258,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             {/* Left: About Image */}
             <div className="lg:col-span-5 h-[450px] rounded-3xl overflow-hidden border border-zinc-200 shadow-xl relative">
               <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600" 
+                src="/images/admin-executive.jpg" 
                 alt="Help on hire team coordination" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -527,7 +527,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=250" 
+                  src="/images/corporate-assistant.jpg" 
                   alt="Quality assurance checks" 
                   className="w-full h-full object-cover group-hover:scale-105 transition"
                   referrerPolicy="no-referrer"
@@ -535,7 +535,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               </div>
               <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group pt-8">
                 <img 
-                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=500" 
+                  src="/images/eco-cleaning-specialist.jpg" 
                   alt="Vetted support personnel" 
                   className="w-full h-full object-cover group-hover:scale-105 transition"
                   referrerPolicy="no-referrer"
