@@ -36,16 +36,11 @@ export const AboutTab: React.FC = () => {
       name: 'Oluchukwu',
       role: 'Founder & Chief Executive Officer',
       bio: 'Entrepreneur and operations specialist passionate about creating economic opportunities in Port Harcourt. Oluchukwu founded HOH to solve the local gap between trusted service providers and clients who need them.',
-      img: 'https://images.pexels.com/photos/33967795/pexels-photo-33967795.jpeg?auto=compress&cs=tinysrgb&w=250&h=250&fit=crop',
+      img: '/images/director-oluchukwu.jpeg',
       initials: 'O'
     },
     {
       role: 'Head of Operations & Client Success',
-      bio: 'Portfolio details will be added soon.',
-      placeholder: true
-    },
-    {
-      role: 'Head of Professional Recruitment',
       bio: 'Portfolio details will be added soon.',
       placeholder: true
     }

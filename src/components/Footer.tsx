@@ -119,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-[#C1E929] shrink-0" />
-                <a href="mailto:support@helponhire.ng" className="hover:text-white transition">support@helponhire.ng</a>
+                <a href="mailto:helponhire@gmail.com" className="hover:text-white transition">helponhire@gmail.com</a>
               </li>
               <li className="flex items-center space-x-2">
                 <a

@@ -8,32 +8,35 @@ import { AboutTab } from './components/AboutTab';
 import { JoinProTab } from './components/JoinProTab';
 import { ContactTab } from './components/ContactTab';
 import { RequestServiceTab } from './components/RequestServiceTab';
-import { BookingFlow } from './components/BookingFlow';
+import { ServiceDetailTab, type ServicePageSlug, servicePageSlugs } from './components/ServiceDetailTab';
 import { MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from './constants';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('find-pros');
-  const [bookingOpen, setBookingOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string | undefined>(undefined);
-  const [selectedProId, setSelectedProId] = useState<string | undefined>(undefined);
 
-  const handleOpenBooking = (serviceId?: string, proId?: string) => {
+  const handleOpenBooking = (serviceId?: string) => {
     setSelectedServiceId(serviceId);
-    setSelectedProId(proId);
-    setBookingOpen(true);
-  };
-
-  const handleCloseBooking = () => {
-    setBookingOpen(false);
-    setSelectedServiceId(undefined);
-    setSelectedProId(undefined);
-  };
-
-  const handleRequestService = () => {
     setActiveTab('request-service');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleRequestService = () => {
+    setSelectedServiceId(undefined);
+    setActiveTab('request-service');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateService = (slug: ServicePageSlug) => {
+    setActiveTab(`service-${slug}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const activeServiceSlug = activeTab.startsWith('service-')
+    ? activeTab.replace('service-', '') as ServicePageSlug
+    : undefined;
+  const isServiceDetail = Boolean(activeServiceSlug && servicePageSlugs.includes(activeServiceSlug));
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 text-zinc-900 selection:bg-[#0A201C] selection:text-[#C1E929]" id="applet-root">
@@ -49,15 +52,15 @@ export default function App() {
       <main className="flex-1 shrink-0 animate-fade-in">
         {activeTab === 'find-pros' && (
           <FindProsTab 
-            onOpenBooking={(serviceId, proId) => {
-              // For "Request a Service" buttons on home page, go to request page
-              if (serviceId || proId) {
-                handleOpenBooking(serviceId, proId);
+            onOpenBooking={(serviceId) => {
+              if (serviceId) {
+                handleOpenBooking(serviceId);
               } else {
                 handleRequestService();
               }
             }}
             setActiveTab={setActiveTab}
+            onNavigateService={handleNavigateService}
           />
         )}
         {activeTab === 'services' && (
@@ -84,7 +87,18 @@ export default function App() {
           <ContactTab />
         )}
         {activeTab === 'request-service' && (
-          <RequestServiceTab onOpenBooking={handleOpenBooking} />
+          <RequestServiceTab initialServiceId={selectedServiceId} />
+        )}
+        {isServiceDetail && activeServiceSlug && (
+          <ServiceDetailTab
+            slug={activeServiceSlug}
+            onBack={() => {
+              setActiveTab('find-pros');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onNavigateService={handleNavigateService}
+            onOpenBooking={handleOpenBooking}
+          />
         )}
       </main>
 
@@ -108,14 +122,6 @@ export default function App() {
 
       {/* Corporate trust Footer element */}
       <Footer setActiveTab={setActiveTab} />
-
-      {/* Overlay Step Booking dispatch pipeline slider */}
-      <BookingFlow 
-        isOpen={bookingOpen} 
-        onClose={handleCloseBooking} 
-        initialServiceId={selectedServiceId}
-        initialProId={selectedProId}
-      />
 
     </div>
   );

@@ -80,7 +80,7 @@ export const ContactTab: React.FC = () => {
                 </span>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Email Correspondence</h4>
-                  <a href="mailto:support@helponhire.ng" className="text-[#0A201C] font-semibold mt-0.5 hover:text-emerald-700 transition block">support@helponhire.ng</a>
+                  <a href="mailto:helponhire@gmail.com" className="text-[#0A201C] font-semibold mt-0.5 hover:text-emerald-700 transition block">helponhire@gmail.com</a>
                   <p className="text-xs text-zinc-505">Average reply timeline: under 45 minutes</p>
                 </div>
               </div>

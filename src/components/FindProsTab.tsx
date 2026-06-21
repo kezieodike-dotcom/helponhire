@@ -17,21 +17,22 @@ import {
   Phone,
   Mail,
   Zap,
-  Briefcase,
-  Wrench,
+  Package,
   ThumbsUp,
   Award
 } from 'lucide-react';
 import { TestimonialsColumn } from '../../components/ui/testimonials-columns-1';
 import { motion } from 'motion/react';
 import { WHATSAPP_URL } from '../constants';
+import type { ServicePageSlug } from './ServiceDetailTab';
 
 interface FindProsTabProps {
   onOpenBooking: (serviceId?: string, proId?: string) => void;
   setActiveTab: (tab: string) => void;
+  onNavigateService: (slug: ServicePageSlug) => void;
 }
 
-export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab }) => {
+export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab, onNavigateService }) => {
   // Local active states for interactive sections
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
@@ -148,16 +149,15 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="button"
+                onClick={() => onOpenBooking()}
                 className="rounded-full bg-[#C1E929] hover:bg-white text-[#0A201C] px-8 py-4 text-xs font-bold uppercase tracking-widest transition duration-300 shadow-lg shadow-[#C1E929]/15 flex items-center space-x-2 border-2 border-transparent hover:border-[#0A201C]"
                 id="hero-request-btn"
               >
                 <span>Request a Service</span>
                 <ArrowRight className="h-4 w-4 text-[#0A201C]" />
-              </a>
+              </button>
             </div>
 
             {/* Trust Indicators */}
@@ -244,6 +244,74 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               </span>
             </div>
 
+            {/* Card 4: Event Staffing */}
+            <div className="hidden">
+              <div className="space-y-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
+                  <Award className="h-6 w-6 text-[#0A201C]" />
+                </span>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
+                <p className="text-xs text-zinc-550 leading-relaxed">
+                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
+                </p>
+                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Ushers and greeters</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Hospitality crew</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Guest coordination</span>
+                  </li>
+                </ul>
+              </div>
+              <button 
+                onClick={() => onNavigateService('event-staffing')}
+                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
+              >
+                <span>View Service</span>
+                <span>â†’</span>
+              </button>
+            </div>
+
+            {/* Card 4: Event Staffing */}
+            <div className="hidden">
+              <div className="space-y-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
+                  <Award className="h-6 w-6 text-[#0A201C]" />
+                </span>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
+                <p className="text-xs text-zinc-550 leading-relaxed">
+                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
+                </p>
+                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Ushers and greeters</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Hospitality crew</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Guest coordination</span>
+                  </li>
+                </ul>
+              </div>
+              <button 
+                onClick={() => onNavigateService('event-staffing')}
+                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
+              >
+                <span>View Service</span>
+                <span>â†’</span>
+              </button>
+            </div>
+
           </div>
         </div>
       </section>
@@ -314,113 +382,141 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             
-            {/* Card 1: Home & Personal Services */}
+            {/* Card 1: Cleaning */}
             <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
               <div className="space-y-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Wrench className="h-6 w-6 text-[#0A201C]" />
+                  <Sparkles className="h-6 w-6 text-[#0A201C]" />
                 </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Home &amp; Personal Services</h3>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Cleaning</h3>
                 <p className="text-xs text-zinc-550 leading-relaxed">
-                  Bespoke care matching for your residents. Keep your living space immaculate, handle repair tasks, or delegate errand lists.
+                  Routine cleaning, deep cleaning, move-in resets, and post-event cleanup for homes and offices.
                 </p>
                 <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Deep Eco-Friendly Cleaning</span>
+                    <span>Home and office cleaning</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Errands &amp; Market Deliveries</span>
+                    <span>Deep sanitizing</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Smart Home Handyman Repairs</span>
+                    <span>Recurring plans</span>
                   </li>
                 </ul>
               </div>
               <button 
-                onClick={() => {
-                  setActiveTab('services');
-                  setTimeout(() => {
-                    const el = document.getElementById('services-list-container');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
+                onClick={() => onNavigateService('cleaning')}
                 className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
               >
-                <span>Browse Category</span>
+                <span>View Service</span>
                 <span>→</span>
               </button>
             </div>
 
-            {/* Card 2: Business Support */}
+            {/* Card 2: Errands / Deliveries */}
             <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
               <div className="space-y-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Briefcase className="h-6 w-6 text-[#0A201C]" />
+                  <Package className="h-6 w-6 text-[#0A201C]" />
                 </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Business Support</h3>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Errands / Deliveries</h3>
                 <p className="text-xs text-zinc-550 leading-relaxed">
-                  Ensure frictionless office support coordinates without long-term recruitment strain. Hire trained clerical staff.
+                  Market runs, document movement, parcel pickup, and delivery tasks handled by reliable support staff.
                 </p>
                 <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Office Clerical &amp; Receptionists</span>
+                    <span>Market runs</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Inbox triage &amp; Calendar Auditing</span>
+                    <span>Parcel pickup</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>On-Demand Support Assistance</span>
+                    <span>Delivery updates</span>
                   </li>
                 </ul>
               </div>
               <button 
-                onClick={() => setActiveTab('business')}
+                onClick={() => onNavigateService('errands-deliveries')}
                 className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
               >
-                <span>B2B Staffing</span>
+                <span>View Service</span>
                 <span>→</span>
               </button>
             </div>
 
-            {/* Card 3: Event & Contract Staffing */}
+            {/* Card 3: Domestic Help */}
+            <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
+              <div className="space-y-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
+                  <HeartHandshake className="h-6 w-6 text-[#0A201C]" />
+                </span>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Domestic Help</h3>
+                <p className="text-xs text-zinc-550 leading-relaxed">
+                  Flexible household support for laundry, tidying, basic meal prep assistance, and daily home routines.
+                </p>
+                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Laundry support</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Home organization</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Daily assistance</span>
+                  </li>
+                </ul>
+              </div>
+              <button 
+                onClick={() => onNavigateService('domestic-help')}
+                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#0A201C] hover:bg-emerald-950 px-6 py-3.5 rounded-full text-[#C1E929] w-fit"
+              >
+                <span>View Service</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            {/* Card 4: Event Staffing */}
             <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
               <div className="space-y-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
                   <Award className="h-6 w-6 text-[#0A201C]" />
                 </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event &amp; Contract Staffing</h3>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
                 <p className="text-xs text-zinc-550 leading-relaxed">
-                  High-fidelity hospitality usher crews, bar mixology experts, and general venue support for corporate releases or ceremonies.
+                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
                 </p>
                 <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Professional Reception Ushers</span>
+                    <span>Ushers and greeters</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Contract Hospitality Crew</span>
+                    <span>Hospitality crew</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Vetted Mixologists &amp; Back-bar Servers</span>
+                    <span>Guest coordination</span>
                   </li>
                 </ul>
               </div>
               <button 
-                onClick={() => onOpenBooking()}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#0A201C] hover:bg-emerald-950 px-6 py-3.5 rounded-full text-[#C1E929] w-fit"
+                onClick={() => onNavigateService('event-staffing')}
+                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
               >
-                <span>Request Crew</span>
-                <span>→</span>
+                <span>View Service</span>
+                <span>-&gt;</span>
               </button>
             </div>
 
