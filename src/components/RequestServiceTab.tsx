@@ -160,7 +160,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     fullName: formData.fullName,
     phone: formData.phone,
     dateOfBirth: formData.dateOfBirth,
-    email: formData.email || 'Not provided',
+    email: formData.email,
     address: formData.address,
     serviceCategory: formData.serviceCategory,
     dateRequired: formData.dateRequired,
@@ -198,7 +198,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.phone || !formData.dateOfBirth || !formData.address || !formData.dateRequired || !formData.location) {
+    if (!formData.fullName || !formData.phone || !formData.dateOfBirth || !formData.email || !formData.address || !formData.dateRequired || !formData.location) {
       alert('Please fill out all required client and service fields.');
       return;
     }
@@ -352,7 +352,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                 <Input label="Full Name *" value={formData.fullName} onChange={(value) => updateForm({ fullName: value })} placeholder="e.g. Amara Johnson" id="request-full-name" />
                 <Input label="Phone Number *" value={formData.phone} onChange={(value) => updateForm({ phone: value })} placeholder="+234 812 345 6789" id="request-phone" type="tel" icon={<Phone className="h-3.5 w-3.5" />} />
                 <Input label="Date of Birth *" value={formData.dateOfBirth} onChange={(value) => updateForm({ dateOfBirth: value })} id="request-dob" type="date" />
-                <Input label="Email (Optional)" value={formData.email} onChange={(value) => updateForm({ email: value })} placeholder="name@email.com" id="request-email" type="email" icon={<Mail className="h-3.5 w-3.5" />} />
+                <Input label="Email *" value={formData.email} onChange={(value) => updateForm({ email: value })} placeholder="name@email.com" id="request-email" type="email" icon={<Mail className="h-3.5 w-3.5" />} />
                 <div className="sm:col-span-2">
                   <Input label="Address *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="Residential or business address" id="request-address" />
                 </div>
