@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   ShieldCheck, 
   UserCheck, 
   Smartphone, 
@@ -17,6 +17,8 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { ProApplicationInput } from '../types';
+
+const APPLICATION_RECIPIENT_EMAIL = 'helponhire@gmail.com';
 
 export const JoinProTab: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -39,6 +41,7 @@ export const JoinProTab: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [deliveryFailed, setDeliveryFailed] = useState(false);
   const [idDragActive, setIdDragActive] = useState(false);
   const [cvDragActive, setCvDragActive] = useState(false);
   const [idFileName, setIdFileName] = useState('');
@@ -140,19 +143,58 @@ export const JoinProTab: React.FC = () => {
     setCurrentStep(prev => prev - 1);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const sendApplicationEmail = async () => {
+    const response = await fetch(`https://formsubmit.co/ajax/${APPLICATION_RECIPIENT_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: `New Help On Hire Professional Application - ${formData.firstName} ${formData.lastName}`,
+        _template: 'table',
+        _captcha: 'false',
+        submittedTo: APPLICATION_RECIPIENT_EMAIL,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city,
+        location: formData.location,
+        specialty: formData.specialty,
+        experienceYears: formData.experienceYears,
+        hourlyRate: formData.hourlyRate,
+        bio: formData.bio,
+        hasLicense: formData.hasLicense ? 'Yes' : 'No',
+        backgroundConsent: formData.backgroundConcent ? 'Granted' : 'Not granted',
+        governmentIdFileName: idFileName,
+        cvFileName,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Professional application could not be sent.');
+    }
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.backgroundConcent) {
       alert('You must provide background check screening authorization to apply.');
       return;
     }
     setIsSubmitting(true);
-    // Simulate safety auditing checks
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setDeliveryFailed(false);
+
+    try {
+      await sendApplicationEmail();
       setSubmitted(true);
       localStorage.removeItem('hoh_pro_application_form');
-    }, 2500);
+    } catch (error) {
+      setDeliveryFailed(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const startFormScroller = () => {
@@ -381,11 +423,16 @@ export const JoinProTab: React.FC = () => {
                 <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-[#C1E929] border-t-transparent mb-4" />
                 <h3 className="text-base font-bold text-white uppercase tracking-wider">Screening Database Integrity</h3>
                 <p className="text-xs text-zinc-400 max-w-xs mx-auto leading-relaxed">
-                  Connecting to secure background verification routers and saving professional coordinates safety files...
+                  Sending your application details to the Help On Hire regional desk...
                 </p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-6" id="applicant-wizard-form">
+                {deliveryFailed && (
+                  <div className="rounded-xl border border-rose-900 bg-rose-950/30 p-4 text-xs text-rose-200">
+                    We could not transmit your application right now. Please try again or contact Help On Hire on WhatsApp.
+                  </div>
+                )}
                 
                 {/* ==================== STEP 1 ==================== */}
                 {currentStep === 1 && (

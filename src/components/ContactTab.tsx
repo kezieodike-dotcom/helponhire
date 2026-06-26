@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 
+const CONTACT_RECIPIENT_EMAIL = 'helponhire@gmail.com';
+
 export const ContactTab: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -11,10 +13,43 @@ export const ContactTab: React.FC = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [deliveryFailed, setDeliveryFailed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendContactEmail = async () => {
+    const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_RECIPIENT_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: `New Help On Hire Inquiry - ${formData.subject}`,
+        _template: 'table',
+        _captcha: 'false',
+        submittedTo: CONTACT_RECIPIENT_EMAIL,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || 'Not provided',
+        subject: formData.subject,
+        message: formData.message,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Contact inquiry could not be sent.');
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    setSubmitting(true);
+    setDeliveryFailed(false);
+
+    try {
+      await sendContactEmail();
       setSubmitted(true);
       setTimeout(() => {
         setFormData({
@@ -25,6 +60,10 @@ export const ContactTab: React.FC = () => {
           message: ''
         });
       }, 5000);
+    } catch (error) {
+      setDeliveryFailed(true);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -150,7 +189,7 @@ export const ContactTab: React.FC = () => {
               <CheckCircle2 className="h-12 w-12 text-indigo-600 mx-auto mb-3" />
               <h3 className="text-base font-bold text-zinc-950">Inquiry Received!</h3>
               <p className="text-xs text-zinc-550 mt-1 max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out to Help On Hire. Our Port Harcourt coordinator has logged your details and will correspond to your email within <span className="font-bold text-indigo-600">30 minutes</span>.
+                Thank you for reaching out to Help On Hire. Your inquiry has been emailed to our Port Harcourt coordinator, and we will correspond to your email within <span className="font-bold text-indigo-600">30 minutes</span>.
               </p>
               <button 
                 onClick={() => setSubmitted(false)}
@@ -161,6 +200,11 @@ export const ContactTab: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 text-xs" id="contact-inquiry-form">
+              {deliveryFailed && (
+                <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-rose-700">
+                  We could not send your inquiry right now. Please try again or use WhatsApp for immediate support.
+                </div>
+              )}
               <div>
                 <label className="text-[10px] font-extrabold text-zinc-500 uppercase tracking-widest block mb-1.5">Your Full Name *</label>
                 <input
@@ -227,10 +271,11 @@ export const ContactTab: React.FC = () => {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-[#0A201C] hover:bg-zinc-950 py-4 text-xs font-bold uppercase tracking-widest text-[#C1E929] transition-transform shadow-lg shadow-[#0A201C]/5 flex items-center justify-center space-x-2"
+                  disabled={submitting}
+                  className="w-full rounded-full bg-[#0A201C] hover:bg-zinc-950 py-4 text-xs font-bold uppercase tracking-widest text-[#C1E929] transition-transform shadow-lg shadow-[#0A201C]/5 flex items-center justify-center space-x-2 disabled:opacity-60"
                   id="submit-contact-form-btn"
                 >
-                  <span>SEND INQUIRY STATUS →</span>
+                  <span>{submitting ? 'Sending Inquiry' : 'Send Inquiry Status ->'}</span>
                   <Send className="h-4 w-4" />
                 </button>
               </div>
