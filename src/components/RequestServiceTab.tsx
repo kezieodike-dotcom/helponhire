@@ -105,6 +105,25 @@ const durationOptions = [
   'Ongoing / To be discussed',
 ];
 
+const buildClientAutoResponse = (reference: string, formData: RequestFormData, categorySummary: string) =>
+  `Hello ${formData.fullName},
+
+Thank you for booking with Help On Hire.
+
+We have received your ${formData.serviceCategory} request in Port Harcourt and it has been seen by our team.
+
+Booking reference: ${reference}
+Service details: ${categorySummary}
+Preferred date: ${formData.dateRequired}
+Preferred time: ${formData.preferredTime}
+
+A Help On Hire service advisor will attend to your request and contact you shortly to confirm availability, timing, and next steps.
+
+For faster updates, you can also reply to our WhatsApp chat.
+
+Help On Hire
+Port Harcourt`;
+
 export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialServiceId }) => {
   const [formData, setFormData] = useState<RequestFormData>(() => {
     const saved = localStorage.getItem('hoh_request_service_form');
@@ -155,6 +174,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     _subject: `New Help On Hire Service Request - ${reference}`,
     _template: 'table',
     _captcha: 'false',
+    _autoresponse: buildClientAutoResponse(reference, formData, categorySummary),
     bookingReference: reference,
     submittedTo: REQUEST_RECIPIENT_EMAIL,
     fullName: formData.fullName,
@@ -293,11 +313,11 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                 <div className="rounded-2xl border border-zinc-200 p-4">
                   <Mail className="mb-3 h-5 w-5 text-[#0A201C]" />
                   <span className="font-bold text-zinc-900">
-                    {emailDeliveryStatus === 'sent' ? 'Request emailed to Help On Hire' : 'Email delivery pending'}
+                    {emailDeliveryStatus === 'sent' ? 'Request emailed and client confirmation sent' : 'Email delivery pending'}
                   </span>
                   <p className="mt-1 text-zinc-500">
                     {emailDeliveryStatus === 'sent'
-                      ? REQUEST_RECIPIENT_EMAIL
+                      ? `Help On Hire received it at ${REQUEST_RECIPIENT_EMAIL}. A confirmation email was also sent to ${formData.email}.`
                       : `If this is the first request, ${REQUEST_RECIPIENT_EMAIL} may need to approve email delivery.`}
                   </p>
                 </div>
