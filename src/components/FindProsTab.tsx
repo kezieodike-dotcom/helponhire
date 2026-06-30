@@ -142,7 +142,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-2xl">
               Reliable Help,<br />
               <span className="text-[#C1E929] italic font-serif">Exactly</span> When You Need It<br />
-              <span className="text-3xl sm:text-4xl lg:text-5xl">In Port Harcourt.</span>
+              <span className="text-3xl sm:text-4xl lg:text-5xl text-[#C1E929] italic font-serif">In Port Harcourt.</span>
             </h1>
 
             <p className="max-w-lg text-sm sm:text-base text-zinc-400 leading-relaxed mb-10">
