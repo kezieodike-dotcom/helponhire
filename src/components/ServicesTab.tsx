@@ -16,12 +16,14 @@ import {
   Award
 } from 'lucide-react';
 import { WHATSAPP_URL } from '../constants';
+import type { ServicePageSlug } from './ServiceDetailTab';
 
 interface ServicesTabProps {
   onOpenBooking: (serviceId?: string) => void;
+  onNavigateService: (slug: ServicePageSlug) => void;
 }
 
-export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
+export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavigateService }) => {
   return (
     <div className="bg-[#FAFBFB] text-zinc-900 min-h-screen font-sans" id="services-page-scaffold">
       
@@ -37,11 +39,11 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
               OUR DIRECTORY
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
-              Expert help for every<br />
+              Expert help in Port Harcourt for every<br />
               <span className="text-[#0A201C] border-b-4 border-[#C1E929]">demand.</span>
             </h1>
             <p className="text-sm text-zinc-500 max-w-lg leading-relaxed">
-              From routine house cleaning to specialized event staffing, Help On Hire connects you with vetted professionals for all your personal and business needs.
+              From routine house cleaning to specialized event staffing, Help On Hire connects you with vetted Port Harcourt professionals for personal and business needs.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <button
@@ -101,16 +103,16 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
             <span className="inline-block rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 px-3.5 py-1 text-[9px] font-extrabold uppercase tracking-widest">
               CATEGORY 01
             </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Home Services</h2>
+            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Port Harcourt Home Services</h2>
             <p className="text-xs sm:text-sm text-zinc-500 max-w-2xl leading-relaxed">
               Maintaining your sanctuary with precision and care. We offer reliable solutions for every corner of your living space.
             </p>
           </div>
           <button
-            onClick={() => onOpenBooking('home-cleaning')}
+            onClick={() => onNavigateService('cleaning')}
             className="text-xs font-bold text-[#0A201C] hover:text-emerald-700 transition flex items-center space-x-1 whitespace-nowrap"
           >
-            <span>View all home solutions</span>
+            <span>View cleaning details</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </button>
         </div>
@@ -146,7 +148,13 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
               </div>
             </div>
 
-            <div className="p-6 pt-0">
+            <div className="grid grid-cols-1 gap-3 p-6 pt-0">
+              <button
+                onClick={() => onNavigateService('cleaning')}
+                className="w-full rounded-full bg-[#EBF3F0] py-3.5 text-xs font-bold text-[#0A201C] transition hover:bg-zinc-200/60"
+              >
+                View Details
+              </button>
               <button
                 onClick={() => onOpenBooking('home-cleaning')}
                 className="w-full rounded-full border border-zinc-200 hover:border-[#0A201C] hover:bg-[#0A201C] hover:text-white py-3.5 text-xs font-bold text-zinc-800 transition"
@@ -183,9 +191,15 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
               </div>
             </div>
 
-            <div className="p-6 pt-0">
+            <div className="grid grid-cols-1 gap-3 p-6 pt-0">
               <button
-                onClick={() => onOpenBooking('home-cleaning')}
+                onClick={() => onNavigateService('errands-deliveries')}
+                className="w-full rounded-full bg-[#EBF3F0] py-3.5 text-xs font-bold text-[#0A201C] transition hover:bg-zinc-200/60"
+              >
+                View Details
+              </button>
+              <button
+                onClick={() => onOpenBooking('errands-deliveries')}
                 className="w-full rounded-full border border-zinc-200 hover:border-[#0A201C] hover:bg-[#0A201C] hover:text-white py-3.5 text-xs font-bold text-zinc-800 transition"
                 id="book-errands-card-btn"
               >
@@ -220,7 +234,13 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
               </div>
             </div>
 
-            <div className="p-6 pt-0">
+            <div className="grid grid-cols-1 gap-3 p-6 pt-0">
+              <button
+                onClick={() => onNavigateService('domestic-help')}
+                className="w-full rounded-full bg-[#EBF3F0] py-3.5 text-xs font-bold text-[#0A201C] transition hover:bg-zinc-200/60"
+              >
+                View Details
+              </button>
               <button
                 onClick={() => onOpenBooking('handyman')}
                 className="w-full rounded-full border border-zinc-200 hover:border-[#0A201C] hover:bg-[#0A201C] hover:text-white py-3.5 text-xs font-bold text-zinc-800 transition"
@@ -244,7 +264,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
           <span className="inline-block rounded-full bg-zinc-900 text-white px-3.5 py-1 text-[9px] font-extrabold uppercase tracking-widest">
             CATEGORY 02
           </span>
-          <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Business Support</h2>
+            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Port Harcourt Business Support</h2>
           <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
             Scale your operations with professional support that integrates seamlessly into your corporate culture.
           </p>
@@ -394,7 +414,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Elite Event Staffing</h2>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              Transforming events into experiences with specialized hospitality professionals. From private gala dinners to large-scale corporate summits.
+              Transforming Port Harcourt events into experiences with specialized hospitality professionals. From private gala dinners to large-scale corporate summits.
             </p>
 
             <ul className="space-y-3.5 pt-4 text-xs">
@@ -419,6 +439,12 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
             </ul>
 
             <div className="pt-6">
+              <button
+                onClick={() => onNavigateService('event-staffing')}
+                className="mr-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-colors duration-250 hover:bg-white/10"
+              >
+                View Event Details
+              </button>
               <button
                 onClick={() => onOpenBooking('event-server')}
                 className="rounded-full bg-white hover:bg-[#C1E929] hover:text-[#0A201C] text-zinc-950 px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors duration-250 shadow-lg"
@@ -472,7 +498,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
           <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-400/5 rounded-full blur-3xl filter" />
           
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0A201C] max-w-2xl mx-auto leading-tight">
-            Ready to experience the Help On Hire standard?
+            Ready to experience the Help On Hire standard in Port Harcourt?
           </h2>
           <p className="max-w-xl text-xs sm:text-sm text-zinc-550 mx-auto leading-relaxed">
             Book your first service today and join thousands of satisfied homes and businesses. Our Port Harcourt regional dispatcher coordinates instantly screen matches.

@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
 
   const handleTabClick = (tabId: string) => {
     if (tabId === 'how-it-works') {
-      setActiveTab('find-pros');
+      setActiveTab('how-it-works');
       setTimeout(() => {
         const el = document.getElementById('how-it-works-section');
         if (el) {
@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-0.5">
             {navItems.map((item) => {
-              const isActive = activeTab === item.id || (item.id === 'how-it-works' && activeTab === 'find-pros' && typeof window !== 'undefined' && window.location.hash === '#how-it-works');
+              const isActive = activeTab === item.id || (item.id === 'services' && activeTab.startsWith('service-'));
               return (
                 <button
                   key={item.id}
@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
         <div className="border-t border-zinc-100 bg-white px-4 py-4 lg:hidden shadow-lg animate-fade-in" id="mobile-menu-panel">
           <div className="flex flex-col space-y-2">
             {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+              const isActive = activeTab === item.id || (item.id === 'services' && activeTab.startsWith('service-'));
               return (
                 <button
                   key={item.id}

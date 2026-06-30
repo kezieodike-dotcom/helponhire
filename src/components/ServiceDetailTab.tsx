@@ -26,7 +26,7 @@ interface ServiceDetailTabProps {
 const servicePages = {
   cleaning: {
     eyebrow: 'Cleaning',
-    title: 'Cleaning services for homes, offices, and short-let spaces',
+    title: 'Cleaning services for Port Harcourt homes, offices, and short-let spaces',
     summary:
       'Book vetted cleaners for routine upkeep, deep cleaning, post-event resets, and move-in preparation across Port Harcourt.',
     image: '/images/eco-cleaning-specialist.jpg',
@@ -50,7 +50,7 @@ const servicePages = {
     eyebrow: 'Errands / Deliveries',
     title: 'Errands and delivery support when your schedule is full',
     summary:
-      'Delegate market runs, document movement, parcel pickup, purchases, and local delivery tasks to reliable support staff.',
+      'Delegate Port Harcourt market runs, document movement, parcel pickup, purchases, and local delivery tasks to reliable support staff.',
     image: '/images/errands-delivery-coordinator.jpg',
     bookingServiceId: 'errands-deliveries',
     icon: Package,
@@ -70,9 +70,9 @@ const servicePages = {
   },
   'domestic-help': {
     eyebrow: 'Domestic Help',
-    title: 'Dependable domestic help for everyday home support',
+    title: 'Dependable domestic help for everyday Port Harcourt home support',
     summary:
-      'Get trusted household assistants for cleaning support, meal prep assistance, laundry help, home organization, and routine domestic tasks.',
+      'Get trusted Port Harcourt household assistants for cleaning support, meal prep assistance, laundry help, home organization, and routine domestic tasks.',
     image: '/images/admin-executive.jpg',
     bookingServiceId: 'domestic-help',
     icon: HeartHandshake,
@@ -92,9 +92,9 @@ const servicePages = {
   },
   'event-staffing': {
     eyebrow: 'Event Staffing',
-    title: 'Event staffing teams for smooth guest experiences',
+    title: 'Port Harcourt event staffing teams for smooth guest experiences',
     summary:
-      'Hire ushers, hospitality attendants, registration assistants, service crew, and support staff for private and corporate events.',
+      'Hire Port Harcourt ushers, hospitality attendants, registration assistants, service crew, and support staff for private and corporate events.',
     image: '/images/hospitality-usher.jpg',
     bookingServiceId: 'event-server',
     icon: Users,

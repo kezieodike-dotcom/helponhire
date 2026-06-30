@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </li>
               <li>
                 <button onClick={() => {
-                  setActiveTab('find-pros');
+                  setActiveTab('how-it-works');
                   setTimeout(() => {
                     const el = document.getElementById('how-it-works-section');
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });

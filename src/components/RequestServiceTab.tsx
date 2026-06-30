@@ -130,7 +130,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
 
   const categorySummary = useMemo(() => {
     if (formData.serviceCategory === 'Cleaning') {
-      return `${formData.cleaningType}, ${formData.apartmentSize}`;
+      return `${formData.cleaningType}, ${formData.apartmentSize}, ${formData.address || 'cleaning address pending'}`;
     }
     if (formData.serviceCategory === 'Errands / Deliveries') {
       return `${formData.pickupPoint || 'Pickup pending'} to ${formData.deliveryDestination || 'destination pending'}`;
@@ -161,11 +161,16 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     phone: formData.phone,
     dateOfBirth: formData.dateOfBirth,
     email: formData.email,
-    address: formData.address,
+    address: formData.serviceCategory === 'Cleaning' ? formData.address : '',
     serviceCategory: formData.serviceCategory,
     dateRequired: formData.dateRequired,
     preferredTime: formData.preferredTime,
-    location: formData.location,
+    location:
+      formData.serviceCategory === 'Cleaning'
+        ? formData.address
+        : formData.serviceCategory === 'Errands / Deliveries'
+          ? `${formData.pickupPoint} to ${formData.deliveryDestination}`
+          : 'Not required for this request type',
     duration: formData.duration,
     additionalInstructions: formData.additionalInstructions || 'None provided',
     serviceSpecificDetails: categorySummary,
@@ -198,13 +203,18 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.phone || !formData.dateOfBirth || !formData.email || !formData.address || !formData.dateRequired || !formData.location) {
+    if (!formData.fullName || !formData.phone || !formData.dateOfBirth || !formData.email || !formData.dateRequired) {
       alert('Please fill out all required client and service fields.');
       return;
     }
 
+    if (formData.serviceCategory === 'Cleaning' && !formData.address) {
+      alert('Please add the Port Harcourt address where cleaning is needed.');
+      return;
+    }
+
     if (formData.serviceCategory === 'Errands / Deliveries' && (!formData.pickupPoint || !formData.deliveryDestination)) {
-      alert('Please add both pickup point and delivery destination.');
+      alert('Please add both pickup point and delivery destination in Port Harcourt.');
       return;
     }
 
@@ -213,10 +223,12 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
 
     setTimeout(async () => {
       const reference = generateReference();
+      let requestEmailSent = false;
       setBookingReference(reference);
       try {
         await sendRequestEmail(reference);
         setEmailDeliveryStatus('sent');
+        requestEmailSent = true;
       } catch (error) {
         setEmailDeliveryStatus('failed');
       }
@@ -224,6 +236,11 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
       setSubmitted(true);
       localStorage.removeItem('hoh_request_service_form');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (requestEmailSent) {
+        window.setTimeout(() => {
+          window.location.href = WHATSAPP_URL;
+        }, 800);
+      }
     }, 1000);
   };
 
@@ -263,7 +280,12 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                   <div className="flex justify-between gap-4"><span className="text-zinc-500">Details</span><span className="font-bold text-zinc-800 text-right">{categorySummary}</span></div>
                   <div className="flex justify-between gap-4"><span className="text-zinc-500">Date</span><span className="font-bold text-zinc-800">{formData.dateRequired}</span></div>
                   <div className="flex justify-between gap-4"><span className="text-zinc-500">Time</span><span className="font-bold text-zinc-800">{formData.preferredTime}</span></div>
-                  <div className="flex justify-between gap-4"><span className="text-zinc-500">Location</span><span className="font-bold text-zinc-800 text-right">{formData.location}</span></div>
+                  {formData.serviceCategory === 'Cleaning' && (
+                    <div className="flex justify-between gap-4"><span className="text-zinc-500">Cleaning Address</span><span className="font-bold text-zinc-800 text-right">{formData.address}</span></div>
+                  )}
+                  {formData.serviceCategory === 'Errands / Deliveries' && (
+                    <div className="flex justify-between gap-4"><span className="text-zinc-500">Route</span><span className="font-bold text-zinc-800 text-right">{formData.pickupPoint} to {formData.deliveryDestination}</span></div>
+                  )}
                 </div>
               </div>
 
@@ -322,7 +344,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
             Service Request Form
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base">
-            Send your service details to Help On Hire. A service advisor will review your request and contact you to confirm availability.
+            Send your Port Harcourt service details to Help On Hire. A service advisor will review your request and contact you to confirm availability.
           </p>
         </div>
       </section>
@@ -353,9 +375,6 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                 <Input label="Phone Number *" value={formData.phone} onChange={(value) => updateForm({ phone: value })} placeholder="+234 812 345 6789" id="request-phone" type="tel" icon={<Phone className="h-3.5 w-3.5" />} />
                 <Input label="Date of Birth *" value={formData.dateOfBirth} onChange={(value) => updateForm({ dateOfBirth: value })} id="request-dob" type="date" />
                 <Input label="Email *" value={formData.email} onChange={(value) => updateForm({ email: value })} placeholder="name@email.com" id="request-email" type="email" icon={<Mail className="h-3.5 w-3.5" />} />
-                <div className="sm:col-span-2">
-                  <Input label="Address *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="Residential or business address" id="request-address" />
-                </div>
               </div>
             </section>
 
@@ -368,7 +387,6 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                 <Select label="Service Category *" value={formData.serviceCategory} onChange={(value) => updateForm({ serviceCategory: value as ServiceCategory })} options={serviceOptions} id="request-service-category" />
                 <Input label="Date Required *" value={formData.dateRequired} onChange={(value) => updateForm({ dateRequired: value })} id="request-date-required" type="date" icon={<Calendar className="h-3.5 w-3.5" />} />
                 <Select label="Preferred Time *" value={formData.preferredTime} onChange={(value) => updateForm({ preferredTime: value })} options={timeOptions} id="request-preferred-time" />
-                <Input label="Location *" value={formData.location} onChange={(value) => updateForm({ location: value })} placeholder="e.g. GRA Phase 2, Port Harcourt" id="request-location" icon={<MapPin className="h-3.5 w-3.5" />} />
                 <Select label="Duration (If Applicable)" value={formData.duration} onChange={(value) => updateForm({ duration: value })} options={durationOptions} id="request-duration" />
               </div>
             </section>
@@ -380,14 +398,17 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               </div>
               {formData.serviceCategory === 'Cleaning' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div className="sm:col-span-2">
+                    <Input label="Cleaning Address in Port Harcourt *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. GRA Phase 2, Port Harcourt" id="request-address" icon={<MapPin className="h-3.5 w-3.5" />} />
+                  </div>
                   <Select label="Apartment / Space Size *" value={formData.apartmentSize} onChange={(value) => updateForm({ apartmentSize: value })} options={['Studio', '1 bedroom', '2 bedrooms', '3 bedrooms', '4+ bedrooms', 'Office / commercial space']} id="request-apartment-size" />
                   <Select label="Cleaning Type *" value={formData.cleaningType} onChange={(value) => updateForm({ cleaningType: value })} options={['Regular cleaning', 'Deep cleaning', 'Industrial cleaning', 'Move-in / move-out cleaning', 'Post-event cleaning']} id="request-cleaning-type" />
                 </div>
               )}
               {formData.serviceCategory === 'Errands / Deliveries' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <Input label="Pickup Point *" value={formData.pickupPoint} onChange={(value) => updateForm({ pickupPoint: value })} placeholder="Pickup address or shop" id="request-pickup" />
-                  <Input label="Delivery Destination *" value={formData.deliveryDestination} onChange={(value) => updateForm({ deliveryDestination: value })} placeholder="Drop-off address" id="request-destination" />
+                  <Input label="Pickup Point in Port Harcourt *" value={formData.pickupPoint} onChange={(value) => updateForm({ pickupPoint: value })} placeholder="Pickup address or shop" id="request-pickup" />
+                  <Input label="Drop-off Location in Port Harcourt *" value={formData.deliveryDestination} onChange={(value) => updateForm({ deliveryDestination: value })} placeholder="Delivery address or destination" id="request-destination" />
                 </div>
               )}
               {formData.serviceCategory === 'Domestic Help' && (
@@ -409,7 +430,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               <label className="mb-2 block text-[10px] font-bold uppercase tracking-wider text-zinc-500">Additional Instructions</label>
               <textarea
                 rows={4}
-                placeholder="Add access notes, task details, apartment size notes, event brief, delivery handling instructions, or special requirements."
+                placeholder="Add Port Harcourt neighborhood notes, task details, event brief, delivery handling instructions, or special requirements."
                 value={formData.additionalInstructions}
                 onChange={(e) => updateForm({ additionalInstructions: e.target.value })}
                 className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs text-zinc-900 focus:border-[#0A201C] focus:outline-none focus:ring-2 focus:ring-[#0A201C]/20"
@@ -418,7 +439,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
             </div>
 
             <div className="rounded-2xl bg-[#EBF3F0] p-4 text-xs leading-relaxed text-[#0A201C]">
-              <span className="font-bold">After submission:</span> a service advisor will review your request and contact you to confirm availability.
+              <span className="font-bold">After submission:</span> a Port Harcourt service advisor will review your request, contact you to confirm availability, and route you to WhatsApp.
             </div>
 
             <button

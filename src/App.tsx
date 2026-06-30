@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { FindProsTab } from './components/FindProsTab';
@@ -12,25 +12,129 @@ import { ServiceDetailTab, type ServicePageSlug, servicePageSlugs } from './comp
 import { MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from './constants';
 
+const tabPaths: Record<string, string> = {
+  'find-pros': '/',
+  services: '/services',
+  business: '/business',
+  join: '/become-a-professional',
+  about: '/about',
+  contact: '/contact',
+  'request-service': '/request-service',
+  'how-it-works': '/how-it-works',
+};
+
+const pathTabs: Record<string, string> = {
+  '/': 'find-pros',
+  '/services': 'services',
+  '/business': 'business',
+  '/become-a-professional': 'join',
+  '/join': 'join',
+  '/about': 'about',
+  '/contact': 'contact',
+  '/request-service': 'request-service',
+  '/how-it-works': 'find-pros',
+};
+
+const pageTitles: Record<string, string> = {
+  'find-pros': 'Help On Hire | Trusted Professionals in Port Harcourt',
+  services: 'Services | Help On Hire',
+  business: 'Business Staffing | Help On Hire',
+  join: 'Become a Professional | Help On Hire',
+  about: 'About Help On Hire',
+  contact: 'Contact Help On Hire',
+  'request-service': 'Request a Service | Help On Hire',
+  'service-cleaning': 'Cleaning Services | Help On Hire',
+  'service-errands-deliveries': 'Errands and Deliveries | Help On Hire',
+  'service-domestic-help': 'Domestic Help | Help On Hire',
+  'service-event-staffing': 'Event Staffing | Help On Hire',
+};
+
+const getTabFromPath = (path: string) => {
+  const normalizedPath = path.replace(/\/+$/, '') || '/';
+  const servicePathPrefix = '/services/';
+
+  if (normalizedPath.startsWith(servicePathPrefix)) {
+    const slug = normalizedPath.slice(servicePathPrefix.length) as ServicePageSlug;
+    if (servicePageSlugs.includes(slug)) {
+      return `service-${slug}`;
+    }
+  }
+
+  return pathTabs[normalizedPath] ?? 'find-pros';
+};
+
+const getPathFromTab = (tab: string) => {
+  if (tab.startsWith('service-')) {
+    const slug = tab.replace('service-', '') as ServicePageSlug;
+    return servicePageSlugs.includes(slug) ? `/services/${slug}` : '/services';
+  }
+
+  return tabPaths[tab] ?? '/';
+};
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('find-pros');
+  const [activeTab, setActiveTabState] = useState<string>(() => getTabFromPath(window.location.pathname));
   const [selectedServiceId, setSelectedServiceId] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedServiceId(undefined);
+      setActiveTabState(getTabFromPath(window.location.pathname));
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    if (window.location.pathname !== '/how-it-works') return;
+
+    window.setTimeout(() => {
+      const el = document.getElementById('how-it-works-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (window.location.pathname === '/how-it-works') {
+      document.title = 'How It Works | Help On Hire';
+      return;
+    }
+
+    document.title = pageTitles[activeTab] ?? pageTitles['find-pros'];
+  }, [activeTab]);
+
+  const navigateToTab = (tab: string, options?: { replace?: boolean; scroll?: boolean }) => {
+    const path = getPathFromTab(tab);
+    const displayTab = tab === 'how-it-works' ? 'find-pros' : tab;
+
+    if (window.location.pathname !== path) {
+      if (options?.replace) {
+        window.history.replaceState(null, '', path);
+      } else {
+        window.history.pushState(null, '', path);
+      }
+    }
+
+    setActiveTabState(displayTab);
+
+    if (options?.scroll !== false) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleOpenBooking = (serviceId?: string) => {
     setSelectedServiceId(serviceId);
-    setActiveTab('request-service');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToTab('request-service');
   };
 
   const handleRequestService = () => {
     setSelectedServiceId(undefined);
-    setActiveTab('request-service');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToTab('request-service');
   };
 
   const handleNavigateService = (slug: ServicePageSlug) => {
-    setActiveTab(`service-${slug}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToTab(`service-${slug}`);
   };
 
   const activeServiceSlug = activeTab.startsWith('service-')
@@ -44,7 +148,7 @@ export default function App() {
       {/* Dynamic top navigation bar */}
       <Navbar 
         activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
+        setActiveTab={navigateToTab} 
         onOpenBooking={handleRequestService}
       />
 
@@ -59,7 +163,7 @@ export default function App() {
                 handleRequestService();
               }
             }}
-            setActiveTab={setActiveTab}
+            setActiveTab={navigateToTab}
             onNavigateService={handleNavigateService}
           />
         )}
@@ -72,6 +176,7 @@ export default function App() {
                 handleRequestService();
               }
             }}
+            onNavigateService={handleNavigateService}
           />
         )}
         {activeTab === 'business' && (
@@ -93,8 +198,7 @@ export default function App() {
           <ServiceDetailTab
             slug={activeServiceSlug}
             onBack={() => {
-              setActiveTab('find-pros');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              navigateToTab('find-pros');
             }}
             onNavigateService={handleNavigateService}
             onOpenBooking={handleOpenBooking}
@@ -121,7 +225,7 @@ export default function App() {
       </div>
 
       {/* Corporate trust Footer element */}
-      <Footer setActiveTab={setActiveTab} />
+      <Footer setActiveTab={navigateToTab} />
 
     </div>
   );

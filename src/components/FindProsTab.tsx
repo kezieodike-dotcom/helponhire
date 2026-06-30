@@ -141,11 +141,12 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-2xl">
               Reliable Help,<br />
-              <span className="text-[#C1E929] italic font-serif">Exactly</span> When You Need It.
+              <span className="text-[#C1E929] italic font-serif">Exactly</span> When You Need It<br />
+              <span className="text-3xl sm:text-4xl lg:text-5xl">In Port Harcourt.</span>
             </h1>
 
             <p className="max-w-lg text-sm sm:text-base text-zinc-400 leading-relaxed mb-10">
-              Access trusted professionals for errands, home services, event staffing, and business support — seamlessly and on your terms.
+              Access trusted professionals in Port Harcourt for errands, home services, event staffing, and business support — seamlessly and on your terms.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -343,10 +344,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 ABOUT HELP ON HIRE
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-4 leading-tight">
-                Professional support for everyday needs and business operations
+                Professional support for everyday needs and business operations in Port Harcourt
               </h2>
               <p className="text-sm text-zinc-550 mt-4 leading-relaxed">
-                Whether you need help at home, support for an event, or temporary staff for your business, Help On Hire connects you with dependable professionals ready to assist.
+                Whether you need help at home, support for an event, or temporary staff for your Port Harcourt business, Help On Hire connects you with dependable professionals ready to assist.
               </p>
               <p className="text-sm text-zinc-505 mt-3 leading-relaxed">
                 Our platform manages the entire lifecycle, from criminal vetting, credential sorting, direct payouts to operational calendar checks. We emphasize quality, so you always get elite-tier assistance.
@@ -378,7 +379,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               Our Services
             </h2>
             <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              From everyday tasks to business staffing, we provide access to reliable professionals across a range of service categories.
+              From everyday tasks to business staffing, we provide access to reliable professionals across Port Harcourt service categories.
             </p>
           </div>
 
@@ -548,7 +549,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               How It Works
             </h2>
             <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              Getting the help you need is simple, fast, and reliable.
+              Getting the help you need in Port Harcourt is simple, fast, and reliable.
             </p>
           </div>
 
@@ -647,7 +648,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
                 <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">Carefully Selected Professionals</h3>
                 <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Every professional is screened and verified. This covers municipal background audits and credentials checks.
+                  Every Port Harcourt professional is screened and verified. This covers municipal background audits and credentials checks.
                 </p>
               </div>
 
@@ -716,7 +717,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 Reliable Staff, Without the Hiring Stress
               </h2>
               <p className="text-sm text-zinc-300 leading-relaxed">
-                Access trained professionals for events, projects, and ongoing business operations. Solve temp workforce shortages within minutes.
+                Access trained Port Harcourt professionals for events, projects, and ongoing business operations. Solve temp workforce shortages within minutes.
               </p>
               
               <div className="grid grid-cols-2 gap-4 w-full pt-4 text-xs">
@@ -865,10 +866,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         <div className="relative max-w-4xl mx-auto rounded-3xl bg-emerald-950/40 border border-white/5 p-10 text-center space-y-6">
           <span className="text-[10px] uppercase font-bold tracking-widest text-[#C1E929]">SPEED RUN DISPATCH</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-none">
-            Get Reliable Help Today
+            Get Reliable Help In Port Harcourt Today
           </h2>
           <p className="max-w-lg text-sm text-zinc-300 mx-auto leading-relaxed">
-            Connect with trusted professionals whenever you need support. Submit an inquiry or chat with us directly.
+            Connect with trusted Port Harcourt professionals whenever you need support. Submit an inquiry or chat with us directly.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <button
