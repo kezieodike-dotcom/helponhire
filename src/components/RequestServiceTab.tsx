@@ -157,7 +157,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     if (formData.serviceCategory === 'Domestic Help') {
       return `${formData.domesticHelpType}, ${formData.domesticArrangement}`;
     }
-    return `${formData.eventStaffCount} staff, ${formData.eventDuration}`;
+    return `${formData.eventStaffCount} staff, ${formData.eventDuration}, ${formData.address || 'event address pending'}`;
   }, [formData]);
 
   const updateForm = (updates: Partial<RequestFormData>) => {
@@ -181,12 +181,12 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     phone: formData.phone,
     dateOfBirth: formData.dateOfBirth,
     email: formData.email,
-    address: formData.serviceCategory === 'Cleaning' ? formData.address : '',
+    address: ['Cleaning', 'Event Staffing'].includes(formData.serviceCategory) ? formData.address : '',
     serviceCategory: formData.serviceCategory,
     dateRequired: formData.dateRequired,
     preferredTime: formData.preferredTime,
     location:
-      formData.serviceCategory === 'Cleaning'
+      ['Cleaning', 'Event Staffing'].includes(formData.serviceCategory)
         ? formData.address
         : formData.serviceCategory === 'Errands / Deliveries'
           ? `${formData.pickupPoint} to ${formData.deliveryDestination}`
@@ -203,6 +203,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     eventStaffCount: formData.serviceCategory === 'Event Staffing' ? formData.eventStaffCount : '',
     eventDate: formData.serviceCategory === 'Event Staffing' ? formData.eventDate : '',
     eventDuration: formData.serviceCategory === 'Event Staffing' ? formData.eventDuration : '',
+    eventAddress: formData.serviceCategory === 'Event Staffing' ? formData.address : '',
   });
 
   const sendRequestEmail = async (reference: string) => {
@@ -235,6 +236,11 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
 
     if (formData.serviceCategory === 'Errands / Deliveries' && (!formData.pickupPoint || !formData.deliveryDestination)) {
       alert('Please add both pickup point and delivery destination in Port Harcourt.');
+      return;
+    }
+
+    if (formData.serviceCategory === 'Event Staffing' && !formData.address) {
+      alert('Please add the Port Harcourt event address or venue.');
       return;
     }
 
@@ -302,6 +308,9 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
                   <div className="flex justify-between gap-4"><span className="text-zinc-500">Time</span><span className="font-bold text-zinc-800">{formData.preferredTime}</span></div>
                   {formData.serviceCategory === 'Cleaning' && (
                     <div className="flex justify-between gap-4"><span className="text-zinc-500">Cleaning Address</span><span className="font-bold text-zinc-800 text-right">{formData.address}</span></div>
+                  )}
+                  {formData.serviceCategory === 'Event Staffing' && (
+                    <div className="flex justify-between gap-4"><span className="text-zinc-500">Event Address</span><span className="font-bold text-zinc-800 text-right">{formData.address}</span></div>
                   )}
                   {formData.serviceCategory === 'Errands / Deliveries' && (
                     <div className="flex justify-between gap-4"><span className="text-zinc-500">Route</span><span className="font-bold text-zinc-800 text-right">{formData.pickupPoint} to {formData.deliveryDestination}</span></div>
@@ -439,6 +448,9 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               )}
               {formData.serviceCategory === 'Event Staffing' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                  <div className="sm:col-span-3">
+                    <Input label="Event Address / Venue in Port Harcourt *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. event hall, hotel, church, office, or full venue address" id="request-event-address" icon={<MapPin className="h-3.5 w-3.5" />} />
+                  </div>
                   <Input label="Number of Staff Needed *" value={formData.eventStaffCount} onChange={(value) => updateForm({ eventStaffCount: value })} id="request-staff-count" type="number" />
                   <Input label="Event Date *" value={formData.eventDate} onChange={(value) => updateForm({ eventDate: value, dateRequired: value || formData.dateRequired })} id="request-event-date" type="date" />
                   <Select label="Event Duration *" value={formData.eventDuration} onChange={(value) => updateForm({ eventDuration: value, duration: value })} options={durationOptions} id="request-event-duration" />
