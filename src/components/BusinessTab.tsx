@@ -606,10 +606,10 @@ export const BusinessTab: React.FC = () => {
             
             <div className="flex items-center space-x-3 pt-4 border-t border-zinc-100">
               <div className="h-10 w-10 rounded-full bg-emerald-50 text-[#0A201C] font-bold flex items-center justify-center uppercase shrink-0 text-xs">
-                MT
+                CO
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#0A201C]">Marcus Thorne</h4>
+                <h4 className="text-xs font-bold text-[#0A201C]">Chidi Okoro</h4>
                 <p className="text-[10px] text-zinc-400 mt-0.5">Operations Director, TechSummit</p>
               </div>
             </div>
@@ -631,10 +631,10 @@ export const BusinessTab: React.FC = () => {
             
             <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-emerald-950/40">
               <div className="h-10 w-10 rounded-full bg-[#C1E929] text-[#0A201C] font-bold flex items-center justify-center uppercase shrink-0 text-xs shadow-md shadow-emerald-950/20">
-                SJ
+                SA
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#C1E929]">Sarah Jenkins</h4>
+                <h4 className="text-xs font-bold text-[#C1E929]">Sade Adeyemi</h4>
                 <p className="text-[10px] text-zinc-400 mt-0.5">HR Manager, Global Logistics</p>
               </div>
             </div>
@@ -655,10 +655,10 @@ export const BusinessTab: React.FC = () => {
             
             <div className="flex items-center space-x-3 pt-4 border-t border-zinc-100">
               <div className="h-10 w-10 rounded-full bg-emerald-50 text-[#0A201C] font-bold flex items-center justify-center uppercase shrink-0 text-xs">
-                DC
+                DO
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#0A201C]">David Chen</h4>
+                <h4 className="text-xs font-bold text-[#0A201C]">Damilola Ojo</h4>
                 <p className="text-[10px] text-zinc-400 mt-0.5">Founder, Boutique Events</p>
               </div>
             </div>

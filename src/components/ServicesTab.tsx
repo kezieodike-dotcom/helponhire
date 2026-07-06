@@ -132,7 +132,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
                   referrerPolicy="no-referrer"
                 />
                 <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
-                  From ₦40/hr
+                  Quote on request
                 </span>
               </div>
 
@@ -176,7 +176,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
                   referrerPolicy="no-referrer"
                 />
                 <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
-                  From ₦30/hr
+                  Quote on request
                 </span>
               </div>
 

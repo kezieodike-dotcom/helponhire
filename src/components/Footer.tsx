@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             </span>
             <div>
               <h4 className="text-sm font-semibold text-white tracking-wider">Transparent Pricing</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Clear hourly rates. No surprise platform fees.</p>
+              <p className="text-xs text-zinc-500 mt-0.5">Clear service pricing. No surprise platform fees.</p>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             <ul className="space-y-3 text-xs text-zinc-500">
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-[#C1E929] shrink-0 mt-0.5" />
-                <span>Phase II, GRA, Port Harcourt, Rivers State, Nigeria</span>
+                <span>8 Rumobasi Woji, Portharcourt, Rivers State, Nigeria</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-[#C1E929] shrink-0" />

@@ -65,7 +65,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
     {
       category: "Home & Productivity",
       title: "5 Simple Ways to Optimize Your Weekly Home Space Curation",
-      excerpt: "Expert cleaning, decluttering, and natural ventilation tips from our Lead Eco-Cleaning Specialist Sarah Jenkins.",
+      excerpt: "Expert cleaning, decluttering, and natural ventilation tips from our Lead Eco-Cleaning Specialist Amaka Okafor.",
       date: "May 28, 2026",
       readTime: "4 Min Read",
       url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=400"

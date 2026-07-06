@@ -35,6 +35,11 @@ const pathTabs: Record<string, string> = {
   '/how-it-works': 'find-pros',
 };
 
+const serviceSlugTabs = servicePageSlugs.reduce<Record<string, string>>((paths, slug) => {
+  paths[`/${slug}`] = `service-${slug}`;
+  return paths;
+}, {});
+
 const pageTitles: Record<string, string> = {
   'find-pros': 'Help On Hire | Trusted Professionals in Port Harcourt',
   services: 'Services | Help On Hire',
@@ -53,6 +58,10 @@ const getTabFromPath = (path: string) => {
   const normalizedPath = path.replace(/\/+$/, '') || '/';
   const servicePathPrefix = '/services/';
 
+  if (serviceSlugTabs[normalizedPath]) {
+    return serviceSlugTabs[normalizedPath];
+  }
+
   if (normalizedPath.startsWith(servicePathPrefix)) {
     const slug = normalizedPath.slice(servicePathPrefix.length) as ServicePageSlug;
     if (servicePageSlugs.includes(slug)) {
@@ -66,7 +75,7 @@ const getTabFromPath = (path: string) => {
 const getPathFromTab = (tab: string) => {
   if (tab.startsWith('service-')) {
     const slug = tab.replace('service-', '') as ServicePageSlug;
-    return servicePageSlugs.includes(slug) ? `/services/${slug}` : '/services';
+    return servicePageSlugs.includes(slug) ? `/${slug}` : '/services';
   }
 
   return tabPaths[tab] ?? '/';

@@ -150,7 +150,7 @@ export const SERVICES: Service[] = [
 export const PROFESSIONALS: Professional[] = [
   {
     id: 'pro-1',
-    name: 'Sarah Jenkins',
+    name: 'Amaka Okafor',
     role: 'Lead Eco-Cleaning Specialist',
     category: 'home',
     rating: 4.95,
@@ -158,14 +158,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 38,
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150',
     online: true,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Deep Cleaning', 'Organization', 'Eco-Products', 'Deodorizing'],
     bio: 'An expert with over 6 years of experience in residential care. Known for her attention to detail and reliance on plant-based cleaning solutions.',
     coordinates: { x: 28, y: 35 }
   },
   {
     id: 'pro-2',
-    name: 'Marcus Chen',
+    name: 'Tunde Adebayo',
     role: 'Smart Appliance & Carpentry Expert',
     category: 'home',
     rating: 4.89,
@@ -173,14 +173,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 58,
     avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150',
     online: true,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Wall Mounting', 'Locksmithing', 'Smart Thermostats', 'Furniture Assembly'],
     bio: 'Dedicated construction veteran who pivoted to residential handyman services. Armed with premium tools and a rapid, precision-driven work ethic.',
     coordinates: { x: 62, y: 48 }
   },
   {
     id: 'pro-3',
-    name: 'Elena Rostova',
+    name: 'Ngozi Eze',
     role: 'Senior Executive Receptionist',
     category: 'business',
     rating: 4.98,
@@ -188,14 +188,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 32,
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150',
     online: true,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Calendar Auditing', 'G-Suite Expert', 'Multi-line Inboxes', 'Bilingual'],
     bio: 'Elena spent 4 years managing executive administrative schedules at technology accelerators. Detail-oriented, warm demeanor, and extremely methodical.',
     coordinates: { x: 45, y: 22 }
   },
   {
     id: 'pro-4',
-    name: 'Daniel Patterson',
+    name: 'Chinedu Nwosu',
     role: 'Lead Network Engineer',
     category: 'technical',
     rating: 4.91,
@@ -203,14 +203,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 80,
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150&h=150',
     online: false,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Fiber Splicing', 'CISCO Certified', 'Firewall Audits', 'Data Failovers'],
     bio: 'A certified engineer who handles everything from complex router installations to recovering storage systems after hardware outages.',
     coordinates: { x: 74, y: 15 }
   },
   {
     id: 'pro-5',
-    name: 'Clara Oswald',
+    name: 'Kemi Balogun',
     role: 'Artistic Brand & Deck Designer',
     category: 'creative',
     rating: 4.87,
@@ -218,14 +218,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 68,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150',
     online: true,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Figma Mastery', 'Pitch Deck Curation', 'Vector Illustration', 'Mockups'],
     bio: 'Freelance graphic designer who crafts visual identities for fast-growing startups. Believes that visual storytelling wins client trust.',
     coordinates: { x: 38, y: 72 }
   },
   {
     id: 'pro-6',
-    name: 'James Henderson',
+    name: 'Emeka Obi',
     role: 'Certified Mixologist & Bar Lead',
     category: 'events',
     rating: 4.97,
@@ -233,14 +233,14 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 42,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150',
     online: true,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Cocktail Design', 'Crowd Management', 'Food Sanitation Certificate', 'Fast Serves'],
     bio: 'Classically trained mixologist with high-upscale lounge experience. Brings speed, charm, and custom seasonal menus directly to corporate events.',
     coordinates: { x: 19, y: 55 }
   },
   {
     id: 'pro-7',
-    name: 'Ananya Nair',
+    name: 'Aisha Bello',
     role: 'B2B Copywriter & Content Strategist',
     category: 'creative',
     rating: 4.82,
@@ -248,9 +248,9 @@ export const PROFESSIONALS: Professional[] = [
     hourlyRate: 52,
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150&h=150',
     online: false,
-    city: 'San Francisco',
+    city: 'Port Harcourt',
     skills: ['Conversion Copy', 'SEO Strategy', 'Newsletter Campaigns', 'Ghostwriting'],
-    bio: 'Elena is a dynamic writer who crafts compelling narratives that turn cold readers into loyal clients. Works primarily with SaaS businesses.',
+    bio: 'Aisha is a dynamic writer who crafts compelling narratives that turn cold readers into loyal clients. Works primarily with SaaS businesses.',
     coordinates: { x: 80, y: 65 }
   }
 ];
@@ -258,28 +258,28 @@ export const PROFESSIONALS: Professional[] = [
 export const REVIEWS: Review[] = [
   {
     id: 'rev-1',
-    clientName: 'Julianne Miller',
-    proName: 'Sarah Jenkins',
+    clientName: 'Chioma Nwankwo',
+    proName: 'Amaka Okafor',
     rating: 5,
-    text: 'Sarah cleaned our 3-bedroom house today and left it completely immaculate! I have highly sensitive allergies, and the plant-based, non-scented products she used made the air feel absolutely pristine.',
+    text: 'Amaka cleaned our 3-bedroom house today and left it completely immaculate! I have highly sensitive allergies, and the plant-based, non-scented products she used made the air feel absolutely pristine.',
     date: 'May 18, 2026',
     serviceName: 'Eco-Friendly Home Cleaning'
   },
   {
     id: 'rev-2',
-    clientName: 'Atelier Capital',
-    proName: 'Elena Rostova',
+    clientName: 'Riverside Capital',
+    proName: 'Ngozi Eze',
     rating: 5,
-    text: 'Elena was the perfect support during our annual startup demo day. She managed the guest registration, moderated the main inbox, and greeted high-profile investors with absolute poise and grace.',
+    text: 'Ngozi was the perfect support during our annual startup demo day. She managed the guest registration, moderated the main inbox, and greeted high-profile investors with absolute poise and grace.',
     date: 'May 24, 2026',
     serviceName: 'Executive Office Staffing'
   },
   {
     id: 'rev-3',
-    clientName: 'Devon Wright',
-    proName: 'Marcus Chen',
+    clientName: 'Ifeanyi Uche',
+    proName: 'Tunde Adebayo',
     rating: 5,
-    text: 'Marcus mounted two heavy monitors on drywall and routed all the cords beautifully inside the plaster. Extremely fast, spotless cleanup, and and absolute professional to work with.',
+    text: 'Tunde mounted two heavy monitors on drywall and routed all the cords beautifully inside the plaster. Extremely fast, spotless cleanup, and an absolute professional to work with.',
     date: 'May 12, 2026',
     serviceName: 'Smart Handyman Repairs'
   }

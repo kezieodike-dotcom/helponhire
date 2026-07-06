@@ -97,8 +97,8 @@ export const ContactTab: React.FC = () => {
                 </span>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Headquarters Office</h4>
-                  <p className="text-[#0A201C] font-semibold mt-0.5">Port Harcourt, Nigeria</p>
-                  <p className="text-xs text-zinc-505 leading-relaxed">Phase II, GRA, Port Harcourt</p>
+                  <p className="text-[#0A201C] font-semibold mt-0.5">8 Rumobasi Woji, Portharcourt</p>
+                  <p className="text-xs text-zinc-505 leading-relaxed">Rivers State, Nigeria</p>
                 </div>
               </div>
 
