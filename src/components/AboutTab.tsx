@@ -77,8 +77,8 @@ export const AboutTab: React.FC = () => {
           {/* Left: Image */}
           <div className="rounded-3xl overflow-hidden h-[480px] shadow-xl border border-zinc-200 relative">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=700"
-              alt="Help On Hire team coordination in Port Harcourt"
+              src="/images/admin-executive.jpg"
+              alt="Black Help On Hire professionals coordinating client services in Port Harcourt"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />

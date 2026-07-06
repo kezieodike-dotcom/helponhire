@@ -126,8 +126,8 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
               {/* Image with overlay badge */}
               <div className="h-48 relative overflow-hidden bg-zinc-50">
                 <img 
-                  src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=400" 
-                  alt="Residential Eco Cleaning" 
+                  src="/images/eco-cleaning-specialist.jpg" 
+                  alt="Help On Hire cleaning service agent ready for residential cleaning" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />

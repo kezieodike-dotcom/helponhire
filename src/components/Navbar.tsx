@@ -13,6 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
+    { id: 'find-pros', label: 'Home' },
     { id: 'services', label: 'Services' },
     { id: 'business', label: 'For Businesses' },
     { id: 'join', label: 'Become a Professional' },
