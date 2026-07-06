@@ -43,7 +43,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
               <span className="text-[#0A201C] border-b-4 border-[#C1E929]">demand.</span>
             </h1>
             <p className="text-sm text-zinc-500 max-w-lg leading-relaxed">
-              From routine house cleaning to specialized event staffing, Help On Hire connects you with vetted Port Harcourt professionals for personal and business needs.
+              From routine house cleaning to specialized event staffing, Help On Hire connects you with vetted professionals for personal and business needs.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <button
@@ -103,7 +103,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
             <span className="inline-block rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 px-3.5 py-1 text-[9px] font-extrabold uppercase tracking-widest">
               CATEGORY 01
             </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Port Harcourt Home Services</h2>
+            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Home Services</h2>
             <p className="text-xs sm:text-sm text-zinc-500 max-w-2xl leading-relaxed">
               Maintaining your sanctuary with precision and care. We offer reliable solutions for every corner of your living space.
             </p>
@@ -264,7 +264,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
           <span className="inline-block rounded-full bg-zinc-900 text-white px-3.5 py-1 text-[9px] font-extrabold uppercase tracking-widest">
             CATEGORY 02
           </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Port Harcourt Business Support</h2>
+            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight">Business Support</h2>
           <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
             Scale your operations with professional support that integrates seamlessly into your corporate culture.
           </p>
@@ -414,7 +414,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Elite Event Staffing</h2>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              Transforming Port Harcourt events into experiences with specialized hospitality professionals. From private gala dinners to large-scale corporate summits.
+              Transforming events into experiences with specialized hospitality professionals. From private gala dinners to large-scale corporate summits.
             </p>
 
             <ul className="space-y-3.5 pt-4 text-xs">
@@ -498,10 +498,10 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
           <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-400/5 rounded-full blur-3xl filter" />
           
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0A201C] max-w-2xl mx-auto leading-tight">
-            Ready to experience the Help On Hire standard in Port Harcourt?
+            Ready to experience the Help On Hire standard?
           </h2>
           <p className="max-w-xl text-xs sm:text-sm text-zinc-550 mx-auto leading-relaxed">
-            Book your first service today and join thousands of satisfied homes and businesses. Our Port Harcourt regional dispatcher coordinates instantly screen matches.
+            Book your first service today and join satisfied homes and businesses. Our regional dispatcher coordinates screened matches quickly.
           </p>
 
           <div className="pt-6 flex flex-wrap justify-center gap-4">

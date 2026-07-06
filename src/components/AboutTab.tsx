@@ -35,7 +35,7 @@ export const AboutTab: React.FC = () => {
     {
       name: 'Oluchukwu',
       role: 'Founder & Chief Executive Officer',
-      bio: 'Entrepreneur and operations specialist passionate about creating economic opportunities in Port Harcourt. Oluchukwu founded HOH to solve the local gap between trusted service providers and clients who need them.',
+      bio: 'Entrepreneur and operations specialist passionate about creating economic opportunities through trusted local services. Oluchukwu founded HOH to solve the gap between reliable service providers and clients who need them.',
       img: '/images/director-oluchukwu.jpeg',
       initials: 'O'
     },
@@ -63,7 +63,7 @@ export const AboutTab: React.FC = () => {
             <span className="text-[#C1E929]">Built for Port Harcourt.</span>
           </h1>
           <p className="text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Helponhire was founded with a clear mission: to make it easy for individuals, households, and businesses in Port Harcourt and across Nigeria to access reliable, professional, and trustworthy service providers without the uncertainty.
+            Helponhire was founded with a clear mission: to make it easy for individuals, households, and businesses to access reliable, professional, and trustworthy service providers without the uncertainty.
           </p>
         </div>
       </section>
@@ -78,7 +78,7 @@ export const AboutTab: React.FC = () => {
           <div className="rounded-3xl overflow-hidden h-[480px] shadow-xl border border-zinc-200 relative">
             <img
               src="/images/admin-executive.jpg"
-              alt="Black Help On Hire professionals coordinating client services in Port Harcourt"
+              alt="Black Help On Hire professionals coordinating client services"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -101,7 +101,7 @@ export const AboutTab: React.FC = () => {
             </div>
             <div className="space-y-5 text-sm text-zinc-600 leading-relaxed">
               <p>
-                Finding reliable help in Port Harcourt has always been a challenge. Whether you need a cleaner, an office assistant, event ushers, or delivery support — the experience has historically been unpredictable, unvetted, and stressful.
+                Finding reliable help has always been a challenge. Whether you need a cleaner, an office assistant, event ushers, or delivery support, the experience has historically been unpredictable, unvetted, and stressful.
               </p>
               <p>
                 Help On Hire was created to change that. We built a structured platform that handles the entire process: recruiting professionals, vetting them thoroughly, matching them with clients, and following up to ensure quality delivery.
@@ -196,7 +196,7 @@ export const AboutTab: React.FC = () => {
               The Team Behind Help On Hire
             </h2>
             <p className="text-xs sm:text-sm text-zinc-500 mt-2 max-w-xl mx-auto leading-relaxed">
-              Passionate Port Harcourt professionals dedicated to building a better service ecosystem.
+              Passionate professionals dedicated to building a better service ecosystem.
             </p>
           </div>
 

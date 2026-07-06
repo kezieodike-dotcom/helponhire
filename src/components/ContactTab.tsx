@@ -165,9 +165,9 @@ export const ContactTab: React.FC = () => {
             <div className="absolute inset-0 bg-[radial-gradient(#11322d_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-35" />
             <div className="relative z-10">
               <span className="text-[9px] font-bold uppercase tracking-widest text-[#C1E929]">Service Coverage</span>
-              <h4 className="text-base font-bold tracking-tight text-white mt-1">Serving Port Harcourt & surroundings</h4>
+              <h4 className="text-base font-bold tracking-tight text-white mt-1">Serving nearby communities</h4>
               <p className="text-xs text-zinc-300 mt-2 leading-relaxed">
-                We dispatch certified professionals across GRA Phase I & II, Rumuola, Elelenwo, D-Line, Rumuokwuta, and surrounding Port Harcourt municipalities.
+                We dispatch certified professionals across nearby residential, business, and event locations.
               </p>
             </div>
             <div className="relative z-10 pt-4 flex items-center justify-between text-xs text-[#C1E929] border-t border-white/10 mt-4 leading-none">
@@ -189,7 +189,7 @@ export const ContactTab: React.FC = () => {
               <CheckCircle2 className="h-12 w-12 text-indigo-600 mx-auto mb-3" />
               <h3 className="text-base font-bold text-zinc-950">Inquiry Received!</h3>
               <p className="text-xs text-zinc-550 mt-1 max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out to Help On Hire. Your inquiry has been emailed to our Port Harcourt coordinator, and we will correspond to your email within <span className="font-bold text-indigo-600">30 minutes</span>.
+                Thank you for reaching out to Help On Hire. Your inquiry has been emailed to our coordinator, and we will correspond to your email within <span className="font-bold text-indigo-600">30 minutes</span>.
               </p>
               <button 
                 onClick={() => setSubmitted(false)}

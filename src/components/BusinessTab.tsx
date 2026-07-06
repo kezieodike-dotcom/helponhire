@@ -101,7 +101,7 @@ export const BusinessTab: React.FC = () => {
             </h1>
             
             <p className="text-sm sm:text-base text-zinc-350 max-w-lg leading-relaxed font-normal">
-              Scale your Port Harcourt business operations instantly with our vetted professionals. From event logistics to corporate admin, we handle the talent so you can focus on growth.
+              Scale your business operations instantly with our vetted professionals. From event logistics to corporate admin, we handle the talent so you can focus on growth.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
@@ -427,7 +427,7 @@ export const BusinessTab: React.FC = () => {
             <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-zinc-150/80 text-left">
               <h3 className="text-lg font-bold text-[#0A201C] tracking-tight">Staff Request Form</h3>
               <p className="text-xs text-zinc-400 mt-1 mb-8 leading-relaxed">
-                Connect instantly with verified Port Harcourt professionals customized for your B2B demands.
+                Connect instantly with verified professionals customized for your B2B demands.
               </p>
 
               {submitted ? (

@@ -110,7 +110,7 @@ const buildClientAutoResponse = (reference: string, formData: RequestFormData, c
 
 Thank you for booking with Help On Hire.
 
-We have received your ${formData.serviceCategory} request in Port Harcourt and it has been seen by our team.
+We have received your ${formData.serviceCategory} request and it has been seen by our team.
 
 Booking reference: ${reference}
 Service details: ${categorySummary}
@@ -122,7 +122,7 @@ A Help On Hire service advisor will attend to your request and contact you short
 For faster updates, you can also reply to our WhatsApp chat.
 
 Help On Hire
-Port Harcourt`;
+Help On Hire`;
 
 export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialServiceId }) => {
   const [formData, setFormData] = useState<RequestFormData>(() => {
@@ -230,17 +230,17 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
     }
 
     if (formData.serviceCategory === 'Cleaning' && !formData.address) {
-      alert('Please add the Port Harcourt address where cleaning is needed.');
+      alert('Please add the address where cleaning is needed.');
       return;
     }
 
     if (formData.serviceCategory === 'Errands / Deliveries' && (!formData.pickupPoint || !formData.deliveryDestination)) {
-      alert('Please add both pickup point and delivery destination in Port Harcourt.');
+      alert('Please add both pickup point and delivery destination.');
       return;
     }
 
     if (formData.serviceCategory === 'Event Staffing' && !formData.address) {
-      alert('Please add the Port Harcourt event address or venue.');
+      alert('Please add the event address or venue.');
       return;
     }
 
@@ -373,7 +373,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
             Service Request Form
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base">
-            Send your Port Harcourt service details to Help On Hire. A service advisor will review your request and contact you to confirm availability.
+            Send your service details to Help On Hire. A service advisor will review your request and contact you to confirm availability.
           </p>
         </div>
       </section>
@@ -428,7 +428,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               {formData.serviceCategory === 'Cleaning' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div className="sm:col-span-2">
-                    <Input label="Cleaning Address in Port Harcourt *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. GRA Phase 2, Port Harcourt" id="request-address" icon={<MapPin className="h-3.5 w-3.5" />} />
+                    <Input label="Cleaning Address *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. street, estate, or neighborhood" id="request-address" icon={<MapPin className="h-3.5 w-3.5" />} />
                   </div>
                   <Select label="Apartment / Space Size *" value={formData.apartmentSize} onChange={(value) => updateForm({ apartmentSize: value })} options={['Studio', '1 bedroom', '2 bedrooms', '3 bedrooms', '4+ bedrooms', 'Office / commercial space']} id="request-apartment-size" />
                   <Select label="Cleaning Type *" value={formData.cleaningType} onChange={(value) => updateForm({ cleaningType: value })} options={['Regular cleaning', 'Deep cleaning', 'Industrial cleaning', 'Move-in / move-out cleaning', 'Post-event cleaning']} id="request-cleaning-type" />
@@ -436,8 +436,8 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               )}
               {formData.serviceCategory === 'Errands / Deliveries' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <Input label="Pickup Point in Port Harcourt *" value={formData.pickupPoint} onChange={(value) => updateForm({ pickupPoint: value })} placeholder="Pickup address or shop" id="request-pickup" />
-                  <Input label="Drop-off Location in Port Harcourt *" value={formData.deliveryDestination} onChange={(value) => updateForm({ deliveryDestination: value })} placeholder="Delivery address or destination" id="request-destination" />
+                  <Input label="Pickup Point *" value={formData.pickupPoint} onChange={(value) => updateForm({ pickupPoint: value })} placeholder="Pickup address or shop" id="request-pickup" />
+                  <Input label="Drop-off Location *" value={formData.deliveryDestination} onChange={(value) => updateForm({ deliveryDestination: value })} placeholder="Delivery address or destination" id="request-destination" />
                 </div>
               )}
               {formData.serviceCategory === 'Domestic Help' && (
@@ -449,7 +449,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               {formData.serviceCategory === 'Event Staffing' && (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                   <div className="sm:col-span-3">
-                    <Input label="Event Address / Venue in Port Harcourt *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. event hall, hotel, church, office, or full venue address" id="request-event-address" icon={<MapPin className="h-3.5 w-3.5" />} />
+                    <Input label="Event Address / Venue *" value={formData.address} onChange={(value) => updateForm({ address: value })} placeholder="e.g. event hall, hotel, church, office, or full venue address" id="request-event-address" icon={<MapPin className="h-3.5 w-3.5" />} />
                   </div>
                   <Input label="Number of Staff Needed *" value={formData.eventStaffCount} onChange={(value) => updateForm({ eventStaffCount: value })} id="request-staff-count" type="number" />
                   <Input label="Event Date *" value={formData.eventDate} onChange={(value) => updateForm({ eventDate: value, dateRequired: value || formData.dateRequired })} id="request-event-date" type="date" />
@@ -462,7 +462,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
               <label className="mb-2 block text-[10px] font-bold uppercase tracking-wider text-zinc-500">Additional Instructions</label>
               <textarea
                 rows={4}
-                placeholder="Add Port Harcourt neighborhood notes, task details, event brief, delivery handling instructions, or special requirements."
+                placeholder="Add neighborhood notes, task details, event brief, delivery handling instructions, or special requirements."
                 value={formData.additionalInstructions}
                 onChange={(e) => updateForm({ additionalInstructions: e.target.value })}
                 className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs text-zinc-900 focus:border-[#0A201C] focus:outline-none focus:ring-2 focus:ring-[#0A201C]/20"
@@ -471,7 +471,7 @@ export const RequestServiceTab: React.FC<RequestServiceTabProps> = ({ initialSer
             </div>
 
             <div className="rounded-2xl bg-[#EBF3F0] p-4 text-xs leading-relaxed text-[#0A201C]">
-              <span className="font-bold">After submission:</span> a Port Harcourt service advisor will review your request, contact you to confirm availability, and route you to WhatsApp.
+              <span className="font-bold">After submission:</span> a service advisor will review your request, contact you to confirm availability, and route you to WhatsApp.
             </div>
 
             <button

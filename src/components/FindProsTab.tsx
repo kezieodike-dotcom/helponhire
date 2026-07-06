@@ -40,7 +40,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
   const faqData = [
     {
       q: "How do I request a service?",
-      a: "Click on the 'Request a Service' button on our menu or hero block. Fill out our simple, multi-step booking form outlining your service category, calendar dates, location coordinates, and operational descriptions, and our Port Harcourt coordinator system immediately matching a verified professional."
+      a: "Click on the 'Request a Service' button on our menu or hero block. Fill out our simple booking form with your service category, dates, location, and instructions, and our coordinator will match you with a verified professional."
     },
     {
       q: "Are professionals vetted?",
@@ -56,7 +56,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
     },
     {
       q: "What locations do you serve?",
-      a: "We are currently dispatching trusted, certified professionals across Port Harcourt, Nigeria, serving areas such as Phase II, GRA, and key municipal neighborhoods."
+      a: "We currently dispatch trusted, certified professionals across key service areas and surrounding neighborhoods."
     }
   ];
 
@@ -146,7 +146,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </h1>
 
             <p className="max-w-lg text-sm sm:text-base text-zinc-400 leading-relaxed mb-10">
-              Access trusted professionals in Port Harcourt for errands, home services, event staffing, and business support — seamlessly and on your terms.
+              Access trusted professionals for errands, home services, event staffing, and business support — seamlessly and on your terms.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -334,7 +334,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               />
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-full border border-zinc-100 flex items-center space-x-2 text-[10px] font-bold text-[#0A201C] uppercase tracking-wider">
                 <CheckCircle2 className="h-4 w-4 text-[#0A201C]" />
-                <span>Port Harcourt Regional Desk</span>
+                <span>Regional Service Desk</span>
               </div>
             </div>
 
@@ -344,10 +344,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 ABOUT HELP ON HIRE
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-4 leading-tight">
-                Professional support for everyday needs and business operations in Port Harcourt
+                Professional support for everyday needs and business operations
               </h2>
               <p className="text-sm text-zinc-550 mt-4 leading-relaxed">
-                Whether you need help at home, support for an event, or temporary staff for your Port Harcourt business, Help On Hire connects you with dependable professionals ready to assist.
+                Whether you need help at home, support for an event, or temporary staff for your business, Help On Hire connects you with dependable professionals ready to assist.
               </p>
               <p className="text-sm text-zinc-505 mt-3 leading-relaxed">
                 Our platform manages the entire lifecycle, from criminal vetting, credential sorting, direct payouts to operational calendar checks. We emphasize quality, so you always get elite-tier assistance.
@@ -379,7 +379,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               Our Services
             </h2>
             <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              From everyday tasks to business staffing, we provide access to reliable professionals across Port Harcourt service categories.
+              From everyday tasks to business staffing, we provide access to reliable professionals across key service categories.
             </p>
           </div>
 
@@ -549,7 +549,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               How It Works
             </h2>
             <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              Getting the help you need in Port Harcourt is simple, fast, and reliable.
+              Getting the help you need is simple, fast, and reliable.
             </p>
           </div>
 
@@ -648,7 +648,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
                 <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">Carefully Selected Professionals</h3>
                 <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Every Port Harcourt professional is screened and verified. This covers municipal background audits and credentials checks.
+                  Every professional is screened and verified. This covers background audits and credential checks.
                 </p>
               </div>
 
@@ -704,7 +704,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
                 <span className="text-[9px] font-bold text-[#C1E929] uppercase tracking-widest font-bold">REGIONAL B2B SERVICE</span>
-                <h4 className="text-base font-extrabold text-white">GRA Port Harcourt Operational Partner</h4>
+                <h4 className="text-base font-extrabold text-white">Operational Partner</h4>
               </div>
             </div>
 
@@ -717,7 +717,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 Reliable Staff, Without the Hiring Stress
               </h2>
               <p className="text-sm text-zinc-300 leading-relaxed">
-                Access trained Port Harcourt professionals for events, projects, and ongoing business operations. Solve temp workforce shortages within minutes.
+                Access trained professionals for events, projects, and ongoing business operations. Solve temporary workforce shortages within minutes.
               </p>
               
               <div className="grid grid-cols-2 gap-4 w-full pt-4 text-xs">
@@ -838,7 +838,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                   role: "Marketing Director",
                 },
                 {
-                  text: "They delivered a staffing solution that exceeded expectations, understanding our Port Harcourt operations perfectly.",
+                  text: "They delivered a staffing solution that exceeded expectations and understood our operations perfectly.",
                   image: "/testimonials/fatima-musa.jpg",
                   name: "Fatima Musa",
                   role: "Sales Manager",
@@ -866,10 +866,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         <div className="relative max-w-4xl mx-auto rounded-3xl bg-emerald-950/40 border border-white/5 p-10 text-center space-y-6">
           <span className="text-[10px] uppercase font-bold tracking-widest text-[#C1E929]">SPEED RUN DISPATCH</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-none">
-            Get Reliable Help In Port Harcourt Today
+            Get Reliable Help Today
           </h2>
           <p className="max-w-lg text-sm text-zinc-300 mx-auto leading-relaxed">
-            Connect with trusted Port Harcourt professionals whenever you need support. Submit an inquiry or chat with us directly.
+            Connect with trusted professionals whenever you need support. Submit an inquiry or chat with us directly.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <button
