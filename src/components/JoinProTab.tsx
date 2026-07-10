@@ -160,6 +160,7 @@ export const JoinProTab: React.FC = () => {
         location: formData.location,
         specialty: formData.specialty,
         experienceYears: formData.experienceYears,
+        serviceFee: formData.hourlyRate ? `₦${formData.hourlyRate}` : 'Not specified',
         bio: formData.bio,
         hasLicense: formData.hasLicense ? 'Yes' : 'No',
         backgroundConsent: formData.backgroundConcent ? 'Granted' : 'Not granted',
@@ -394,6 +395,9 @@ export const JoinProTab: React.FC = () => {
                 <div className="mt-8 p-6 bg-emerald-950/40 rounded-2xl border border-emerald-900/30 text-left max-w-sm mx-auto text-xs space-y-2">
                   <span className="font-bold text-zinc-150 uppercase tracking-widest block mb-2 text-[10px]">Your Profile Summary:</span>
                   <div>• Category Focus: <span className="text-[#C1E929] font-medium">{formData.specialty}</span></div>
+                  {formData.hourlyRate ? (
+                    <div>• Your Service Fee: <span className="text-[#C1E929] font-medium">₦{formData.hourlyRate}</span></div>
+                  ) : null}
                   <div>• Vetting Authorization: <span className="text-emerald-400 font-bold">Granted</span></div>
                 </div>
 
@@ -569,21 +573,37 @@ export const JoinProTab: React.FC = () => {
                 {/* ==================== STEP 2 ==================== */}
                 {currentStep === 2 && (
                   <div className="space-y-6 animate-fade-in text-left">
-                    <div>
-                      <label className="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase tracking-wider block mb-2">Service Category</label>
-                      <div className="relative">
-                        <select
-                          value={formData.specialty}
-                          onChange={(e) => handleSpecialtyChange(e.target.value)}
-                          className="w-full rounded-xl bg-[#031513] border border-zinc-800 text-white px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929] appearance-none cursor-pointer"
-                        >
-                          {specialties.map((s, idx) => (
-                            <option key={idx} value={s.value} className="bg-[#031513]">
-                              {s.value}
-                            </option>
-                          ))}
-                        </select>
-                        <ChevronDown className="h-4 w-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase tracking-wider block mb-2">Service Category</label>
+                        <div className="relative">
+                          <select
+                            value={formData.specialty}
+                            onChange={(e) => handleSpecialtyChange(e.target.value)}
+                            className="w-full rounded-xl bg-[#031513] border border-zinc-800 text-white px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929] appearance-none cursor-pointer"
+                          >
+                            {specialties.map((s, idx) => (
+                              <option key={idx} value={s.value} className="bg-[#031513]">
+                                {s.value}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="h-4 w-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="text-[10px] sm:text-[11px] font-bold text-[#C1E929] uppercase tracking-wider block mb-2">Your Service Fee (NGN)</label>
+                        <div className="relative">
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs">₦</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={formData.hourlyRate || ''}
+                            onChange={(e) => setFormData({ ...formData, hourlyRate: Number(e.target.value) })}
+                            placeholder="e.g. 15000"
+                            className="w-full rounded-xl bg-transparent border border-zinc-800 text-white placeholder-zinc-600 pl-8 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929]"
+                          />
+                        </div>
                       </div>
                     </div>
 

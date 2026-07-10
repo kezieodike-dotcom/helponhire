@@ -124,23 +124,20 @@ export const BusinessTab: React.FC = () => {
             {/* Overlapping small avatars + label */}
             <div className="flex items-center space-x-3 pt-6 border-t border-emerald-950/50">
               <div className="flex -space-x-2.5">
-                <img 
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100" 
-                  alt="Customer Business Pro Partner" 
+                <img
+                  src="/testimonials/chinedu-nwosu.jpg"
+                  alt="Trusted Help On Hire business client"
                   className="h-8 w-8 rounded-full border-2 border-[#0A201C] object-cover"
-                  referrerPolicy="no-referrer"
                 />
-                <img 
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" 
-                  alt="Customer Business Pro Partner" 
+                <img
+                  src="/testimonials/amaka-okafor.jpg"
+                  alt="Trusted Help On Hire business client"
                   className="h-8 w-8 rounded-full border-2 border-[#0A201C] object-cover"
-                  referrerPolicy="no-referrer"
                 />
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" 
-                  alt="Customer Business Pro Partner" 
+                <img
+                  src="/testimonials/fatima-musa.jpg"
+                  alt="Trusted Help On Hire business client"
                   className="h-8 w-8 rounded-full border-2 border-[#0A201C] object-cover"
-                  referrerPolicy="no-referrer"
                 />
               </div>
               <span className="text-xs font-semibold text-zinc-300">
@@ -153,21 +150,19 @@ export const BusinessTab: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl relative group">
-                <img 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400" 
-                  alt="Sleek Modern Front Reception Lobby" 
+                <img
+                  src="/images/admin-executive.jpg"
+                  alt="Help On Hire business support team at work"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
               
               <div className="rounded-3xl overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl relative group bg-emerald-950/20">
-                <img 
-                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=400" 
-                  alt="Corporate Schematic Layout Diagram" 
+                <img
+                  src="/images/event-staffing-team.jpg"
+                  alt="Help On Hire branded professional team"
                   className="w-full h-full object-cover mix-blend-overlay opacity-80"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-emerald-950/40" />
                 <div className="absolute inset-0 p-5 flex flex-col justify-end text-left">
@@ -177,11 +172,10 @@ export const BusinessTab: React.FC = () => {
               </div>
 
               <div className="rounded-3xl overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl relative group">
-                <img 
-                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" 
-                  alt="Clean Meeting Desk Staffing" 
+                <img
+                  src="/images/corporate-assistant.jpg"
+                  alt="Help On Hire professional at a business workstation"
                   className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
