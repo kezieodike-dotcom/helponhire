@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp, UserCheck, Shield, Award, Users, Target, Heart, Star } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronUp, UserCheck, Shield, Award, Users, Target, Heart, Star, Tag } from 'lucide-react';
 import { FAQS } from '../data';
 
 export const AboutTab: React.FC = () => {
@@ -16,18 +16,18 @@ export const AboutTab: React.FC = () => {
   const values = [
     {
       icon: UserCheck,
-      title: 'Vetted Quality First',
-      desc: 'Every professional on our platform is carefully screened through background checks, reference validation, and in-person interviews. Only trusted professionals make the cut.'
-    },
-    {
-      icon: Shield,
-      title: 'Your Safety & Trust',
-      desc: 'We are committed to accountability at every level. Our structured oversight means you always know who is coming to serve you — and that they are qualified to do so.'
+      title: 'Verified & Vetted',
+      desc: 'Every provider goes through a background check before being matched with any client.'
     },
     {
       icon: Award,
-      title: 'Professional Excellence',
-      desc: 'We partner only with professionals who demonstrate reliability, punctuality, and a commitment to exceeding client expectations — every single time.'
+      title: 'Trained to Deliver',
+      desc: 'Our team is trained in-house to ensure you receive consistent, professional service every time.'
+    },
+    {
+      icon: Tag,
+      title: 'Clear, Honest Pricing',
+      desc: 'You will always know what you are paying upfront. No hidden charges, no surprises.'
     }
   ];
 
@@ -77,10 +77,9 @@ export const AboutTab: React.FC = () => {
           {/* Left: Image */}
           <div className="rounded-3xl overflow-hidden h-[480px] shadow-xl border border-zinc-200 relative">
             <img
-              src="/images/admin-executive.jpg"
-              alt="Black Help On Hire professionals coordinating client services"
+              src="/images/event-staffing-team.jpg"
+              alt="Help On Hire branded team of trusted professionals"
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A201C]/70 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">

@@ -95,7 +95,7 @@ const servicePages = {
     title: 'Event staffing teams for smooth guest experiences',
     summary:
       'Hire ushers, hospitality attendants, registration assistants, service crew, and support staff for private and corporate events.',
-    image: '/images/hospitality-usher.jpg',
+    image: '/images/event-staffing-team.jpg',
     bookingServiceId: 'event-server',
     icon: Users,
     metrics: ['Usher teams', 'Guest support', 'Crew coordination'],

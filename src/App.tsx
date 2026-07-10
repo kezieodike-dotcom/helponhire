@@ -9,6 +9,7 @@ import { JoinProTab } from './components/JoinProTab';
 import { ContactTab } from './components/ContactTab';
 import { RequestServiceTab } from './components/RequestServiceTab';
 import { ServiceDetailTab, type ServicePageSlug, servicePageSlugs } from './components/ServiceDetailTab';
+import { BlogArticleTab, type BlogArticleSlug, blogArticleSlugs } from './components/BlogArticleTab';
 import { MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from './constants';
 
@@ -40,6 +41,11 @@ const serviceSlugTabs = servicePageSlugs.reduce<Record<string, string>>((paths, 
   return paths;
 }, {});
 
+const blogSlugTabs = blogArticleSlugs.reduce<Record<string, string>>((paths, slug) => {
+  paths[`/blog/${slug}`] = `blog-${slug}`;
+  return paths;
+}, {});
+
 const pageTitles: Record<string, string> = {
   'find-pros': 'Help On Hire | Trusted Professionals in Port Harcourt',
   services: 'Services | Help On Hire',
@@ -52,6 +58,10 @@ const pageTitles: Record<string, string> = {
   'service-errands-deliveries': 'Errands and Deliveries | Help On Hire',
   'service-domestic-help': 'Domestic Help | Help On Hire',
   'service-event-staffing': 'Event Staffing | Help On Hire',
+  'blog-too-busy-to-clean': 'Too Busy to Clean? | Help On Hire Blog',
+  'blog-outsourcing-errands': 'Outsourcing Your Errands | Help On Hire Blog',
+  'blog-event-staffing-choice': 'Event Staffing in Port Harcourt | Help On Hire Blog',
+  'blog-business-support-flexible-staff': 'Flexible Business Support | Help On Hire Blog',
 };
 
 const getTabFromPath = (path: string) => {
@@ -60,6 +70,10 @@ const getTabFromPath = (path: string) => {
 
   if (serviceSlugTabs[normalizedPath]) {
     return serviceSlugTabs[normalizedPath];
+  }
+
+  if (blogSlugTabs[normalizedPath]) {
+    return blogSlugTabs[normalizedPath];
   }
 
   if (normalizedPath.startsWith(servicePathPrefix)) {
@@ -76,6 +90,11 @@ const getPathFromTab = (tab: string) => {
   if (tab.startsWith('service-')) {
     const slug = tab.replace('service-', '') as ServicePageSlug;
     return servicePageSlugs.includes(slug) ? `/${slug}` : '/services';
+  }
+
+  if (tab.startsWith('blog-')) {
+    const slug = tab.replace('blog-', '') as BlogArticleSlug;
+    return blogArticleSlugs.includes(slug) ? `/blog/${slug}` : '/';
   }
 
   return tabPaths[tab] ?? '/';
@@ -151,6 +170,11 @@ export default function App() {
     : undefined;
   const isServiceDetail = Boolean(activeServiceSlug && servicePageSlugs.includes(activeServiceSlug));
 
+  const activeBlogSlug = activeTab.startsWith('blog-')
+    ? activeTab.replace('blog-', '') as BlogArticleSlug
+    : undefined;
+  const isBlogArticle = Boolean(activeBlogSlug && blogArticleSlugs.includes(activeBlogSlug));
+
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 text-zinc-900 selection:bg-[#0A201C] selection:text-[#C1E929]" id="applet-root">
       
@@ -211,6 +235,17 @@ export default function App() {
             }}
             onNavigateService={handleNavigateService}
             onOpenBooking={handleOpenBooking}
+          />
+        )}
+        {isBlogArticle && activeBlogSlug && (
+          <BlogArticleTab
+            slug={activeBlogSlug}
+            onBack={() => {
+              navigateToTab('find-pros');
+            }}
+            onOpenBooking={handleOpenBooking}
+            onNavigateTab={navigateToTab}
+            onNavigateArticle={(slug) => navigateToTab(`blog-${slug}`)}
           />
         )}
       </main>

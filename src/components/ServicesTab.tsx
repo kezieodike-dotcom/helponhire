@@ -390,11 +390,10 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
           {/* Left: Two overlapping offset image blocks */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
             <div className="rounded-3xl overflow-hidden h-72 border border-white/5 shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&q=80&w=350" 
-                alt="Elite waitstaff host" 
+              <img
+                src="/images/event-staffing-team.jpg"
+                alt="Help On Hire branded event staffing team welcoming guests"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
             <div className="rounded-3xl overflow-hidden h-72 border border-white/5 shadow-lg mt-8">

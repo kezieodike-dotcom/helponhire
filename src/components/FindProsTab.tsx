@@ -13,7 +13,6 @@ import {
   Clock,
   User,
   HeartHandshake,
-  CheckCircle2,
   Phone,
   Mail,
   Zap,
@@ -21,7 +20,7 @@ import {
   ThumbsUp,
   Award
 } from 'lucide-react';
-import { TestimonialsColumn } from '../../components/ui/testimonials-columns-1';
+import { TestimonialsRow } from '../../components/ui/testimonials-columns-1';
 import { motion } from 'motion/react';
 import { WHATSAPP_URL } from '../constants';
 import type { ServicePageSlug } from './ServiceDetailTab';
@@ -63,28 +62,40 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
   // Blog posts as per PRD SECTION 12
   const blogPosts = [
     {
+      slug: "too-busy-to-clean",
       category: "Home & Productivity",
-      title: "5 Simple Ways to Optimize Your Weekly Home Space Curation",
-      excerpt: "Expert cleaning, decluttering, and natural ventilation tips from our Lead Eco-Cleaning Specialist Amaka Okafor.",
-      date: "May 28, 2026",
+      title: "Too Busy to Clean? Here's How to Keep Your Home Spotless Without Lifting a Finger",
+      excerpt: "Too busy to keep up with your home? Find out how to keep your space clean and healthy without doing it all yourself.",
+      date: "July 7, 2026",
       readTime: "4 Min Read",
-      url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=400"
+      url: "/images/eco-cleaning-specialist.jpg"
     },
     {
+      slug: "outsourcing-errands",
+      category: "Home & Productivity",
+      title: "Why Port Harcourt Residents Are Outsourcing Their Errands (And Why You Should Too)",
+      excerpt: "Market runs, queues, pickups — your time is too valuable for all of that. See how Port Harcourt residents are getting their hours back.",
+      date: "July 5, 2026",
+      readTime: "4 Min Read",
+      url: "/images/errands-delivery-coordinator.jpg"
+    },
+    {
+      slug: "event-staffing-choice",
       category: "Events & Hosting",
-      title: "How Premium Event Ushers Can Drastically Scale Your Wedding Flow",
-      excerpt: "Why structured guest registration, prompt seat triage, and welcoming coordinate teams are critical to luxury corporate events.",
-      date: "May 25, 2026",
+      title: "Planning an Event in Port Harcourt? Here's Why Your Staffing Choice Makes or Breaks It",
+      excerpt: "Your venue is booked and your decor is sorted. But who is managing your guests? Here is why event staffing deserves more attention than it gets.",
+      date: "July 3, 2026",
       readTime: "5 Min Read",
-      url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=400"
+      url: "/images/event-staffing-team.jpg"
     },
     {
-      category: "Corporate Operations",
-      title: "Scaling Temporary Workforce: A Guide For Busy B2B Project Directors",
-      excerpt: "An insider look at saving up to 40% on recruitment administrative overhead using vetted on-demand staffing agencies.",
-      date: "May 19, 2026",
-      readTime: "6 Min Read",
-      url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400"
+      slug: "business-support-flexible-staff",
+      category: "Business & Operations",
+      title: "How Smart Port Harcourt Businesses Are Getting More Done Without Hiring Full-Time Staff",
+      excerpt: "Need extra hands but not ready to hire full-time? Here is how flexible support staff can give your business the capacity it needs.",
+      date: "July 1, 2026",
+      readTime: "5 Min Read",
+      url: "/images/corporate-assistant.jpg"
     }
   ];
 
@@ -324,18 +335,13 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left: About Image */}
-            <div className="lg:col-span-5 h-[450px] rounded-3xl overflow-hidden border border-zinc-200 shadow-xl relative">
-              <img 
-                src="/images/admin-executive.jpg" 
-                alt="Help on hire team coordination" 
+            {/* Left: About Image — full "Help on demand" promo poster */}
+            <div className="lg:col-span-5 relative mx-auto w-full max-w-[400px] aspect-[852/1280] rounded-3xl overflow-hidden border border-zinc-200 shadow-xl">
+              <img
+                src="/images/regional-service-desk.jpg"
+                alt="Help On Hire — your reliable help on demand in Port Harcourt"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-full border border-zinc-100 flex items-center space-x-2 text-[10px] font-bold text-[#0A201C] uppercase tracking-wider">
-                <CheckCircle2 className="h-4 w-4 text-[#0A201C]" />
-                <span>Regional Service Desk</span>
-              </div>
             </div>
 
             {/* Right: Content Copy */}
@@ -347,10 +353,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
                 Professional support for everyday needs and business operations
               </h2>
               <p className="text-sm text-zinc-550 mt-4 leading-relaxed">
-                Whether you need help at home, support for an event, or temporary staff for your business, Help On Hire connects you with dependable professionals ready to assist.
+                Help On Hire is a Port Harcourt-based service company that connects individuals, households, and businesses with trained, dependable professionals.
               </p>
               <p className="text-sm text-zinc-505 mt-3 leading-relaxed">
-                Our platform manages the entire lifecycle, from criminal vetting, credential sorting, direct payouts to operational calendar checks. We emphasize quality, so you always get elite-tier assistance.
+                Need an errand run, your home cleaned, help around the house, staff for an event, or extra hands for your business? We handle the matching, vetting, and training so you get reliable help without the stress. We emphasize quality, so you always get elite-tier assistance.
               </p>
 
               <button
@@ -623,19 +629,17 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             {/* Masonry visual block (5 cols) */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group">
-                <img 
-                  src="/images/corporate-assistant.jpg" 
-                  alt="Quality assurance checks" 
+                <img
+                  src="/images/errands-delivery-coordinator.jpg"
+                  alt="Vetted Help On Hire delivery professional in Port Harcourt"
                   className="w-full h-full object-cover group-hover:scale-105 transition"
-                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group pt-8">
-                <img 
-                  src="/images/eco-cleaning-specialist.jpg" 
-                  alt="Vetted support personnel" 
+                <img
+                  src="/images/event-staffing-team.jpg"
+                  alt="Trained Help On Hire professional team in Port Harcourt"
                   className="w-full h-full object-cover group-hover:scale-105 transition"
-                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>
@@ -696,11 +700,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             
             {/* Left Image layout (Reverse from Section 3) */}
             <div className="h-[460px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative order-last lg:order-first">
-              <img 
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600" 
-                alt="Business conference meeting staffing" 
-                className="w-full h-full object-cover filter grayscale-[10%]"
-                referrerPolicy="no-referrer"
+              <img
+                src="/images/admin-executive.jpg"
+                alt="Help On Hire business staffing team working in a Port Harcourt office"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
                 <span className="text-[9px] font-bold text-[#C1E929] uppercase tracking-widest font-bold">REGIONAL B2B SERVICE</span>
@@ -780,78 +783,72 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </p>
           </motion.div>
 
-          {/* Testimonials Columns container with fade out masks */}
-          <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[580px] overflow-hidden">
-            <TestimonialsColumn 
+          {/* Testimonials horizontal marquee with fade out masks */}
+          <div className="mt-10 space-y-6 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] overflow-hidden">
+            <TestimonialsRow
               testimonials={[
                 {
-                  text: "This platform revolutionized our operations, streamlining home service dispatching and temporary event staffing. The vetted specialists keep us productive, even on short notice.",
+                  text: "I booked a deep clean before moving into my new apartment in GRA. The cleaner arrived on time, was thorough, and my place felt brand new. I've since set up a weekly schedule.",
                   image: "/testimonials/amaka-okafor.jpg",
                   name: "Amaka Okafor",
-                  role: "Operations Manager",
+                  role: "Home Cleaning Client",
                 },
                 {
-                  text: "Implementing Help On Hire was smooth and quick. The pre-screened professionals made team training and onboarding effortless.",
+                  text: "Their errand runner handled my market run and a bank drop-off in one afternoon. Saved me hours I would have spent stuck in Rumuola traffic.",
                   image: "/testimonials/chinedu-nwosu.jpg",
                   name: "Chinedu Nwosu",
-                  role: "IT Manager",
+                  role: "Errands & Deliveries Client",
                 },
                 {
-                  text: "The support desk is exceptional, guiding us through match selection and providing fast, friendly dispatch assistance.",
+                  text: "We needed ushers for our wedding at short notice. The team was smart, well-trained, and managed our guests beautifully. Everyone commented on how organised it was.",
                   image: "/testimonials/aisha-bello.jpg",
                   name: "Aisha Bello",
-                  role: "Customer Support Lead",
-                }
-              ]} 
-              duration={15} 
-            />
-            <TestimonialsColumn 
-              testimonials={[
+                  role: "Event Host",
+                },
                 {
-                  text: "Help On Hire's seamless integration enhanced our office administration and corporate operations. Highly recommend their vetted specialists.",
+                  text: "The domestic help they matched us with has been reliable and trustworthy for months now. Knowing every professional is vetted really makes the difference.",
                   image: "/testimonials/tunde-adebayo.jpg",
                   name: "Tunde Adebayo",
-                  role: "CEO",
+                  role: "Domestic Help Client",
                 },
                 {
-                  text: "Its robust vetted network and quick support have transformed our workflow, making home cleaning and repairs effortless.",
+                  text: "I run a small business and needed extra hands for a product launch. Help On Hire sent trained support staff who represented my brand professionally.",
                   image: "/testimonials/ngozi-eze.jpg",
                   name: "Ngozi Eze",
-                  role: "Project Manager",
+                  role: "Business Owner",
                 },
-                {
-                  text: "The smooth dispatch exceeded expectations. It streamlined our event ushers team, improving overall guest feedback.",
-                  image: "/testimonials/kemi-balogun.jpg",
-                  name: "Kemi Balogun",
-                  role: "Business Analyst",
-                }
-              ]} 
-              className="hidden md:block" 
-              duration={19} 
+              ]}
+              duration={40}
             />
-            <TestimonialsColumn 
+            <TestimonialsRow
               testimonials={[
                 {
-                  text: "Our business functions improved significantly with their temporary admin staff and welcoming corporate support team.",
+                  text: "Post-party cleanup used to be my nightmare. Now I just book a reset clean and wake up to a spotless home the next morning.",
+                  image: "/testimonials/kemi-balogun.jpg",
+                  name: "Kemi Balogun",
+                  role: "Home Cleaning Client",
+                },
+                {
+                  text: "Fast, dependable delivery support for my online store. Pickups and drop-offs across Port Harcourt are handled without stress.",
                   image: "/testimonials/emeka-obi.jpg",
                   name: "Emeka Obi",
-                  role: "Marketing Director",
+                  role: "E-commerce Owner",
                 },
                 {
-                  text: "They delivered a staffing solution that exceeded expectations and understood our operations perfectly.",
+                  text: "We hired hospitality staff for a corporate dinner. Punctual, polished, and professional from setup right through to teardown.",
                   image: "/testimonials/fatima-musa.jpg",
                   name: "Fatima Musa",
-                  role: "Sales Manager",
+                  role: "Corporate Event Planner",
                 },
                 {
-                  text: "Using Help On Hire, our on-demand cleaning and handyman repairs significantly improved, boosting overall home comfort.",
+                  text: "Booking was simple and the professional showed up exactly when promised. This is how service should work in Port Harcourt.",
                   image: "/testimonials/ifeanyi-uche.jpg",
                   name: "Ifeanyi Uche",
-                  role: "E-commerce Manager",
-                }
-              ]} 
-              className="hidden lg:block" 
-              duration={17} 
+                  role: "Household Client",
+                },
+              ]}
+              duration={45}
+              reverse
             />
           </div>
 
@@ -953,11 +950,12 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {blogPosts.map((post, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-sm flex flex-col justify-between group"
+              <div
+                key={idx}
+                onClick={() => setActiveTab(`blog-${post.slug}`)}
+                className="bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-sm flex flex-col justify-between group cursor-pointer hover:shadow-md transition"
               >
                 <div>
                   <div className="h-48 overflow-hidden relative">

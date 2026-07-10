@@ -31,9 +31,9 @@ export const JoinProTab: React.FC = () => {
       phone: '',
       city: 'Port Harcourt',
       location: '',
-      specialty: 'Eco-Friendly Home Cleaning',
+      specialty: 'Home Cleaning',
       experienceYears: 2,
-      hourlyRate: 35,
+      hourlyRate: 0,
       bio: '',
       hasLicense: false,
       backgroundConcent: false
@@ -52,20 +52,17 @@ export const JoinProTab: React.FC = () => {
   }, [formData]);
 
   const specialties = [
-    { value: 'Eco-Friendly Home Cleaning', defaultRate: 35 },
-    { value: 'Smart Handyman Repairs', defaultRate: 55 },
-    { value: 'Executive Office Staffing', defaultRate: 28 },
-    { value: 'On-Site Network & IT Support', defaultRate: 75 },
-    { value: 'Premium Event Bartending & Service', defaultRate: 40 },
-    { value: 'High-Impact Brand Design', defaultRate: 65 }
+    { value: 'Home Cleaning' },
+    { value: 'Errands & Deliveries' },
+    { value: 'Domestic Help' },
+    { value: 'Event Staffing' },
+    { value: 'Business & Office Support' }
   ];
 
   const handleSpecialtyChange = (specialtyValue: string) => {
-    const selected = specialties.find(s => s.value === specialtyValue);
     setFormData({
       ...formData,
-      specialty: specialtyValue,
-      hourlyRate: selected ? selected.defaultRate : 30
+      specialty: specialtyValue
     });
   };
 
@@ -163,7 +160,6 @@ export const JoinProTab: React.FC = () => {
         location: formData.location,
         specialty: formData.specialty,
         experienceYears: formData.experienceYears,
-        hourlyRate: formData.hourlyRate,
         bio: formData.bio,
         hasLicense: formData.hasLicense ? 'Yes' : 'No',
         backgroundConsent: formData.backgroundConcent ? 'Granted' : 'Not granted',
@@ -225,7 +221,7 @@ export const JoinProTab: React.FC = () => {
             </h1>
 
             <p className="text-sm sm:text-base text-zinc-500 max-w-lg leading-relaxed">
-              Build your independent career with a brand that values excellence. We connect top-tier cleaning and maintenance professionals with high-end residential and commercial clients.
+              Join a team of passionate, hardworking people committed to excellent service. Work independently, earn on your own terms, and do what you are good at. We support you with in-house training, consistent job opportunities, and a platform that connects you directly with clients who need your skills.
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4">
@@ -241,23 +237,20 @@ export const JoinProTab: React.FC = () => {
               {/* Overlapping Avatars & Counts */}
               <div className="flex items-center space-x-3.5">
                 <div className="flex -space-x-3.5">
-                  <img 
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" 
-                    alt="Active professional partner Sarah" 
+                  <img
+                    src="/testimonials/chinedu-nwosu.jpg"
+                    alt="Active Help On Hire professional in Port Harcourt"
                     className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
-                    referrerPolicy="no-referrer"
                   />
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" 
-                    alt="Active professional partner Marcus" 
+                  <img
+                    src="/testimonials/amaka-okafor.jpg"
+                    alt="Active Help On Hire professional in Port Harcourt"
                     className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
-                    referrerPolicy="no-referrer"
                   />
-                  <img 
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" 
-                    alt="Active professional partner Elena" 
+                  <img
+                    src="/testimonials/fatima-musa.jpg"
+                    alt="Active Help On Hire professional in Port Harcourt"
                     className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div>
@@ -272,11 +265,10 @@ export const JoinProTab: React.FC = () => {
           <div className="relative">
             {/* Main polished collage/illustration */}
             <div className="rounded-[40px] overflow-hidden shadow-2xl border border-zinc-200/80 aspect-[1.15/1] relative group bg-white p-2">
-              <img 
-                src="/images/eco-cleaning-specialist.jpg" 
-                alt="Help On Hire technician curating a clean, ready space" 
+              <img
+                src="/images/admin-executive.jpg"
+                alt="Help On Hire professionals collaborating"
                 className="w-full h-full object-cover rounded-[32px]"
-                referrerPolicy="no-referrer"
               />
             </div>
           </div>
@@ -402,7 +394,6 @@ export const JoinProTab: React.FC = () => {
                 <div className="mt-8 p-6 bg-emerald-950/40 rounded-2xl border border-emerald-900/30 text-left max-w-sm mx-auto text-xs space-y-2">
                   <span className="font-bold text-zinc-150 uppercase tracking-widest block mb-2 text-[10px]">Your Profile Summary:</span>
                   <div>• Category Focus: <span className="text-[#C1E929] font-medium">{formData.specialty}</span></div>
-                  <div>• Target Fee: <span className="text-[#C1E929] font-medium">₦{formData.hourlyRate}</span></div>
                   <div>• Vetting Authorization: <span className="text-emerald-400 font-bold">Granted</span></div>
                 </div>
 
@@ -507,16 +498,56 @@ export const JoinProTab: React.FC = () => {
                             className="w-full rounded-xl bg-[#031513] border border-zinc-800 text-white px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929] appearance-none cursor-pointer"
                           >
                             <option value="">Select neighborhood...</option>
+                            <option value="Abuloma">Abuloma</option>
+                            <option value="Ada George">Ada George</option>
+                            <option value="Agip Estate">Agip Estate</option>
+                            <option value="Akpajo">Akpajo</option>
+                            <option value="Alakahia">Alakahia</option>
+                            <option value="Amadi Flats">Amadi Flats</option>
+                            <option value="Borokiri">Borokiri</option>
+                            <option value="Choba">Choba</option>
+                            <option value="D-Line">D-Line</option>
+                            <option value="Diobu">Diobu</option>
+                            <option value="Elelenwo">Elelenwo</option>
+                            <option value="Eleme">Eleme</option>
+                            <option value="Eliozu">Eliozu</option>
+                            <option value="Eneka">Eneka</option>
                             <option value="GRA Phase I">GRA Phase I</option>
                             <option value="GRA Phase II">GRA Phase II</option>
-                            <option value="Rumuola">Rumuola</option>
-                            <option value="D-Line">D-Line</option>
-                            <option value="Elelenwo">Elelenwo</option>
-                            <option value="Trans Amadi">Trans Amadi</option>
-                            <option value="Rumuokwuta">Rumuokwuta</option>
-                            <option value="Eliozu">Eliozu</option>
-                            <option value="Ada George">Ada George</option>
+                            <option value="GRA Phase III">GRA Phase III</option>
+                            <option value="GRA Phase IV">GRA Phase IV</option>
+                            <option value="Igwuruta">Igwuruta</option>
+                            <option value="Iriebe">Iriebe</option>
+                            <option value="Iwofe">Iwofe</option>
+                            <option value="Marine Base">Marine Base</option>
+                            <option value="Mgbuoba">Mgbuoba</option>
+                            <option value="Mile 1 (Diobu)">Mile 1 (Diobu)</option>
+                            <option value="Mile 2 (Diobu)">Mile 2 (Diobu)</option>
+                            <option value="Mile 3 (Diobu)">Mile 3 (Diobu)</option>
+                            <option value="Mile 4">Mile 4</option>
+                            <option value="Nkpogu">Nkpogu</option>
+                            <option value="Nkpolu">Nkpolu</option>
+                            <option value="NTA Road">NTA Road</option>
+                            <option value="Okrika">Okrika</option>
+                            <option value="Old GRA">Old GRA</option>
+                            <option value="Onne">Onne</option>
+                            <option value="Oyigbo">Oyigbo</option>
+                            <option value="Ozuoba">Ozuoba</option>
                             <option value="Peter Odili Road">Peter Odili Road</option>
+                            <option value="Rukpokwu">Rukpokwu</option>
+                            <option value="Rumuepirikom">Rumuepirikom</option>
+                            <option value="Rumuibekwe">Rumuibekwe</option>
+                            <option value="Rumuigbo">Rumuigbo</option>
+                            <option value="Rumukrushi">Rumukrushi</option>
+                            <option value="Rumuodara">Rumuodara</option>
+                            <option value="Rumuokoro">Rumuokoro</option>
+                            <option value="Rumuokwuta">Rumuokwuta</option>
+                            <option value="Rumuola">Rumuola</option>
+                            <option value="Rumuomasi">Rumuomasi</option>
+                            <option value="Stadium Road">Stadium Road</option>
+                            <option value="Trans Amadi">Trans Amadi</option>
+                            <option value="Woji">Woji</option>
+                            <option value="Other">Other</option>
                           </select>
                           <ChevronDown className="h-4 w-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
                         </div>
@@ -538,37 +569,21 @@ export const JoinProTab: React.FC = () => {
                 {/* ==================== STEP 2 ==================== */}
                 {currentStep === 2 && (
                   <div className="space-y-6 animate-fade-in text-left">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label className="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase tracking-wider block mb-2">Labor Specialty Category</label>
-                        <div className="relative">
-                          <select
-                            value={formData.specialty}
-                            onChange={(e) => handleSpecialtyChange(e.target.value)}
-                            className="w-full rounded-xl bg-[#031513] border border-zinc-800 text-white px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929] appearance-none cursor-pointer"
-                          >
-                            {specialties.map((s, idx) => (
-                              <option key={idx} value={s.value} className="bg-[#031513]">
-                                {s.value}
-                              </option>
-                            ))}
-                          </select>
-                          <ChevronDown className="h-4 w-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="text-[10px] sm:text-[11px] font-bold text-[#C1E929] uppercase tracking-wider block mb-2">Target Service Fee (NGN)</label>
-                        <div className="relative">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs">₦</span>
-                          <input
-                            type="number"
-                            min="15"
-                            max="250"
-                            value={formData.hourlyRate}
-                            onChange={(e) => setFormData({ ...formData, hourlyRate: Number(e.target.value) })}
-                            className="w-full rounded-xl bg-transparent border border-zinc-800 text-white pl-8 pr-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929]"
-                          />
-                        </div>
+                    <div>
+                      <label className="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase tracking-wider block mb-2">Service Category</label>
+                      <div className="relative">
+                        <select
+                          value={formData.specialty}
+                          onChange={(e) => handleSpecialtyChange(e.target.value)}
+                          className="w-full rounded-xl bg-[#031513] border border-zinc-800 text-white px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929] focus:border-[#C1E929] appearance-none cursor-pointer"
+                        >
+                          {specialties.map((s, idx) => (
+                            <option key={idx} value={s.value} className="bg-[#031513]">
+                              {s.value}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="h-4 w-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
                       </div>
                     </div>
 
@@ -740,31 +755,6 @@ export const JoinProTab: React.FC = () => {
                       </label>
                     </div>
 
-                    {/* Banking routing Optional inputs */}
-                    <div className="bg-[#031513] border border-zinc-800 rounded-xl p-5 space-y-4">
-                      <span className="text-[10px] uppercase font-bold text-[#C1E929] tracking-widest block">Secure Payout Accounts (Optional)</span>
-                      
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-[10px] font-bold text-zinc-400 block mb-1">Bank Routing Routing Number</label>
-                          <input 
-                            type="text" 
-                            placeholder="021000021" 
-                            maxLength={9}
-                            className="w-full rounded-xl bg-transparent border border-zinc-800 text-white placeholder-zinc-700 px-3.5 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929]"
-                          />
-                        </div>
-                        <div>
-                          <label className="text-[10px] font-bold text-zinc-400 block mb-1">Checking Account Number</label>
-                          <input 
-                            type="password" 
-                            placeholder="*************" 
-                            className="w-full rounded-xl bg-transparent border border-zinc-800 text-white placeholder-zinc-700 px-3.5 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C1E929]"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
                     <div className="pt-6 border-t border-zinc-800 flex justify-between items-center">
                       <button
                         type="button"
@@ -802,12 +792,12 @@ export const JoinProTab: React.FC = () => {
           {/* Feature 1 */}
           <div className="bg-zinc-50 border border-zinc-150/80 rounded-2xl p-6 text-left flex items-start space-x-4">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#5E7E10]/10 text-[#5E7E10] font-bold text-base">
-              💰
+              🛡️
             </span>
             <div className="space-y-1">
-              <h3 className="text-sm font-bold text-[#0A201C] tracking-wide uppercase">Competitive Payouts</h3>
+              <h3 className="text-sm font-bold text-[#0A201C] tracking-wide uppercase">Safe Working Conditions</h3>
               <p className="text-xs text-zinc-500 leading-relaxed">
-                Industry-leading rates with weekly payouts and full transparency. Keep 100% of your pointers.
+                Every job on our platform is screened before it is assigned. We verify client requests so our providers always work in safe, respectful environments. Your wellbeing matters to us as much as your earnings.
               </p>
             </div>
           </div>
@@ -820,7 +810,7 @@ export const JoinProTab: React.FC = () => {
             <div className="space-y-1">
               <h3 className="text-sm font-bold text-[#0A201C] tracking-wide uppercase">Flexible Schedule</h3>
               <p className="text-xs text-zinc-500 leading-relaxed">
-                You decide when and where you work. Full control over calendar schedules via our pro dispatch app.
+                You decide when and where you work. No fixed hours, no pressure. Just pick up jobs that fit your day.
               </p>
             </div>
           </div>
@@ -828,12 +818,12 @@ export const JoinProTab: React.FC = () => {
           {/* Feature 3 */}
           <div className="bg-zinc-50 border border-zinc-150/80 rounded-2xl p-6 text-left flex items-start space-x-4">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#5E7E10]/10 text-[#5E7E10] font-bold text-base">
-              🛡️
+              💰
             </span>
             <div className="space-y-1">
-              <h3 className="text-sm font-bold text-[#0A201C] tracking-wide uppercase">Insurance &amp; Safety</h3>
+              <h3 className="text-sm font-bold text-[#0A201C] tracking-wide uppercase">Real Economic Opportunity</h3>
               <p className="text-xs text-zinc-500 leading-relaxed">
-                Every job is covered by our comprehensive professional liability insurance. Safety is our guarantee.
+                Whether you are looking for a side income or a full-time hustle, Help On Hire gives you a steady stream of clients and the platform to grow your earnings.
               </p>
             </div>
           </div>
