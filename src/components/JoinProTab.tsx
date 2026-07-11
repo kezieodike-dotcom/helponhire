@@ -267,8 +267,8 @@ export const JoinProTab: React.FC = () => {
             {/* Main polished collage/illustration */}
             <div className="rounded-[40px] overflow-hidden shadow-2xl border border-zinc-200/80 aspect-[1.15/1] relative group bg-white p-2">
               <img
-                src="/images/admin-executive.jpg"
-                alt="Help On Hire professionals collaborating"
+                src="/images/join-our-team.jpg"
+                alt="Help On Hire team of trusted professionals collaborating"
                 className="w-full h-full object-cover rounded-[32px]"
               />
             </div>

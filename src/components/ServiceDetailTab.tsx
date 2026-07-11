@@ -73,7 +73,7 @@ const servicePages = {
     title: 'Dependable domestic help for everyday home support',
     summary:
       'Get trusted household assistants for cleaning support, meal prep assistance, laundry help, home organization, and routine domestic tasks.',
-    image: '/images/admin-executive.jpg',
+    image: '/images/domestic-help.jpg',
     bookingServiceId: 'domestic-help',
     icon: HeartHandshake,
     metrics: ['Household support', 'Flexible duration', 'Screened workers'],

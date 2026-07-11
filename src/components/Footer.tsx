@@ -33,8 +33,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               <ShieldCheck className="h-6 w-6" />
             </span>
             <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Comprehensive Insurance</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Every booking is backed by our service guarantee.</p>
+              <h4 className="text-sm font-semibold text-white tracking-wider">Verified &amp; Vetted</h4>
+              <p className="text-xs text-zinc-500 mt-0.5">Every provider goes through a background check before being matched with any client.</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -42,8 +42,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               <CheckCircle className="h-6 w-6" />
             </span>
             <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Nationwide Background Checks</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Only the top 3% of applicants pass our screening process.</p>
+              <h4 className="text-sm font-semibold text-white tracking-wider">Trained to Deliver</h4>
+              <p className="text-xs text-zinc-500 mt-0.5">Our team is trained in-house to ensure you receive consistent, professional service every time.</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -51,8 +51,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               <Briefcase className="h-6 w-6" />
             </span>
             <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Transparent Pricing</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Clear service pricing. No surprise platform fees.</p>
+              <h4 className="text-sm font-semibold text-white tracking-wider">Clear, Honest Pricing</h4>
+              <p className="text-xs text-zinc-500 mt-0.5">You will always know what you are paying upfront. No hidden charges, no surprises.</p>
             </div>
           </div>
         </div>

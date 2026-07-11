@@ -3,9 +3,8 @@ import {
   Sparkles, 
   CheckCircle2, 
   ArrowRight, 
-  ShieldCheck, 
-  Wrench, 
-  ShoppingBag, 
+  ShieldCheck,
+  ShoppingBag,
   Lock, 
   Package, 
   Briefcase, 
@@ -13,7 +12,8 @@ import {
   Check, 
   HelpCircle,
   ThumbsUp,
-  Award
+  Award,
+  HeartHandshake
 } from 'lucide-react';
 import { WHATSAPP_URL } from '../constants';
 import type { ServicePageSlug } from './ServiceDetailTab';
@@ -208,28 +208,28 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
             </div>
           </div>
 
-          {/* Card 3: Home Maintenance */}
+          {/* Card 3: Domestic Help */}
           <div className="bg-white rounded-3xl border border-zinc-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition">
             <div>
               <div className="h-48 relative overflow-hidden bg-zinc-50">
-                <img 
-                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=400" 
-                  alt="Home Maintenance specialist" 
+                <img
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80&w=400"
+                  alt="Domestic help assistant"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-white/95 text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
-                  Quote Required
+                <span className="absolute top-4 right-4 bg-[#0A201C]/95 text-[#C1E929] text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
+                  Quote on request
                 </span>
               </div>
 
               <div className="p-6 text-left space-y-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
-                  <Wrench className="h-5 w-5" />
+                  <HeartHandshake className="h-5 w-5" />
                 </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Home Maintenance</h3>
+                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Domestic Help</h3>
                 <p className="text-xs text-zinc-550 leading-relaxed">
-                  Expert repairs, furniture assembly, structural alignment, diagnostics, and seasonal maintenance checklists.
+                  Trusted household assistants for laundry, tidying, meal prep support, home organization, and everyday domestic routines.
                 </p>
               </div>
             </div>
@@ -242,9 +242,9 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
                 View Details
               </button>
               <button
-                onClick={() => onOpenBooking('handyman')}
+                onClick={() => onOpenBooking('domestic-help')}
                 className="w-full rounded-full border border-zinc-200 hover:border-[#0A201C] hover:bg-[#0A201C] hover:text-white py-3.5 text-xs font-bold text-zinc-800 transition"
-                id="book-maintenance-card-btn"
+                id="book-domestic-help-card-btn"
               >
                 Book Now
               </button>
@@ -421,19 +421,25 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking, onNavig
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-900/40 text-[#C1E929] font-bold text-[10px]">
                   ✓
                 </span>
-                <span className="font-semibold">Professional Waitstaff &amp; Bartenders</span>
+                <span className="font-semibold">Ushers and greeters</span>
               </li>
               <li className="flex items-center space-x-3 text-zinc-200">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-900/40 text-[#C1E929] font-bold text-[10px]">
                   ✓
                 </span>
-                <span className="font-semibold">Experienced Event Concierge Operations</span>
+                <span className="font-semibold">Hospitality and waitstaff</span>
               </li>
               <li className="flex items-center space-x-3 text-zinc-200">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-900/40 text-[#C1E929] font-bold text-[10px]">
                   ✓
                 </span>
-                <span className="font-semibold">Bilingual VIP Hosting Coordinates</span>
+                <span className="font-semibold">Registration and guest coordination</span>
+              </li>
+              <li className="flex items-center space-x-3 text-zinc-200">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-900/40 text-[#C1E929] font-bold text-[10px]">
+                  ✓
+                </span>
+                <span className="font-semibold">Business outreach support</span>
               </li>
             </ul>
 
