@@ -267,9 +267,18 @@ export const JoinProTab: React.FC = () => {
             {/* Main polished collage/illustration */}
             <div className="rounded-[40px] overflow-hidden shadow-2xl border border-zinc-200/80 aspect-[1.15/1] relative group bg-white p-2">
               <img
-                src="/images/join-our-team.jpg"
+                src="/images/event-staffing-team.jpg"
                 alt="Help On Hire team of trusted professionals collaborating"
                 className="w-full h-full object-cover rounded-[32px]"
+              />
+            </div>
+
+            {/* Secondary overlapping photo for a collage feel */}
+            <div className="absolute -bottom-8 -left-6 sm:-left-10 w-40 sm:w-52 rounded-[28px] overflow-hidden shadow-2xl border-4 border-white bg-white aspect-[0.85/1] hidden sm:block">
+              <img
+                src="/images/errands-delivery-coordinator.jpg"
+                alt="Help On Hire professionals on the job"
+                className="w-full h-full object-cover rounded-[20px]"
               />
             </div>
           </div>
