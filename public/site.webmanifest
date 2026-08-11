@@ -1,0 +1,21 @@
+{
+  "name": "Help On Hire",
+  "short_name": "Help On Hire",
+  "description": "Trusted professionals for homes, businesses, events, and everyday support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A201C",
+  "theme_color": "#0A201C",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
