@@ -1,28 +1,14 @@
-import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  Star, 
-  ShieldCheck, 
-  ArrowRight, 
-  Check, 
-  Quote, 
-  ChevronDown, 
-  ChevronUp,
-  MapPin,
-  Calendar,
-  Clock,
-  User,
+import React from 'react';
+import {
+  ArrowRight,
+  CheckCircle2,
   HeartHandshake,
-  Phone,
-  Mail,
-  Zap,
-  Package,
-  ThumbsUp,
-  Award
+  Home,
+  Leaf,
+  ShieldCheck,
+  Sparkles,
+  UserCheck,
 } from 'lucide-react';
-import { TestimonialsRow } from '../../components/ui/testimonials-columns-1';
-import { motion } from 'motion/react';
-import { WHATSAPP_URL } from '../constants';
 import type { ServicePageSlug } from './ServiceDetailTab';
 
 interface FindProsTabProps {
@@ -31,994 +17,255 @@ interface FindProsTabProps {
   onNavigateService: (slug: ServicePageSlug) => void;
 }
 
-export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab, onNavigateService }) => {
-  // Local active states for interactive sections
-  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+const values = [
+  { title: 'Care', copy: 'We care about the people we serve and the experience we create.' },
+  { title: 'Integrity', copy: 'We are transparent, honest, and accountable from request to completion.' },
+  { title: 'Professionalism', copy: 'We uphold high standards in how we work, speak, and serve.' },
+  { title: 'Reliability', copy: 'We aim to be dependable when your home needs support.' },
+];
 
-  // FAQS as per PRD specifications
-  const faqData = [
-    {
-      q: "How do I request a service?",
-      a: "Click on the 'Request a Service' button on our menu or hero block. Fill out our simple booking form with your service category, dates, location, and instructions, and our coordinator will match you with a verified professional."
-    },
-    {
-      q: "Are professionals vetted?",
-      a: "Yes, 100%. Every professional undergoes a rigorous 5-step screening. This comprises comprehensive criminal background inspections, municipal checks, reference validation, certification reviews, and a 1-on-1 interview process conducted by our compliance officers."
-    },
-    {
-      q: "How quickly can I get assistance?",
-      a: "Help On Hire can dispatch professionals for same-day requests! Depending on location and category volume, a pre-screened pro can be routed to your home or corporate site in under 2 to 3 hours."
-    },
-    {
-      q: "Can businesses request multiple staff?",
-      a: "Absolutely. B2B clients can scale up their operations by requesting bulk or temporary contract workers for multiple dates, shift setups, event hospitality operations, or clerical projects."
-    },
-    {
-      q: "What locations do you serve?",
-      a: "We currently dispatch trusted, certified professionals across key service areas and surrounding neighborhoods."
-    }
-  ];
+const steps = ['Recruit', 'Train', 'Assess', 'Deploy'];
 
-  // Blog posts as per PRD SECTION 12
-  const blogPosts = [
-    {
-      slug: "too-busy-to-clean",
-      category: "Home & Productivity",
-      title: "Too Busy to Clean? Here's How to Keep Your Home Spotless Without Lifting a Finger",
-      excerpt: "Too busy to keep up with your home? Find out how to keep your space clean and healthy without doing it all yourself.",
-      date: "July 7, 2026",
-      readTime: "4 Min Read",
-      url: "/images/eco-cleaning-specialist.jpg"
-    },
-    {
-      slug: "outsourcing-errands",
-      category: "Home & Productivity",
-      title: "Why Port Harcourt Residents Are Outsourcing Their Errands (And Why You Should Too)",
-      excerpt: "Market runs, queues, pickups — your time is too valuable for all of that. See how Port Harcourt residents are getting their hours back.",
-      date: "July 5, 2026",
-      readTime: "4 Min Read",
-      url: "/images/errands-delivery-coordinator.jpg"
-    },
-    {
-      slug: "event-staffing-choice",
-      category: "Events & Hosting",
-      title: "Planning an Event in Port Harcourt? Here's Why Your Staffing Choice Makes or Breaks It",
-      excerpt: "Your venue is booked and your decor is sorted. But who is managing your guests? Here is why event staffing deserves more attention than it gets.",
-      date: "July 3, 2026",
-      readTime: "5 Min Read",
-      url: "/images/event-staffing-team.jpg"
-    },
-    {
-      slug: "business-support-flexible-staff",
-      category: "Business & Operations",
-      title: "How Smart Port Harcourt Businesses Are Getting More Done Without Hiring Full-Time Staff",
-      excerpt: "Need extra hands but not ready to hire full-time? Here is how flexible support staff can give your business the capacity it needs.",
-      date: "July 1, 2026",
-      readTime: "5 Min Read",
-      url: "/images/corporate-assistant.jpg"
-    }
-  ];
-
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
-
+export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab }) => {
   return (
-    <div className="flex flex-col bg-[#F9FBFB] text-zinc-900 font-sans" id="homepage-scaffold">
-      
-      {/* ========================================================= */}
-      {/* SECTION 01 — HERO (Dark Green Theme, 3-Col Sliding Layout) */}
-      {/* ========================================================= */}
-      <section className="relative overflow-hidden bg-[#0A201C] text-white min-h-[620px]" id="hero-section">
-        {/* Subtle decorative background grids */}
-        <div className="absolute inset-0 bg-[radial-gradient(#11322d_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-35" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-emerald-900/20 rounded-full blur-3xl filter" />
-
-        {/* 3-column layout: images | text | images */}
-        <div className="relative flex items-center min-h-[620px]">
-
-          {/* === LEFT SLIDING COLUMN === */}
-          <div className="hidden lg:block w-[220px] xl:w-[260px] shrink-0 h-[620px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
-            <motion.div
-              animate={{ translateY: "-50%" }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-              className="flex flex-col gap-4 pb-4"
-            >
-              {[
-                { src: "/images/eco-cleaning-specialist.jpg", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
-                { src: "/images/errands-delivery-coordinator.jpg", role: "Errands", title: "DELIVERY COORDINATOR" },
-                { src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=400", role: "Repairs", title: "SMART HANDYMAN" },
-                { src: "/images/eco-cleaning-specialist.jpg", role: "Cleaner", title: "ECO-CLEANING SPECIALIST" },
-                { src: "/images/errands-delivery-coordinator.jpg", role: "Errands", title: "DELIVERY COORDINATOR" },
-                { src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=400", role: "Repairs", title: "SMART HANDYMAN" },
-              ].map((img, idx) => (
-                <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] relative shadow-lg shrink-0">
-                  <img src={img.src} alt={img.role} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-3 flex flex-col justify-end text-white">
-                    <span className="text-[8px] uppercase tracking-wider text-[#C1E929] font-bold">{img.role}</span>
-                    <p className="text-[10px] font-bold">{img.title}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* === CENTER TEXT CONTENT === */}
-          <div className="flex-1 flex flex-col items-center justify-center text-center px-6 sm:px-10 py-20 z-10">
-            <span className="inline-flex items-center space-x-2 text-[#C1E929] font-extrabold uppercase tracking-widest text-[10px] mb-5 bg-emerald-900/30 px-3 py-1 rounded-full border border-emerald-500/20 leading-none">
-              <Sparkles className="h-3 w-3 animate-pulse" />
-              <span>TRUSTED PROFESSIONAL SERVICES</span>
+    <div className="bg-[#F7F8F6] text-zinc-900 font-sans" id="homepage-scaffold">
+      <section className="relative overflow-hidden bg-[#08221c] text-white" id="hero-section">
+        <div className="absolute inset-0 bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25" />
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
+          <div className="lg:col-span-7">
+            <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">
+              Home Support That Cares
             </span>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-2xl">
-              Reliable Help,<br />
-              <span className="text-[#C1E929] italic font-serif">Exactly</span> When You Need It<br />
-              <span className="text-3xl sm:text-4xl lg:text-5xl text-[#C1E929] italic font-serif">In Port Harcourt.</span>
+            <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              You do not have to carry it all.
             </h1>
-
-            <p className="max-w-lg text-sm sm:text-base text-zinc-400 leading-relaxed mb-10">
-              Access trusted professionals for errands, home services, event staffing, and business support — seamlessly and on your terms.
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-250">
+              Professional home support that helps you reclaim your time, freedom, and peace of mind with genuine care.
             </p>
-
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <button
-                type="button"
                 onClick={() => onOpenBooking()}
-                className="rounded-full bg-[#C1E929] hover:bg-white text-[#0A201C] px-8 py-4 text-xs font-bold uppercase tracking-widest transition duration-300 shadow-lg shadow-[#C1E929]/15 flex items-center space-x-2 border-2 border-transparent hover:border-[#0A201C]"
-                id="hero-request-btn"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#12A33B] px-7 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-emerald-950/20 transition hover:bg-[#0f8f34] active:translate-y-[1px]"
+                id="hero-book-home-support-btn"
               >
-                <span>Request a Service</span>
-                <ArrowRight className="h-4 w-4 text-[#0A201C]" />
+                <span>Book Home Support</span>
+                <ArrowRight className="h-4 w-4" />
               </button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-col sm:flex-row items-center gap-6 border-t border-white/15 pt-8 text-xs text-zinc-400">
-              <div className="flex items-center space-x-2 font-bold uppercase tracking-wider text-white">
-                <Star className="h-4 w-4 text-[#C1E929] fill-current" />
-                <span>4.9/5 Service Rating</span>
-              </div>
-              <div className="hidden sm:block w-px h-4 bg-white/20" />
-              <div className="flex items-center space-x-2 font-bold uppercase tracking-wider text-white">
-                <ShieldCheck className="h-4 w-4 text-[#C1E929]" />
-                <span>100% Vetted Pros</span>
-              </div>
-            </div>
-          </div>
-
-          {/* === RIGHT SLIDING COLUMN === */}
-          <div className="hidden lg:block w-[220px] xl:w-[260px] shrink-0 h-[620px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
-            <div className="pt-12">
-              <motion.div
-                animate={{ translateY: ["-50%", "0%"] }}
-                transition={{ duration: 22, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-                className="flex flex-col gap-4 pb-4"
-              >
-                {[
-                  { src: "/images/hospitality-usher.jpg", role: "Events", title: "HOSPITALITY USHER" },
-                  { src: "/images/admin-executive.jpg", role: "Office", title: "ADMIN EXECUTIVE" },
-                  { src: "/images/corporate-assistant.jpg", role: "Corporate", title: "BUSINESS ASSISTANT" },
-                  { src: "/images/hospitality-usher.jpg", role: "Events", title: "HOSPITALITY USHER" },
-                  { src: "/images/admin-executive.jpg", role: "Office", title: "ADMIN EXECUTIVE" },
-                  { src: "/images/corporate-assistant.jpg", role: "Corporate", title: "BUSINESS ASSISTANT" },
-                ].map((img, idx) => (
-                  <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] relative shadow-lg shrink-0">
-                    <img src={img.src} alt={img.role} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-3 flex flex-col justify-end text-white">
-                      <span className="text-[8px] uppercase tracking-wider text-[#C1E929] font-bold">{img.role}</span>
-                      <p className="text-[10px] font-bold">{img.title}</p>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 02 — TRUST METRICS                                */}
-      {/* ========================================================= */}
-      <section className="bg-white border-y border-zinc-200 py-10 px-4 sm:px-6 lg:px-8" id="trust-metrics-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-zinc-200">
-            
-            {/* Stat Card 1 */}
-            <div className="p-4">
-              <span className="block text-3xl sm:text-4xl font-extrabold text-[#0A201C]">98%</span>
-              <span className="block text-xs uppercase font-extrabold tracking-wider text-zinc-500 mt-1">
-                Client Satisfaction
-              </span>
-            </div>
-
-            {/* Stat Card 2 */}
-            <div className="p-4 pt-8 md:pt-4">
-              <span className="block text-3xl sm:text-4xl font-extrabold text-[#0A201C]">500+</span>
-              <span className="block text-xs uppercase font-extrabold tracking-wider text-zinc-500 mt-1">
-                Services Delivered
-              </span>
-            </div>
-
-            {/* Stat Card 3 */}
-            <div className="p-4 pt-8 md:pt-4">
-              <span className="block text-3xl sm:text-4xl font-extrabold text-[#0A201C]">100%</span>
-              <span className="block text-xs uppercase font-extrabold tracking-wider text-zinc-500 mt-1">
-                Verified Professionals
-              </span>
-            </div>
-
-            {/* Stat Card 4 */}
-            <div className="p-4 pt-8 md:pt-4">
-              <span className="block text-3xl sm:text-4xl font-extrabold text-[#0A201C]">24/7</span>
-              <span className="block text-xs uppercase font-extrabold tracking-wider text-zinc-500 mt-1">
-                Support Availability
-              </span>
-            </div>
-
-            {/* Card 4: Event Staffing */}
-            <div className="hidden">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Award className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Ushers and greeters</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Hospitality crew</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Guest coordination</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('event-staffing')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
-              >
-                <span>View Service</span>
-                <span>â†’</span>
-              </button>
-            </div>
-
-            {/* Card 4: Event Staffing */}
-            <div className="hidden">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Award className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Ushers and greeters</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Hospitality crew</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Guest coordination</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('event-staffing')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
-              >
-                <span>View Service</span>
-                <span>â†’</span>
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 03 — ABOUT THE SERVICE                             */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F9FBFB]" id="about-service-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left: About Image — full "Help on demand" promo poster */}
-            <div className="lg:col-span-5 relative mx-auto w-full max-w-[400px] aspect-[852/1280] rounded-3xl overflow-hidden border border-zinc-200 shadow-xl">
-              <img
-                src="/images/regional-service-desk.jpg"
-                alt="Help On Hire — your reliable help on demand in Port Harcourt"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Right: Content Copy */}
-            <div className="lg:col-span-7 flex flex-col items-start xl:pl-8">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#0A201C]/60 bg-[#EBF3F0] px-4 py-1.5 rounded-full border border-zinc-200/50">
-                ABOUT HELP ON HIRE
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-4 leading-tight">
-                Professional support for everyday needs and business operations
-              </h2>
-              <p className="text-sm text-zinc-550 mt-4 leading-relaxed">
-                Help On Hire is a Port Harcourt-based service company that connects individuals, households, and businesses with trained, dependable professionals.
-              </p>
-              <p className="text-sm text-zinc-505 mt-3 leading-relaxed">
-                Need an errand run, your home cleaned, help around the house, staff for an event, or extra hands for your business? We handle the matching, vetting, and training so you get reliable help without the stress. We emphasize quality, so you always get elite-tier assistance.
-              </p>
-
               <button
-                onClick={() => setActiveTab('about')}
-                className="rounded-full bg-[#0A201C] hover:bg-emerald-950 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition duration-250 mt-8"
+                onClick={() => setActiveTab('services')}
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-white/10 active:translate-y-[1px]"
               >
-                Learn More
+                Explore Our Services
               </button>
             </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 04 — SERVICES GRID                                */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#EBF3F0] border-y border-zinc-200/60" id="services-grid-section">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[10px] uppercase font-extrabold tracking-widest text-[#0A201C]/60">
-              SERVICE PORTFOLIO
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-3">
-              Our Services
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              From everyday tasks to business staffing, we provide access to reliable professionals across key service categories.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            
-            {/* Card 1: Cleaning */}
-            <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Sparkles className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Cleaning</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Routine cleaning, deep cleaning, move-in resets, and post-event cleanup for homes and offices.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Home and office cleaning</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Deep sanitizing</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Recurring plans</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('cleaning')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
-              >
-                <span>View Service</span>
-                <span>→</span>
-              </button>
-            </div>
-
-            {/* Card 2: Errands / Deliveries */}
-            <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Package className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Errands / Deliveries</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Market runs, document movement, parcel pickup, and delivery tasks handled by reliable support staff.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Market runs</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Parcel pickup</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Delivery updates</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('errands-deliveries')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
-              >
-                <span>View Service</span>
-                <span>→</span>
-              </button>
-            </div>
-
-            {/* Card 3: Domestic Help */}
-            <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <HeartHandshake className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Domestic Help</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Flexible household support for laundry, tidying, basic meal prep assistance, and daily home routines.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Laundry support</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Home organization</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Daily assistance</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('domestic-help')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#0A201C] hover:bg-emerald-950 px-6 py-3.5 rounded-full text-[#C1E929] w-fit"
-              >
-                <span>View Service</span>
-                <span>→</span>
-              </button>
-            </div>
-
-            {/* Card 4: Event Staffing */}
-            <div className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between group hover:shadow-lg transition">
-              <div className="space-y-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-[#0A201C] font-bold text-xl shadow-inner mb-6">
-                  <Award className="h-6 w-6 text-[#0A201C]" />
-                </span>
-                <h3 className="text-base font-bold text-[#0A201C] tracking-tight">Event Staffing</h3>
-                <p className="text-xs text-zinc-550 leading-relaxed">
-                  Ushers, hospitality attendants, registration assistants, and service crew for events and programs.
-                </p>
-                <ul className="space-y-2 pt-4 border-t border-zinc-100 text-xs text-zinc-500">
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Ushers and greeters</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Hospitality crew</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Guest coordination</span>
-                  </li>
-                </ul>
-              </div>
-              <button 
-                onClick={() => onNavigateService('event-staffing')}
-                className="mt-8 text-xs font-extrabold uppercase tracking-widest text-[#0A201C] group-hover:translate-x-1 transition-transform inline-flex items-center space-x-2 text-left bg-[#EBF3F0] hover:bg-zinc-200/50 py-3 px-6 rounded-full w-fit"
-              >
-                <span>View Service</span>
-                <span>-&gt;</span>
-              </button>
-            </div>
-
-          </div>
-
-          <div className="pt-16 text-center border-t border-zinc-250 mt-16">
-            <button
-              onClick={() => setActiveTab('services')}
-              className="rounded-full bg-[#0A201C] hover:bg-emerald-950 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition duration-200"
-            >
-              View All Services
-            </button>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 05 — HOW IT WORKS                                  */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white" id="how-it-works-section">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-20 animate-fade-in">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-700 bg-emerald-50 px-4 py-1.5 rounded-full border border-emerald-100/50">
-              SIMPLE 4-STEP PROTOCOL
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-4">
-              How It Works
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-550 mt-2 leading-relaxed">
-              Getting the help you need is simple, fast, and reliable.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 relative">
-            
-            {/* Step 1 */}
-            <div className="space-y-4 text-left relative z-10 group">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A201C] text-[#C1E929] font-extrabold text-xs shadow-md transition-transform group-hover:-translate-y-1">
-                01
-              </span>
-              <h3 className="text-sm font-extrabold text-[#0A201C] tracking-wider uppercase">Request a Service</h3>
-              <p className="text-xs text-zinc-550 leading-relaxed">
-                Tell us what you need. Specify your specific service requirements, hours, and calendar dates using our Booking wizard.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="space-y-4 text-left relative z-10 group">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A201C] text-[#C1E929] font-extrabold text-xs shadow-md transition-transform group-hover:-translate-y-1">
-                02
-              </span>
-              <h3 className="text-sm font-extrabold text-[#0A201C] tracking-wider uppercase">Get Matched</h3>
-              <p className="text-xs text-zinc-550 leading-relaxed">
-                We assign a suitable professional. Our system screens credentials to match the most competent regional pro instantly.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="space-y-4 text-left relative z-10 group">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A201C] text-[#C1E929] font-extrabold text-xs shadow-md transition-transform group-hover:-translate-y-1">
-                03
-              </span>
-              <h3 className="text-sm font-extrabold text-[#0A201C] tracking-wider uppercase">Service Delivery</h3>
-              <p className="text-xs text-zinc-550 leading-relaxed">
-                Work gets completed professionally. The assigned expert arrives on schedule and executes the service parameters perfectly.
-              </p>
-            </div>
-
-            {/* Step 4 */}
-            <div className="space-y-4 text-left relative z-10 group">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A201C] text-[#C1E929] font-extrabold text-xs shadow-md transition-transform group-hover:-translate-y-1">
-                04
-              </span>
-              <h3 className="text-sm font-extrabold text-[#0A201C] tracking-wider uppercase">Quality Assurance</h3>
-              <p className="text-xs text-zinc-550 leading-relaxed">
-                We follow up and ensure satisfaction. We complete reviews, verify payouts, and ensure your absolute workspace delight.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 06 — WHY CHOOSE HELP ON HIRE                      */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F9FBFB] border-t border-zinc-200" id="why-choose-us-section">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#0A201C]/65">
-              THE HELP ON HIRE STANDARD
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight mt-3">
-              The Difference is in the Details
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Masonry visual block (5 cols) */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-              <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group">
-                <img
-                  src="/images/errands-delivery-coordinator.jpg"
-                  alt="Vetted Help On Hire delivery professional in Port Harcourt"
-                  className="w-full h-full object-cover group-hover:scale-105 transition"
-                />
-              </div>
-              <div className="rounded-3xl overflow-hidden h-72 border border-zinc-200 shadow-sm relative group pt-8">
-                <img
-                  src="/images/event-staffing-team.jpg"
-                  alt="Trained Help On Hire professional team in Port Harcourt"
-                  className="w-full h-full object-cover group-hover:scale-105 transition"
-                />
-              </div>
-            </div>
-
-            {/* Choice features lists (7 cols) */}
-            <div className="lg:col-span-7 col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
-              {/* Feature 1 */}
-              <div className="bg-white border border-zinc-200/80 rounded-3xl p-6 shadow-sm">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
-                <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">Carefully Selected Professionals</h3>
-                <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Every professional is screened and verified. This covers background audits and credential checks.
-                </p>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="bg-white border border-zinc-200/80 rounded-3xl p-6 shadow-sm">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
-                <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">Structured Operations</h3>
-                <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Consistent oversight and service quality. Automated scheduling ensures you get real-time dispatcher coordination status.
-                </p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="bg-white border border-zinc-200/80 rounded-3xl p-6 shadow-sm">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
-                <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">Reliable Service</h3>
-                <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Punctual and dependable professionals. Rest easy knowing that the matched candidates hold high success metrics.
-                </p>
-              </div>
-
-              {/* Feature 4 */}
-              <div className="bg-white border border-zinc-200/80 rounded-3xl p-6 shadow-sm">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-[#0A201C] mb-4 font-extrabold">✓</span>
-                <h3 className="text-sm font-bold text-[#0A201C] tracking-tight">End-to-End Support</h3>
-                <p className="text-[11px] text-zinc-500 mt-2 leading-relaxed">
-                  Support from request to completion. Our regional coordinator line monitors every on-site gig 24 hours a day.
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 07 — BUSINESS SOLUTIONS                           */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0A201C] text-white relative overflow-hidden" id="business-solutions-section">
-        <div className="absolute inset-0 bg-[radial-gradient(#11322d_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-35" />
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Image layout (Reverse from Section 3) */}
-            <div className="h-[460px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative order-last lg:order-first">
+          <div className="lg:col-span-5">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-2 shadow-2xl">
               <img
-                src="/images/admin-executive.jpg"
-                alt="Help On Hire business staffing team working in a Port Harcourt office"
-                className="w-full h-full object-cover"
+                src="/images/domestic-help.jpg"
+                alt="Help On Hire home support professional caring for a household"
+                className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
-                <span className="text-[9px] font-bold text-[#C1E929] uppercase tracking-widest font-bold">REGIONAL B2B SERVICE</span>
-                <h4 className="text-base font-extrabold text-white">Operational Partner</h4>
+              <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-[#08221c]/85 p-5 text-left backdrop-blur-md">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">Easing Your Burden</p>
+                <p className="mt-2 text-sm font-semibold text-white">A clean, supported home can create room for the life you want to live.</p>
               </div>
             </div>
-
-            {/* Right content column */}
-            <div className="flex flex-col items-start space-y-6">
-              <span className="text-[9px] uppercase font-bold tracking-widest text-[#C1E929] bg-emerald-900/40 px-3.5 py-1.5 rounded-full border border-emerald-500/10">
-                FOR BUSINESSES
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none">
-                Reliable Staff, Without the Hiring Stress
-              </h2>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                Access trained professionals for events, projects, and ongoing business operations. Solve temporary workforce shortages within minutes.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 w-full pt-4 text-xs">
-                <div className="flex items-center space-x-2">
-                  <span className="h-5 w-5 rounded-full bg-emerald-900/30 text-[#C1E929] flex items-center justify-center font-bold">✓</span>
-                  <span className="text-zinc-250">Pre-screened workforce</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="h-5 w-5 rounded-full bg-emerald-900/30 text-[#C1E929] flex items-center justify-center font-bold">✓</span>
-                  <span className="text-zinc-250">Flexible staffing</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="h-5 w-5 rounded-full bg-emerald-900/30 text-[#C1E929] flex items-center justify-center font-bold">✓</span>
-                  <span className="text-zinc-250">Scalable support</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="h-5 w-5 rounded-full bg-emerald-900/30 text-[#C1E929] flex items-center justify-center font-bold">✓</span>
-                  <span className="text-zinc-250">Reduced burden</span>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                <button
-                  onClick={() => setActiveTab('business')}
-                  className="rounded-full bg-[#C1E929] hover:bg-white text-[#0A201C] px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition duration-300 shadow-md shadow-[#C1E929]/10"
-                >
-                  Hire Staff
-                </button>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* SECTION 08 — TESTIMONIALS                                  */}
-      {/* ========================================================= */}
-      <section className="py-24 bg-zinc-50 border-b border-zinc-200 relative overflow-hidden" id="testimonials-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center mb-12"
-          >
-            <div className="flex justify-center mb-4">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#0A201C] bg-[#5E7E10]/10 px-3 py-1 rounded-full border border-[#5E7E10]/20">
-                Client Correspondence
-              </span>
-            </div>
-
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0A201C]">
-              What Our Users Say
-            </h2>
-            <p className="text-xs text-zinc-500 mt-3">
-              See what our customers have to say about our vetted professionals and service delivery.
+      <section className="px-4 py-20 sm:px-6 lg:px-8" id="home-problem-solution">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="border-t border-zinc-300 pt-8">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">The Problem</p>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">Home management is a lot to carry.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-zinc-600">
+              Work. Business. Children. Cooking. Cleaning. Errands. Family. Life already asks a lot of us. Sometimes, the home needs more support than one person can comfortably give.
             </p>
-          </motion.div>
-
-          {/* Testimonials horizontal marquee with fade out masks */}
-          <div className="mt-10 space-y-6 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] overflow-hidden">
-            <TestimonialsRow
-              testimonials={[
-                {
-                  text: "I booked a deep clean before moving into my new apartment in GRA. The cleaner arrived on time, was thorough, and my place felt brand new. I've since set up a weekly schedule.",
-                  image: "/testimonials/amaka-okafor.jpg",
-                  name: "Amaka Okafor",
-                  role: "Home Cleaning Client",
-                },
-                {
-                  text: "Their errand runner handled my market run and a bank drop-off in one afternoon. Saved me hours I would have spent stuck in Rumuola traffic.",
-                  image: "/testimonials/chinedu-nwosu.jpg",
-                  name: "Chinedu Nwosu",
-                  role: "Errands & Deliveries Client",
-                },
-                {
-                  text: "We needed ushers for our wedding at short notice. The team was smart, well-trained, and managed our guests beautifully. Everyone commented on how organised it was.",
-                  image: "/testimonials/aisha-bello.jpg",
-                  name: "Aisha Bello",
-                  role: "Event Host",
-                },
-                {
-                  text: "The domestic help they matched us with has been reliable and trustworthy for months now. Knowing every professional is vetted really makes the difference.",
-                  image: "/testimonials/tunde-adebayo.jpg",
-                  name: "Tunde Adebayo",
-                  role: "Domestic Help Client",
-                },
-                {
-                  text: "I run a small business and needed extra hands for a product launch. Help On Hire sent trained support staff who represented my brand professionally.",
-                  image: "/testimonials/ngozi-eze.jpg",
-                  name: "Ngozi Eze",
-                  role: "Business Owner",
-                },
-              ]}
-              duration={40}
-            />
-            <TestimonialsRow
-              testimonials={[
-                {
-                  text: "Post-party cleanup used to be my nightmare. Now I just book a reset clean and wake up to a spotless home the next morning.",
-                  image: "/testimonials/kemi-balogun.jpg",
-                  name: "Kemi Balogun",
-                  role: "Home Cleaning Client",
-                },
-                {
-                  text: "Fast, dependable delivery support for my online store. Pickups and drop-offs across Port Harcourt are handled without stress.",
-                  image: "/testimonials/emeka-obi.jpg",
-                  name: "Emeka Obi",
-                  role: "E-commerce Owner",
-                },
-                {
-                  text: "We hired hospitality staff for a corporate dinner. Punctual, polished, and professional from setup right through to teardown.",
-                  image: "/testimonials/fatima-musa.jpg",
-                  name: "Fatima Musa",
-                  role: "Corporate Event Planner",
-                },
-                {
-                  text: "Booking was simple and the professional showed up exactly when promised. This is how service should work in Port Harcourt.",
-                  image: "/testimonials/ifeanyi-uche.jpg",
-                  name: "Ifeanyi Uche",
-                  role: "Household Client",
-                },
-              ]}
-              duration={45}
-              reverse
-            />
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600">
+              You should not have to put the things that matter to you on hold simply because there is too much to manage at home.
+            </p>
           </div>
-
+          <div className="border-t border-zinc-300 pt-8">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">The Solution</p>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">A little support can give you a lot of life back.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-zinc-600">
+              Help On Hire provides reliable Home Support Professionals to help take care of essential household responsibilities, so you have more time and capacity for the things that matter to you.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600">
+              Reclaiming your life looks different for everyone: more family time, career or business focus, rest, personal development, leisure, or simply room to breathe.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* SECTION 09 — BOOKING CTA (Dark Cleano Theme banner)      */}
-      {/* ========================================================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0A201C] text-white relative" id="booking-cta-section">
-        <div className="absolute inset-0 bg-[radial-gradient(#11322d_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-35" />
-        <div className="relative max-w-4xl mx-auto rounded-3xl bg-emerald-950/40 border border-white/5 p-10 text-center space-y-6">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#C1E929]">SPEED RUN DISPATCH</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-none">
-            Get Reliable Help Today
-          </h2>
-          <p className="max-w-lg text-sm text-zinc-300 mx-auto leading-relaxed">
-            Connect with trusted professionals whenever you need support. Submit an inquiry or chat with us directly.
+      <section className="bg-white px-4 py-20 sm:px-6 lg:px-8" id="core-services-section">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Our Services</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">Home support, made simple.</h2>
+          </div>
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
+            <ServicePanel
+              className="lg:col-span-2"
+              icon={<Sparkles className="h-5 w-5" />}
+              title="Essential Home Refresh"
+              copy="A one-time professional home cleaning service for when your home needs a thorough refresh."
+              onClick={() => onOpenBooking('essential-home-refresh')}
+              action="Request a Home Refresh"
+            />
+            <ServicePanel
+              className="lg:col-span-3"
+              icon={<Home className="h-5 w-5" />}
+              title="Signature Home Care"
+              copy="Ongoing, contract-based home support for households that need consistent help managing agreed home responsibilities."
+              onClick={() => onOpenBooking('signature-home-care')}
+              action="Request Home Support"
+            />
+          </div>
+          <p className="mt-5 max-w-3xl text-xs leading-relaxed text-zinc-500">
+            Errands and meal preparation are not separate public services; they may form part of an agreed Signature Home Care arrangement.
           </p>
-          <div className="pt-4 flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => onOpenBooking()}
-              className="rounded-full bg-[#C1E929] hover:bg-white text-[#0A201C] px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition"
-            >
-              Request a Service
-            </button>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition flex items-center space-x-2"
-              id="cta-whatsapp-btn"
-            >
-              <span>Chat on WhatsApp</span>
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* SECTION 10 — PROFESSIONALS SHOWCASE                        */}
-      {/* ========================================================= */}
-      {/* ========================================================= */}
-      {/* SECTION 11 — FAQ                                          */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-50" id="faq-section">
-        <div className="max-w-4xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#0A201C]/65">
-              QUESTIONS &amp; CORRESPONDENCE
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight mt-3">
-              Frequently Asked Questions
-            </h2>
+      <section className="px-4 py-20 sm:px-6 lg:px-8" id="why-help-on-hire">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Why Help On Hire</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">More than a clean home.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-zinc-600">
+              We believe home support should come with genuine care for your home, your life, and you as a person.
+            </p>
           </div>
-
-          <div className="space-y-4 text-xs">
-            {faqData.map((faq, index) => {
-              const isSelected = activeFaq === index;
-              return (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-3xl border border-zinc-200 overflow-hidden shadow-sm"
-                >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full px-6 py-5 text-left font-bold text-sm text-[#0A201C] flex items-center justify-between"
-                  >
-                    <span>{faq.q}</span>
-                    {isSelected ? <ChevronUp className="h-4 w-4 text-[#0A201C]" /> : <ChevronDown className="h-4 w-4 text-zinc-400" />}
-                  </button>
-                  
-                  {isSelected && (
-                    <div className="px-6 pb-6 pt-1 text-xs text-zinc-500 leading-relaxed border-t border-zinc-100 animate-fade-in text-left">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* SECTION 12 — INSIGHTS / BLOG                               */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#EBF3F0]" id="insights-section">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-700">
-              MEDIA NEWSROOM
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0A201C] tracking-tight mt-3">
-              Latest Insights
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {blogPosts.map((post, idx) => (
-              <div
-                key={idx}
-                onClick={() => setActiveTab(`blog-${post.slug}`)}
-                className="bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-sm flex flex-col justify-between group cursor-pointer hover:shadow-md transition"
-              >
-                <div>
-                  <div className="h-48 overflow-hidden relative">
-                    <img 
-                      src={post.url} 
-                      alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300" 
-                      referrerPolicy="no-referrer"
-                    />
-                    <span className="absolute bottom-3 left-3 bg-[#0A201C] text-[#C1E929] px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider">
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="p-6 space-y-2 text-left">
-                    <span className="text-[9px] text-zinc-400 font-bold block">{post.date} • {post.readTime}</span>
-                    <h4 className="text-sm font-bold text-[#0A201C] leading-snug group-hover:text-emerald-800 transition-colors">
-                      {post.title}
-                    </h4>
-                    <p className="text-xs text-zinc-500 leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                </div>
-                <div className="px-6 pb-6 pt-4 border-t border-zinc-100 text-left bg-zinc-50/40">
-                  <span className="text-xs font-bold text-[#0A201C] group-hover:translate-x-1 inline-flex items-center space-x-1.5 transition">
-                    <span>Read Article</span>
-                    <span>→</span>
-                  </span>
-                </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-8">
+            {values.map((value) => (
+              <div key={value.title} className="border-t border-zinc-250 bg-white px-5 py-6">
+                <CheckCircle2 className="h-5 w-5 text-[#12A33B]" />
+                <h3 className="mt-4 text-base font-bold text-[#08221c]">{value.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{value.copy}</p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* SECTION 13 — FINAL CTA                                    */}
-      {/* ========================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-zinc-200" id="final-cta-section">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#0A201C]/65 bg-[#EBF3F0] px-4 py-1.5 rounded-full border border-zinc-200/50">
-            GET STARTED INSTANTLY
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A201C] tracking-tight leading-none mt-4">
-            Ready to Get Started?
-          </h2>
-          <p className="max-w-md mx-auto text-xs sm:text-sm text-zinc-550 leading-relaxed">
-            Request a service or hire trusted staff today. Our compliance officers handle background screening and municipal checks securely.
+      <section className="bg-[#08221c] px-4 py-20 text-white sm:px-6 lg:px-8" id="trust-section">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <ShieldCheck className="h-8 w-8 text-[#D8C690]" />
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">People you can trust in your home.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-zinc-300">
+              Our Home Support Professionals are recruited, oriented, trained, and assessed before deployment. Entering someone&apos;s home is a responsibility that requires respect, discretion, and professionalism.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {steps.map((step, index) => (
+              <div key={step} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+                <span className="text-xs font-bold text-[#D8C690]">0{index + 1}</span>
+                <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-6 lg:px-8" id="how-it-works-section">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">How It Works</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">Get support in six simple steps.</h2>
+          </div>
+          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              'Tell us what you need',
+              'We understand your home and requirements',
+              'We assess the scope',
+              'You receive your quotation',
+              'You confirm your booking',
+              'We provide the agreed support',
+            ].map((step, index) => (
+              <div key={step} className="bg-white p-6">
+                <span className="font-mono text-xs font-bold text-[#12A33B]">{String(index + 1).padStart(2, '0')}</span>
+                <p className="mt-3 text-sm font-bold text-[#08221c]">{step}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm leading-relaxed text-zinc-600">
+            From your first request to completion, we keep the experience clear, professional, and easy.
           </p>
-          <div className="pt-4">
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-20 sm:px-6 lg:px-8" id="founder-story-preview">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <img
+              src="/images/director-oluchukwu.jpeg"
+              alt="Help On Hire founder"
+              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl"
+            />
+          </div>
+          <div className="lg:col-span-7">
+            <HeartHandshake className="h-8 w-8 text-[#12A33B]" />
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">Help On Hire was born from experience.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-zinc-600">
+              There was a time when managing the home competed with education, personal growth, relationships, and the future our founder was trying to build. That experience led to a simple question: how many other people are living this way?
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600">
+              Help On Hire was born from the desire to provide the support she wished existed: reliable help that allows people to carry less and live more.
+            </p>
             <button
-              onClick={() => onOpenBooking()}
-              className="rounded-full bg-[#0A201C] hover:bg-zinc-950 text-white px-8 py-4 text-xs font-bold uppercase tracking-widest transition shadow-lg shadow-emerald-990/10 flex items-center space-x-2 mx-auto text-center justify-center border-2 border-transparent"
-              id="final-booking-action-btn"
+              onClick={() => setActiveTab('about')}
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-zinc-250 bg-[#F7F8F6] px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#08221c] transition hover:bg-white active:translate-y-[1px]"
             >
-              <span>Request a Service</span>
-              <ArrowRight className="h-4 w-4 text-[#C1E929]" />
+              <span>Read Our Story</span>
+              <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>
       </section>
 
+      <section className="px-4 py-20 sm:px-6 lg:px-8" id="final-cta-section">
+        <div className="mx-auto max-w-4xl text-center">
+          <Leaf className="mx-auto h-8 w-8 text-[#12A33B]" />
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c] sm:text-4xl">Your home matters. So does your life outside it.</h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-600">Let us help carry some of the load.</p>
+          <button
+            onClick={() => onOpenBooking()}
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#12A33B] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#0f8f34] active:translate-y-[1px]"
+          >
+            <span>Book Home Support</span>
+            <UserCheck className="h-4 w-4" />
+          </button>
+        </div>
+      </section>
     </div>
   );
 };
+
+const ServicePanel: React.FC<{
+  className?: string;
+  icon: React.ReactNode;
+  title: string;
+  copy: string;
+  action: string;
+  onClick: () => void;
+}> = ({ className = '', icon, title, copy, action, onClick }) => (
+  <div className={`flex min-h-[260px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#F7F8F6] p-7 text-left ${className}`}>
+    <div>
+      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#12A33B] shadow-sm">{icon}</span>
+      <h3 className="mt-6 text-xl font-extrabold tracking-tight text-[#08221c]">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-zinc-600">{copy}</p>
+    </div>
+    <button
+      onClick={onClick}
+      className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#08221c] px-5 py-3 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#12372f] active:translate-y-[1px]"
+    >
+      <span>{action}</span>
+      <ArrowRight className="h-4 w-4 text-[#D8C690]" />
+    </button>
+  </div>
+);

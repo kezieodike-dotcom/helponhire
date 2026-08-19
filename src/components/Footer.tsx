@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, ArrowRight, ShieldCheck, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { CheckCircle, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 // @ts-ignore
 import logoImg from '../logo.jpg';
@@ -9,255 +9,142 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubsubscribed] = useState(false);
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | 'refund' | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubsubscribed(true);
-      setTimeout(() => {
-        setEmail('');
-      }, 2000);
-    }
-  };
 
   return (
     <footer className="bg-zinc-900 text-zinc-400 border-t border-zinc-800" id="main-footer">
-      {/* Top Banner section */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 border-b border-zinc-800">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          <div className="flex items-center space-x-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400">
-              <ShieldCheck className="h-6 w-6" />
-            </span>
-            <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Verified &amp; Vetted</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Every provider goes through a background check before being matched with any client.</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
-              <CheckCircle className="h-6 w-6" />
-            </span>
-            <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Trained to Deliver</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">Our team is trained in-house to ensure you receive consistent, professional service every time.</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
-              <Briefcase className="h-6 w-6" />
-            </span>
-            <div>
-              <h4 className="text-sm font-semibold text-white tracking-wider">Clear, Honest Pricing</h4>
-              <p className="text-xs text-zinc-500 mt-0.5">You will always know what you are paying upfront. No hidden charges, no surprises.</p>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <FooterTrust title="Recruited With Care" copy="Home Support Professionals are recruited, oriented, trained, and assessed before deployment." icon={<ShieldCheck className="h-6 w-6" />} />
+          <FooterTrust title="Home Support That Cares" copy="We care about your home, your life, and the experience we create." icon={<CheckCircle className="h-6 w-6" />} />
+          <FooterTrust title="Clear Assessment" copy="Final quotations are based on scope, home size, frequency, and household requirements." icon={<ShieldCheck className="h-6 w-6" />} />
         </div>
       </div>
 
-      {/* Main footer grid */}
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-left">
-          {/* Column 1: Brand details */}
+        <div className="grid grid-cols-1 gap-12 text-left sm:grid-cols-2 md:grid-cols-4">
           <div className="space-y-4">
-            <div className="flex items-center cursor-pointer" onClick={() => setActiveTab('find-pros')}>
+            <button className="flex items-center" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
               <img src={logoImg} alt="Help On Hire Logo" className="h-10 w-auto object-contain brightness-0 invert" />
-            </div>
+            </button>
             <p className="text-xs leading-relaxed text-zinc-500">
-              Trusted professionals for everyday tasks, errands, and business staffing.
+              Home Support That Cares. Easing your burden so you can make room for the life you want.
             </p>
           </div>
 
-          {/* Column 2: Quick Links */}
           <div className="space-y-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2 text-xs">
-              <li>
-                <button onClick={() => setActiveTab('find-pros')} className="hover:text-white text-zinc-500 transition">Home</button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('services')} className="hover:text-white text-zinc-500 transition">Services</button>
-              </li>
-              <li>
-                <button onClick={() => {
-                  setActiveTab('how-it-works');
-                  setTimeout(() => {
-                    const el = document.getElementById('how-it-works-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 150);
-                }} className="hover:text-white text-zinc-500 transition">How It Works</button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('business')} className="hover:text-white text-zinc-500 transition">For Businesses</button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('join')} className="hover:text-white text-zinc-500 transition">Become a Professional</button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('about')} className="hover:text-white text-zinc-500 transition">About Us</button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('contact')} className="hover:text-white text-zinc-500 transition">Contact</button>
-              </li>
+              <FooterLink onClick={() => setActiveTab('find-pros')}>Home</FooterLink>
+              <FooterLink onClick={() => setActiveTab('services')}>Services</FooterLink>
+              <FooterLink onClick={() => setActiveTab('how-it-works')}>How It Works</FooterLink>
+              <FooterLink onClick={() => setActiveTab('about')}>About Us</FooterLink>
+              <FooterLink onClick={() => setActiveTab('join')}>Become a Home Support Professional</FooterLink>
+              <FooterLink onClick={() => setActiveTab('contact')}>Contact</FooterLink>
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
           <div className="space-y-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-wider">Contact</h3>
             <ul className="space-y-3 text-xs text-zinc-500">
-              <li className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-[#C1E929] shrink-0 mt-0.5" />
-                <span>Woji, Portharcourt, Rivers State, Nigeria</span>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-[#12A33B] shrink-0 mt-0.5" />
+                <span>Woji, Port Harcourt, Rivers State, Nigeria</span>
               </li>
-              <li className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-[#C1E929] shrink-0" />
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-[#12A33B] shrink-0" />
                 <a href={`tel:${WHATSAPP_PHONE_TEL}`} className="hover:text-white transition">{WHATSAPP_PHONE_DISPLAY}</a>
               </li>
-              <li className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-[#C1E929] shrink-0" />
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-[#12A33B] shrink-0" />
                 <a href="mailto:helponhire@gmail.com" className="hover:text-white transition">helponhire@gmail.com</a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center space-x-2 hover:text-[#C1E929] transition"
-                >
-                  <span className="text-[10px] uppercase font-extrabold text-[#C1E929] bg-emerald-900/40 px-2 py-0.5 rounded border border-emerald-500/20">WhatsApp</span>
-                  <span>Chat with us directly</span>
-                </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Socials */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Socials</h3>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#C1E929] text-zinc-500 transition block">Instagram</a>
-              </li>
-              <li>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#C1E929] text-zinc-500 transition block">Facebook</a>
-              </li>
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#C1E929] text-zinc-500 transition block">LinkedIn</a>
-              </li>
-            </ul>
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Start</h3>
+            <button
+              onClick={() => setActiveTab('request-service')}
+              className="block rounded-full bg-[#12A33B] px-5 py-3 text-center text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#0f8f34]"
+            >
+              Book Home Support
+            </button>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="block rounded-full border border-zinc-700 px-5 py-3 text-center text-xs font-bold uppercase tracking-widest text-zinc-200 transition hover:border-[#12A33B] hover:text-white"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
 
-        {/* Bottom footer text */}
-        <div className="mt-16 border-t border-zinc-850 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-650">
-          <p>© {new Date().getFullYear()} Help On Hire. Under professional licensing guidelines.</p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <button onClick={() => setActiveModal('terms')} className="hover:text-[#C1E929] transition cursor-pointer">Terms of Service</button>
-            <button onClick={() => setActiveModal('privacy')} className="hover:text-[#C1E929] transition cursor-pointer">Privacy Policy</button>
-            <button onClick={() => setActiveModal('refund')} className="hover:text-[#C1E929] transition cursor-pointer">Refund Policy</button>
+        <div className="mt-16 flex flex-col items-center justify-between border-t border-zinc-800 pt-8 text-[11px] text-zinc-500 sm:flex-row">
+          <p>&copy; {new Date().getFullYear()} Help On Hire Services Int&apos;l. All rights reserved.</p>
+          <div className="mt-4 flex gap-6 sm:mt-0">
+            <button onClick={() => setActiveModal('terms')} className="hover:text-[#12A33B] transition">Terms of Service</button>
+            <button onClick={() => setActiveModal('privacy')} className="hover:text-[#12A33B] transition">Privacy Policy</button>
+            <button onClick={() => setActiveModal('refund')} className="hover:text-[#12A33B] transition">Service Policy</button>
           </div>
         </div>
       </div>
 
-      {/* Policy Modal Overlay */}
       {activeModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in" id="policy-modal-portal">
-          <div className="bg-white text-zinc-850 rounded-3xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-2xl overflow-hidden border border-zinc-200">
-            
-            {/* Modal Header */}
-            <div className="bg-[#0A201C] text-white px-6 py-5 flex items-center justify-between">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[#C1E929]">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" id="policy-modal-portal">
+          <div className="flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white text-zinc-850 shadow-2xl">
+            <div className="flex items-center justify-between bg-[#08221c] px-6 py-5 text-white">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#D8C690]">
                 {activeModal === 'privacy' && 'Privacy Policy'}
                 {activeModal === 'terms' && 'Terms of Service'}
-                {activeModal === 'refund' && 'Refund & Guarantee Policy'}
+                {activeModal === 'refund' && 'Service Policy'}
               </h3>
-              <button 
-                onClick={() => setActiveModal(null)} 
-                className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider px-3 py-1 bg-white/10 rounded-full transition"
-              >
+              <button onClick={() => setActiveModal(null)} className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-zinc-300 transition hover:text-white">
                 Close
               </button>
             </div>
-
-            {/* Modal Body */}
-            <div className="p-6 overflow-y-auto space-y-4 text-xs text-zinc-650 leading-relaxed max-h-[60vh] text-left">
+            <div className="max-h-[60vh] space-y-4 overflow-y-auto p-6 text-left text-xs leading-relaxed text-zinc-650">
               {activeModal === 'privacy' && (
                 <>
-                  <p className="font-bold text-[#0A201C]">Last Updated: June 2026</p>
-                  <p>
-                    Help On Hire ("we", "us", "our") is dedicated to protecting the personal privacy of clients and workforce professionals who use our platform in Port Harcourt and Rivers State.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">1. Information We Collect</h4>
-                  <p>
-                    We collect personal details including names, contact cell numbers, home/work addresses, background registry information (for workers), and service preferences to ensure seamless coordination.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">2. Vetting Data Integrity</h4>
-                  <p>
-                    For service providers, ID document photographs and CV submissions are stored securely in encrypted storage. Vetting coordinates are checked against local registry archives and are never shared with external parties.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">3. Data Sharing</h4>
-                  <p>
-                    Client locations and service briefs are shared only with the matched professional to facilitate service execution. We do not sell, lease, or rent customer directories to third-party marketing companies.
-                  </p>
+                  <p className="font-bold text-[#08221c]">Last Updated: August 2026</p>
+                  <p>Help On Hire protects the privacy of clients and Home Support Professionals who contact or work with us.</p>
+                  <p>Client locations and service briefs are shared only as needed to assess, coordinate, and deliver agreed home support. We do not sell or rent customer information.</p>
                 </>
               )}
-
               {activeModal === 'terms' && (
                 <>
-                  <p className="font-bold text-[#0A201C]">Last Updated: June 2026</p>
-                  <p>
-                    Welcome to Help On Hire. By accessing our platform to hire service professionals or apply as a worker in Port Harcourt, Nigeria, you agree to comply with the following Terms of Service.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">1. Client Responsibilities</h4>
-                  <p>
-                    Clients must provide a safe environment for matched workers. All booking assignments must be routed directly through Help On Hire. Direct off-platform recruitment of HOH professionals is strictly prohibited.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">2. Screening &amp; Quality</h4>
-                  <p>
-                    While we conduct rigorous criminal background screenings and identity audits, we encourage customers to secure expensive valuables during service delivery.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">3. Booking Cancellations</h4>
-                  <p>
-                    Cancellations made less than 3 hours before the scheduled time slot may attract a scheduling holding fee.
-                  </p>
+                  <p className="font-bold text-[#08221c]">Last Updated: August 2026</p>
+                  <p>By requesting home support or applying as a Home Support Professional, you agree to provide accurate information and use Help On Hire for all related coordination.</p>
+                  <p>Clients must provide a safe and respectful environment for assigned Home Support Professionals.</p>
                 </>
               )}
-
               {activeModal === 'refund' && (
                 <>
-                  <p className="font-bold text-[#0A201C]">Last Updated: June 2026</p>
-                  <p>
-                    At Help On Hire, client satisfaction is our primary metric. We stand behind the quality of work performed by our matched service providers in Port Harcourt.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">1. Satisfaction Guarantee</h4>
-                  <p>
-                    If you are unsatisfied with the quality of a home cleaning or handyman repair service, notify us within 24 hours. We will dispatch a coordinator to assess the work and, if verified, complete a re-cleaning or correction at no additional charge.
-                  </p>
-                  <h4 className="font-bold text-[#0A201C] uppercase mt-4">2. Refund Eligibility</h4>
-                  <p>
-                    Refunds are handled case-by-case. If a booking must be canceled by Help On Hire due to lack of provider availability, any prepayment will be refunded in full.
-                  </p>
+                  <p className="font-bold text-[#08221c]">Last Updated: August 2026</p>
+                  <p>If you are unsatisfied with the quality of an agreed home support service, notify us within 24 hours. We will assess the concern and advise on the appropriate correction.</p>
                 </>
               )}
             </div>
-
-            {/* Modal Footer */}
-            <div className="bg-zinc-50 border-t border-zinc-100 px-6 py-4 flex justify-end">
-              <button 
-                onClick={() => setActiveModal(null)}
-                className="bg-[#0A201C] hover:bg-emerald-950 text-[#C1E929] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition"
-              >
-                Understood
-              </button>
-            </div>
-
           </div>
         </div>
       )}
     </footer>
   );
 };
+
+const FooterTrust: React.FC<{ title: string; copy: string; icon: React.ReactNode }> = ({ title, copy, icon }) => (
+  <div className="flex items-center gap-3">
+    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/10 text-[#12A33B]">{icon}</span>
+    <div>
+      <h4 className="text-sm font-semibold tracking-wider text-white">{title}</h4>
+      <p className="mt-0.5 text-xs text-zinc-500">{copy}</p>
+    </div>
+  </div>
+);
+
+const FooterLink: React.FC<{ onClick: () => void; children: React.ReactNode }> = ({ onClick, children }) => (
+  <li>
+    <button onClick={onClick} className="text-zinc-500 transition hover:text-white">{children}</button>
+  </li>
+);

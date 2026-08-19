@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 // @ts-ignore
 import logoImg from '../logo.jpg';
 
@@ -15,9 +15,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
   const navItems = [
     { id: 'find-pros', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'business', label: 'For Businesses' },
-    { id: 'join', label: 'Become a Professional' },
+    { id: 'how-it-works', label: 'How It Works' },
     { id: 'about', label: 'About Us' },
+    { id: 'join', label: 'Become a Home Support Professional' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
               className="hidden sm:flex items-center space-x-2 rounded-full bg-[#0A201C] hover:bg-emerald-950 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#C1E929] shadow-sm transition-all duration-250 hover:shadow-lg hover:-translate-y-0.5"
               id="desktop-book-btn"
             >
-              <span>Request Service</span>
+              <span>Book Home Support</span>
               <ArrowRight className="h-4 w-4" />
             </button>
 
@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenB
               className="mt-4 flex w-full items-center justify-center space-x-2 rounded-full bg-[#0A201C] py-3.5 text-center text-xs font-bold uppercase tracking-wider text-[#C1E929] shadow-md shadow-emerald-950/10"
               id="mobile-book-btn"
             >
-              <span>Request a Service</span>
+              <span>Book Home Support</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>

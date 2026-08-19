@@ -16,7 +16,6 @@ import { WHATSAPP_URL } from './constants';
 const tabPaths: Record<string, string> = {
   'find-pros': '/',
   services: '/services',
-  business: '/business',
   join: '/become-a-professional',
   about: '/about',
   contact: '/contact',
@@ -27,7 +26,7 @@ const tabPaths: Record<string, string> = {
 const pathTabs: Record<string, string> = {
   '/': 'find-pros',
   '/services': 'services',
-  '/business': 'business',
+  '/business': 'services',
   '/become-a-professional': 'join',
   '/join': 'join',
   '/about': 'about',
@@ -47,13 +46,13 @@ const blogSlugTabs = blogArticleSlugs.reduce<Record<string, string>>((paths, slu
 }, {});
 
 const pageTitles: Record<string, string> = {
-  'find-pros': 'Help On Hire | Trusted Professionals in Port Harcourt',
+  'find-pros': 'Help On Hire | Home Support That Cares',
   services: 'Services | Help On Hire',
-  business: 'Business Staffing | Help On Hire',
-  join: 'Become a Professional | Help On Hire',
+  business: 'Services | Help On Hire',
+  join: 'Become a Home Support Professional | Help On Hire',
   about: 'About Help On Hire',
   contact: 'Contact Help On Hire',
-  'request-service': 'Request a Service | Help On Hire',
+  'request-service': 'Book Home Support | Help On Hire',
   'service-cleaning': 'Cleaning Services | Help On Hire',
   'service-errands-deliveries': 'Errands and Deliveries | Help On Hire',
   'service-domestic-help': 'Domestic Help | Help On Hire',
