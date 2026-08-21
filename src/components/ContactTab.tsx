@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Mail, MapPin, MessageSquare, Phone, Send } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
+import { IllustrationTile } from './IllustrationTile';
 
 const CONTACT_RECIPIENT_EMAIL = 'helponhire@gmail.com';
 
@@ -62,16 +63,17 @@ export const ContactTab: React.FC = () => {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Contact / Book</span>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#08221c] sm:text-5xl">Tell us what your home needs.</h1>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#08221c] sm:text-5xl">Talk to a service advisor.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600">
-            Whether you need a one-time Home Refresh or ongoing Signature Home Care, send us a note and we will guide you through the next step.
+            Send a note, ask a question, or start a home support request.
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-12">
           <aside className="space-y-6 lg:col-span-5">
-            <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <h2 className="text-lg font-bold tracking-tight text-[#08221c]">Help On Hire</h2>
+            <div className="mobile-image-card min-h-[360px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+              <IllustrationTile name="contact" label="Contact advisor illustration" className="mobile-image-card-media aspect-[16/10]" />
+              <h2 className="mt-5 text-lg font-bold tracking-tight text-[#08221c]">Help On Hire</h2>
               <div className="mt-6 space-y-5 text-sm">
                 <ContactItem icon={<MapPin className="h-5 w-5" />} label="Location" value="Woji, Port Harcourt, Rivers State, Nigeria" />
                 <ContactItem icon={<Phone className="h-5 w-5" />} label="Phone / WhatsApp" value={<a href={`tel:${WHATSAPP_PHONE_TEL}`} className="hover:text-[#12A33B]">{WHATSAPP_PHONE_DISPLAY}</a>} />
@@ -80,27 +82,34 @@ export const ContactTab: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-[#08221c] p-7 text-white">
+            <div className="mobile-image-card min-h-[280px] rounded-2xl bg-[#08221c] p-7 text-white">
+              <IllustrationTile name="care" label="Home support care illustration" className="mobile-image-card-media mb-6 aspect-[16/10] border-white/10" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">Home Support That Cares</span>
               <h3 className="mt-3 text-xl font-extrabold tracking-tight">Easing your burden.</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-                We provide one-time and ongoing home support based on assessment, scope, home size, and household requirements.
+                One-time and ongoing support, quoted after we understand your home.
               </p>
             </div>
           </aside>
 
           <section className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm lg:col-span-7">
-            <h2 className="text-lg font-bold tracking-tight text-[#08221c]">Send an Inquiry</h2>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-500">Our service advisor will respond with the next step.</p>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-[1fr_220px] md:items-center">
+              <div>
+                <h2 className="text-lg font-bold tracking-tight text-[#08221c]">Send an Inquiry</h2>
+                <p className="mt-1 text-xs leading-relaxed text-zinc-500">Our service advisor will respond with the next step.</p>
+              </div>
+              <IllustrationTile name="booking" label="Home support inquiry illustration" className="aspect-[16/10] w-full" />
+            </div>
 
             {submitted ? (
-              <div className="mt-8 rounded-2xl border border-emerald-100 bg-[#EAF6ED] p-8 text-center">
+              <div className="mobile-image-card mt-8 min-h-[330px] rounded-2xl border border-emerald-100 bg-[#08221c] p-8 text-center sm:min-h-0 sm:bg-[#EAF6ED]">
+                <IllustrationTile name="contact" label="Inquiry received illustration" className="mobile-image-card-media mx-auto mb-6 aspect-[16/10] max-w-sm" />
                 <CheckCircle2 className="mx-auto h-12 w-12 text-[#12A33B]" />
                 <h3 className="mt-4 text-base font-bold text-[#08221c]">Inquiry Received</h3>
                 <p className="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-zinc-600">
                   Thank you for reaching out to Help On Hire. Your inquiry has been sent to our team.
                 </p>
-                <button onClick={() => setSubmitted(false)} className="mt-6 rounded-full bg-[#08221c] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-[#12372f]">
+                <button onClick={() => setSubmitted(false)} className="mobile-card-panel mt-6 rounded-full bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#08221c] transition hover:bg-zinc-100 sm:bg-[#08221c] sm:text-white sm:hover:bg-[#12372f]">
                   Send Another Message
                 </button>
               </div>
@@ -152,7 +161,7 @@ const ContactItem: React.FC<{ icon: React.ReactNode; label: string; value: React
     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EAF6ED] text-[#12A33B]">{icon}</span>
     <div>
       <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400">{label}</h3>
-      <div className="mt-1 font-semibold text-[#08221c]">{value}</div>
+      <div className="mt-1 font-semibold text-white sm:text-[#08221c]">{value}</div>
     </div>
   </div>
 );

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Calendar, CheckCircle2, Home, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { WHATSAPP_URL } from '../constants';
+import { IllustrationTile } from './IllustrationTile';
 
 type ServiceRequired = 'Essential Home Refresh' | 'Signature Home Care' | 'Not sure yet';
 const REQUEST_RECIPIENT_EMAIL = 'helponhire@gmail.com';
@@ -138,13 +139,14 @@ Home Support That Cares`,
   if (submitted) {
     return (
       <div className="min-h-screen bg-[#F7F8F6] px-4 py-16 sm:px-6 lg:px-8" id="request-service-success">
-        <div className="mx-auto max-w-2xl rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
-          <CheckCircle2 className="h-12 w-12 text-[#12A33B]" />
-          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-[#08221c]">Your assessment request has been received.</h1>
+        <div className="mobile-image-card mx-auto min-h-[390px] max-w-2xl rounded-2xl border border-zinc-200 bg-[#08221c] p-8 shadow-sm sm:min-h-0 sm:bg-white">
+          <IllustrationTile name="booking" label="Booking confirmed illustration" className="mobile-image-card-media aspect-[16/10]" />
+          <CheckCircle2 className="mt-6 h-12 w-12 text-[#12A33B]" />
+          <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-[#08221c]">Your request is in.</h1>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-            A service advisor will contact you to understand your home, assess the scope, and guide you through quotation and booking confirmation.
+            A service advisor will contact you to assess the scope and guide the next step.
           </p>
-          <div className="mt-8 rounded-2xl bg-[#EAF6ED] p-5 text-sm">
+          <div className="mobile-card-panel mt-8 rounded-2xl bg-[#EAF6ED] p-5 text-sm">
             <div className="flex justify-between gap-4 border-b border-emerald-900/10 pb-3">
               <span className="font-bold text-zinc-500">Reference</span>
               <span className="font-extrabold text-[#08221c]">{requestReference}</span>
@@ -166,7 +168,7 @@ Home Support That Cares`,
                 setSubmitted(false);
                 setFormData(defaultFormData);
               }}
-              className="flex-1 rounded-full border border-zinc-200 py-3 text-xs font-bold uppercase tracking-widest text-zinc-700 transition hover:bg-zinc-50"
+              className="mobile-card-panel flex-1 rounded-full bg-white py-3 text-xs font-bold uppercase tracking-widest text-[#08221c] transition hover:bg-zinc-100 sm:border sm:border-zinc-200 sm:text-zinc-700 sm:hover:bg-zinc-50"
             >
               New Request
             </button>
@@ -184,28 +186,36 @@ Home Support That Cares`,
       <section className="bg-[#08221c] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">Contact / Book</span>
-          <h1 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">Tell us what your home needs.</h1>
+          <h1 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">Tell us what needs care.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
-            Whether you need a one-time Home Refresh or ongoing Signature Home Care, tell us what you need and we will guide you through the next step.
+            Share the basics. We will assess the scope before quoting.
           </p>
         </div>
       </section>
 
       <main className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8">
         <aside className="lg:col-span-4">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm">
-            <Home className="h-7 w-7 text-[#12A33B]" />
-            <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">What happens next?</h2>
+          <div className="mobile-image-card min-h-[300px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+            <IllustrationTile name="booking" label="Booking steps illustration" className="mobile-image-card-media aspect-[16/10]" />
+            <Home className="mt-5 h-7 w-7 text-[#12A33B]" />
+            <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">Next steps</h2>
             <ol className="mt-5 space-y-3 text-sm text-zinc-600">
-              <li>1. We understand your home and requirements.</li>
+              <li>1. We understand your home.</li>
               <li>2. We assess the scope.</li>
-              <li>3. You receive your quotation.</li>
-              <li>4. You confirm your booking.</li>
+              <li>3. You receive a quote.</li>
+              <li>4. You confirm the booking.</li>
             </ol>
           </div>
         </aside>
 
         <form onSubmit={handleSubmit} className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8 lg:col-span-8" id="service-request-form">
+          <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-[1fr_220px] md:items-center">
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight text-[#08221c]">Request an assessment</h2>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">A few details help us match your home with the right support.</p>
+            </div>
+            <IllustrationTile name="assess" label="Home assessment illustration" className="aspect-[16/10] w-full" />
+          </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Input label="Name *" value={formData.name} onChange={(value) => updateForm({ name: value })} placeholder="Your full name" id="request-name" />
             <Input label="Phone / WhatsApp *" value={formData.phone} onChange={(value) => updateForm({ phone: value })} placeholder="+234..." id="request-phone" type="tel" icon={<Phone className="h-3.5 w-3.5" />} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, ClipboardList, Send, ShieldCheck, UserCheck } from 'lucide-react';
+import { IllustrationTile, type IllustrationKey } from './IllustrationTile';
 
 const APPLICATION_RECIPIENT_EMAIL = 'helponhire@gmail.com';
 
@@ -23,7 +24,14 @@ const defaultApplication: ApplicationData = {
   introduction: '',
 };
 
-const process = ['Application', 'Screening', 'Training', 'Assessment', 'Approval', 'Deployment'];
+const process: { title: string; illustration: IllustrationKey }[] = [
+  { title: 'Application', illustration: 'contact' },
+  { title: 'Screening', illustration: 'recruit' },
+  { title: 'Training', illustration: 'train' },
+  { title: 'Assessment', illustration: 'assess' },
+  { title: 'Approval', illustration: 'integrity' },
+  { title: 'Deployment', illustration: 'deploy' },
+];
 
 export const JoinProTab: React.FC = () => {
   const [formData, setFormData] = useState<ApplicationData>(() => {
@@ -94,10 +102,10 @@ export const JoinProTab: React.FC = () => {
         <div className="lg:col-span-7">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Become a Home Support Professional</span>
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-[#08221c] sm:text-5xl">
-            Be part of the support that helps people live better.
+            Help homes feel lighter.
           </h1>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base">
-            Help On Hire is building a network of reliable, caring, and professional people who believe that good home support can make a real difference in someone&apos;s life.
+            Join a network of dependable people who bring care, skill, and calm into busy households.
           </p>
           <button
             onClick={() => document.getElementById('application-form-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
@@ -120,9 +128,9 @@ export const JoinProTab: React.FC = () => {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
             <UserCheck className="h-8 w-8 text-[#12A33B]" />
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c]">Who we are looking for.</h2>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c]">Who we welcome.</h2>
             <p className="mt-5 text-sm leading-relaxed text-zinc-600">
-              We are looking for people who are responsible, respectful, reliable, willing to learn, and committed to serving others with care.
+              Responsible, respectful, reliable people who are willing to learn and serve with care.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-zinc-600">
               You do not simply work in someone&apos;s home. You become part of the support system that helps that household function better.
@@ -130,9 +138,9 @@ export const JoinProTab: React.FC = () => {
           </div>
           <div>
             <ShieldCheck className="h-8 w-8 text-[#12A33B]" />
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c]">Care is not optional.</h2>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#08221c]">Care is the standard.</h2>
             <p className="mt-5 text-sm leading-relaxed text-zinc-600">
-              At Help On Hire, we take seriously the trust that comes with entering and supporting someone&apos;s home. Every professional goes through our recruitment, orientation, training, and assessment process before deployment.
+              Every professional goes through recruitment, orientation, training, and assessment before deployment.
             </p>
           </div>
         </div>
@@ -143,9 +151,10 @@ export const JoinProTab: React.FC = () => {
           <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Our Professional Standard</p>
           <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-6">
             {process.map((step, index) => (
-              <div key={step} className="bg-white p-6">
+              <div key={step.title} className="mobile-image-card min-h-[200px] bg-[#08221c] p-5 sm:min-h-0 sm:bg-white sm:p-4">
+                <IllustrationTile name={step.illustration} label={`${step.title} illustration`} className="mobile-image-card-media mb-5 aspect-square" />
                 <span className="font-mono text-xs font-bold text-[#12A33B]">{String(index + 1).padStart(2, '0')}</span>
-                <p className="mt-3 text-xs font-bold uppercase tracking-widest text-[#08221c]">{step}</p>
+                <p className="mt-3 text-xs font-bold uppercase tracking-widest text-[#08221c]">{step.title}</p>
               </div>
             ))}
           </div>
@@ -155,10 +164,11 @@ export const JoinProTab: React.FC = () => {
       <section className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 lg:px-8" id="application-form-section">
         <div className="rounded-2xl bg-[#08221c] p-6 text-white shadow-2xl sm:p-8">
           <div className="mb-8">
+            <IllustrationTile name="contact" label="Professional application illustration" className="mb-6 aspect-[16/9] w-full border-white/10" />
             <ClipboardList className="h-8 w-8 text-[#D8C690]" />
             <h2 className="mt-5 text-2xl font-extrabold tracking-tight">Join the Network</h2>
             <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-              If you are dependable, teachable, and passionate about providing quality home support, we would like to hear from you.
+              If you are dependable, teachable, and serious about quality home support, we would like to hear from you.
             </p>
           </div>
 

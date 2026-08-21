@@ -1,7 +1,13 @@
 import React from 'react';
 import { Heart, Leaf, Target, Telescope } from 'lucide-react';
+import { IllustrationTile, type IllustrationKey } from './IllustrationTile';
 
-const values = ['Care', 'Integrity', 'Professionalism', 'Reliability'];
+const values: { title: string; illustration: IllustrationKey }[] = [
+  { title: 'Care', illustration: 'care' },
+  { title: 'Integrity', illustration: 'integrity' },
+  { title: 'Professionalism', illustration: 'professionalism' },
+  { title: 'Reliability', illustration: 'reliability' },
+];
 
 export const AboutTab: React.FC = () => {
   return (
@@ -10,10 +16,10 @@ export const AboutTab: React.FC = () => {
         <div className="mx-auto max-w-5xl">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">About Us</span>
           <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-            We understand what it means to carry too much.
+            Built for people carrying too much.
           </h1>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-zinc-300 sm:text-base">
-            Help On Hire was created from a real experience with the weight of home management and the realization that people should not have to sacrifice the rest of their lives simply because their homes need care.
+            Help On Hire exists so home care does not consume the rest of your life.
           </p>
         </div>
       </section>
@@ -47,11 +53,11 @@ export const AboutTab: React.FC = () => {
 
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-2">
-          <Statement icon={<Target className="h-6 w-6" />} title="Our Purpose">
-            To ease the burden of home management so people can reclaim their lives, time, and freedom to pursue the things that matter to them.
+          <Statement icon={<Target className="h-6 w-6" />} illustration="care" title="Our Purpose">
+            Ease the weight of home management so people can reclaim time, freedom, and rest.
           </Statement>
-          <Statement icon={<Telescope className="h-6 w-6" />} title="Our Vision">
-            To build a large network of service providers who are outstanding in professionalism, care, and attitude to service, leading Help On Hire to become Nigeria&apos;s number one sought-after brand for home support and, in the future, other convenient services.
+          <Statement icon={<Telescope className="h-6 w-6" />} illustration="professionalism" title="Our Vision">
+            Build Nigeria&apos;s most trusted network of caring, professional home support providers.
           </Statement>
         </div>
       </section>
@@ -67,9 +73,10 @@ export const AboutTab: React.FC = () => {
           </div>
           <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => (
-              <div key={value} className="bg-white p-7">
-                <Heart className="h-5 w-5 text-[#12A33B]" />
-                <h3 className="mt-5 text-base font-bold uppercase tracking-widest text-[#08221c]">{value}</h3>
+              <div key={value.title} className="mobile-image-card min-h-[220px] bg-[#08221c] p-6 sm:min-h-0 sm:bg-white sm:p-4">
+                <IllustrationTile name={value.illustration} label={`${value.title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
+                <Heart className="mt-5 h-5 w-5 text-[#12A33B]" />
+                <h3 className="mt-5 text-base font-bold uppercase tracking-widest text-[#08221c]">{value.title}</h3>
               </div>
             ))}
           </div>
@@ -79,9 +86,10 @@ export const AboutTab: React.FC = () => {
   );
 };
 
-const Statement: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-  <div className="rounded-2xl border border-zinc-200 bg-[#F7F8F6] p-8">
-    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#12A33B] shadow-sm">{icon}</span>
+const Statement: React.FC<{ icon: React.ReactNode; illustration: IllustrationKey; title: string; children: React.ReactNode }> = ({ icon, illustration, title, children }) => (
+  <div className="mobile-image-card min-h-[320px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-[#F7F8F6] sm:p-4">
+    <IllustrationTile name={illustration} label={`${title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
+    <span className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#12A33B] shadow-sm">{icon}</span>
     <h2 className="mt-6 text-2xl font-extrabold tracking-tight text-[#08221c]">{title}</h2>
     <p className="mt-4 text-sm leading-relaxed text-zinc-600">{children}</p>
   </div>

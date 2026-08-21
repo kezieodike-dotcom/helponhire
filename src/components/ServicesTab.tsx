@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ClipboardCheck, Home, Sparkles } from 'lucide-react';
+import { IllustrationTile, type IllustrationKey } from './IllustrationTile';
 import type { ServicePageSlug } from './ServiceDetailTab';
 
 interface ServicesTabProps {
@@ -14,18 +15,19 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
         <div className="lg:col-span-7">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Services</span>
           <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-[#08221c] sm:text-5xl">
-            Home support that fits your needs.
+            Choose the support your home needs.
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-600">
-            Every home is different. Our services are designed around the kind of support your household needs, with the final scope and quotation determined after assessment.
+            Start with a one-time refresh or build ongoing help around your household rhythm.
           </p>
         </div>
         <div className="lg:col-span-5">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <ClipboardCheck className="h-7 w-7 text-[#12A33B]" />
-            <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">Pricing by assessment</h2>
+          <div className="mobile-image-card min-h-[280px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+            <IllustrationTile name="assess" label="Home assessment illustration" className="mobile-image-card-media aspect-[16/10]" />
+            <ClipboardCheck className="mt-5 h-7 w-7 text-[#12A33B]" />
+            <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">Quoted after assessment</h2>
             <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-              Public pricing remains intentionally blank until the approved pricing structure is completed. Final quotations are based on assessment, scope, home size, frequency, and other relevant requirements.
+              Your final quote reflects scope, home size, frequency, and household requirements.
             </p>
           </div>
         </div>
@@ -35,18 +37,20 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <Offer
             icon={<Sparkles className="h-6 w-6" />}
+            illustration="refresh"
             title="Essential Home Refresh"
-            subtitle="One-time professional home cleaning."
-            copy="For those moments when your home needs a proper refresh. Our Home Support Professionals take care of the agreed cleaning requirements so you can return to a clean, comfortable space without carrying the workload yourself."
+            subtitle="One-time home cleaning"
+            copy="For the moments when your home needs a clean reset without adding another task to your day."
             action="Request a Home Refresh"
             serviceId="essential-home-refresh"
             onOpenBooking={onOpenBooking}
           />
           <Offer
             icon={<Home className="h-6 w-6" />}
+            illustration="signature"
             title="Signature Home Care"
-            subtitle="Ongoing home support, built around your household."
-            copy="For households that need consistent support on a contract basis. Depending on the agreed scope, support may include cleaning, household upkeep, errands, meal preparation, and other approved home responsibilities."
+            subtitle="Ongoing home support"
+            copy="Contract-based support for agreed household responsibilities that need steady attention."
             action="Request Home Support"
             serviceId="signature-home-care"
             onOpenBooking={onOpenBooking}
@@ -59,24 +63,26 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
 
 const Offer: React.FC<{
   icon: React.ReactNode;
+  illustration: IllustrationKey;
   title: string;
   subtitle: string;
   copy: string;
   action: string;
   serviceId: string;
   onOpenBooking: (serviceId?: string) => void;
-}> = ({ icon, title, subtitle, copy, action, serviceId, onOpenBooking }) => (
-  <article className="flex min-h-[430px] flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm">
+}> = ({ icon, illustration, title, subtitle, copy, action, serviceId, onOpenBooking }) => (
+  <article className="mobile-image-card flex min-h-[430px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-[470px] sm:bg-white sm:p-4">
     <div>
-      <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#EAF6ED] text-[#12A33B]">{icon}</span>
-      <p className="mt-8 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Price: To be inserted</p>
+      <IllustrationTile name={illustration} label={`${title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
+      <span className="mt-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#EAF6ED] text-[#12A33B]">{icon}</span>
+      <p className="mobile-card-kicker mt-6 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Assessment quote</p>
       <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-[#08221c]">{title}</h2>
       <h3 className="mt-2 text-sm font-bold uppercase tracking-widest text-[#12A33B]">{subtitle}</h3>
       <p className="mt-5 text-sm leading-relaxed text-zinc-600">{copy}</p>
     </div>
     <button
       onClick={() => onOpenBooking(serviceId)}
-      className="mt-10 inline-flex w-fit items-center gap-2 rounded-full bg-[#08221c] px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#12372f] active:translate-y-[1px]"
+      className="mobile-card-panel mt-10 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-[#08221c] transition hover:bg-zinc-100 active:translate-y-[1px] sm:bg-[#08221c] sm:text-white sm:hover:bg-[#12372f]"
     >
       <span>{action}</span>
       <ArrowRight className="h-4 w-4 text-[#D8C690]" />
