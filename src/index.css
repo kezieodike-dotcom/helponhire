@@ -47,6 +47,43 @@
   }
 
   @media (max-width: 639px) {
+    body {
+      font-weight: 400;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+
+    h1 {
+      line-height: 1.05 !important;
+    }
+
+    h2,
+    h3 {
+      line-height: 1.12 !important;
+    }
+
+    p,
+    li {
+      font-size: 0.9375rem;
+      font-weight: 400 !important;
+      line-height: 1.72 !important;
+    }
+
+    .font-extrabold {
+      font-weight: 700 !important;
+    }
+
+    .font-bold {
+      font-weight: 600 !important;
+    }
+
     .mobile-image-card {
       display: flex !important;
       flex-direction: column !important;

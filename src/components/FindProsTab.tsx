@@ -35,23 +35,30 @@ const steps = [
 export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActiveTab }) => {
   return (
     <div className="bg-[#F7F8F6] text-zinc-900 font-sans" id="homepage-scaffold">
-      <section className="relative overflow-hidden bg-[#08221c] text-white" id="hero-section">
-        <div className="absolute inset-0 bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25" />
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-7">
-            <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">
+      <section className="relative min-h-[640px] overflow-hidden bg-[#08221c] text-white sm:min-h-0" id="hero-section">
+        <img
+          src="/images/domestic-help.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_center] sm:hidden"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.78)_0%,rgba(5,18,15,0.46)_42%,rgba(5,18,15,0.92)_100%)] sm:hidden" />
+        <div className="absolute inset-0 hidden bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25 sm:block" />
+        <div className="relative mx-auto grid min-h-[640px] max-w-7xl grid-cols-1 content-end gap-12 px-4 pb-12 pt-28 sm:min-h-0 sm:px-6 sm:py-16 lg:grid-cols-12 lg:px-8 lg:py-24">
+          <div className="min-w-0 max-w-[22rem] sm:max-w-none lg:col-span-7">
+            <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D8C690] backdrop-blur-sm sm:border-white/10 sm:bg-white/5 sm:font-bold">
               Home Support That Cares
             </span>
-            <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 max-w-[11ch] text-[2.45rem] font-bold leading-[1.05] tracking-tight sm:max-w-3xl sm:text-5xl sm:font-extrabold lg:text-6xl">
               You do not have to carry it all.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-250">
+            <p className="mt-6 max-w-2xl text-[15px] font-normal leading-7 text-zinc-100 sm:text-base sm:leading-relaxed sm:text-zinc-250">
               Professional home support that helps you reclaim your time, freedom, and peace of mind with genuine care.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <button
                 onClick={() => onOpenBooking()}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#12A33B] px-7 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-emerald-950/20 transition hover:bg-[#0f8f34] active:translate-y-[1px]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#12A33B] px-7 py-4 text-xs font-semibold uppercase tracking-widest text-white shadow-lg shadow-emerald-950/20 transition hover:bg-[#0f8f34] active:translate-y-[1px] sm:w-auto sm:font-bold"
                 id="hero-book-home-support-btn"
               >
                 <span>Book Home Support</span>
@@ -59,14 +66,14 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               </button>
               <button
                 onClick={() => setActiveTab('services')}
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-white/10 active:translate-y-[1px]"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-4 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur-sm transition hover:bg-white/10 active:translate-y-[1px] sm:w-auto sm:border-white/15 sm:bg-white/5 sm:font-bold"
               >
                 Explore Our Services
               </button>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="hidden sm:block lg:col-span-5">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-2 shadow-2xl">
               <img
                 src="/images/domestic-help.jpg"
