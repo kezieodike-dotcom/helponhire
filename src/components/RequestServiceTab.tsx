@@ -139,7 +139,7 @@ Home Support That Cares`,
   if (submitted) {
     return (
       <div className="min-h-screen bg-[#F7F8F6] px-4 py-16 sm:px-6 lg:px-8" id="request-service-success">
-        <div className="mobile-image-card mx-auto min-h-[390px] max-w-2xl rounded-2xl border border-zinc-200 bg-[#08221c] p-8 shadow-sm sm:min-h-0 sm:bg-white">
+        <div className="mobile-image-card mx-auto min-h-[360px] max-w-2xl rounded-2xl border border-zinc-200 bg-[#08221c] p-8 shadow-sm sm:min-h-0 sm:bg-white">
           <IllustrationTile name="booking" label="Booking confirmed illustration" className="mobile-image-card-media aspect-[16/10]" />
           <CheckCircle2 className="mt-6 h-12 w-12 text-[#12A33B]" />
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-[#08221c]">Your request is in.</h1>
@@ -195,7 +195,7 @@ Home Support That Cares`,
 
       <main className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8">
         <aside className="lg:col-span-4">
-          <div className="mobile-image-card min-h-[300px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+          <div className="mobile-image-card min-h-[280px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
             <IllustrationTile name="booking" label="Booking steps illustration" className="mobile-image-card-media aspect-[16/10]" />
             <Home className="mt-5 h-7 w-7 text-[#12A33B]" />
             <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">Next steps</h2>

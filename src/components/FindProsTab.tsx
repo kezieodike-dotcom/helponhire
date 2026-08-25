@@ -150,7 +150,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-8">
             {values.map((value) => (
-              <div key={value.title} className="mobile-image-card min-h-[260px] rounded-2xl border border-zinc-200 bg-[#08221c] p-5 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+              <div key={value.title} className="mobile-image-card min-h-[230px] rounded-2xl border border-zinc-200 bg-[#08221c] p-5 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
                 <IllustrationTile name={value.illustration as IllustrationKey} label={`${value.title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
                 <div className="mt-5 flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#12A33B]" />
@@ -176,7 +176,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {steps.map((step, index) => (
-              <div key={step.title} className="mobile-image-card min-h-[180px] rounded-2xl border border-white/10 bg-[#08221c] p-4 text-center sm:min-h-0 sm:bg-white/5 sm:p-3">
+              <div key={step.title} className="mobile-image-card min-h-[164px] rounded-2xl border border-white/10 bg-[#08221c] p-4 text-center sm:min-h-0 sm:bg-white/5 sm:p-3">
                 <IllustrationTile name={step.illustration as IllustrationKey} label={`${step.title} illustration`} className="mobile-image-card-media aspect-square border-white/10 opacity-95" />
                 <span className="mt-4 block text-xs font-bold text-[#D8C690]">0{index + 1}</span>
                 <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white">{step.title}</p>
@@ -201,7 +201,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
               { title: 'Confirm your booking', illustration: 'booking' },
               { title: 'Get the agreed support', illustration: 'deploy' },
             ].map((step, index) => (
-              <div key={step.title} className="mobile-image-card min-h-[230px] bg-[#08221c] p-6 sm:bg-white">
+              <div key={step.title} className="mobile-image-card min-h-[210px] bg-[#08221c] p-6 sm:bg-white">
                 <IllustrationTile name={step.illustration as IllustrationKey} label={`${step.title} illustration`} className="mobile-image-card-media mb-5 aspect-[16/10]" />
                 <span className="font-mono text-xs font-bold text-[#12A33B]">{String(index + 1).padStart(2, '0')}</span>
                 <p className="mt-3 text-sm font-bold text-[#08221c]">{step.title}</p>
@@ -270,7 +270,7 @@ const ServicePanel: React.FC<{
   action: string;
   onClick: () => void;
 }> = ({ className = '', icon, illustration, title, copy, action, onClick }) => (
-  <div className={`mobile-image-card flex min-h-[360px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#08221c] p-6 text-left shadow-sm sm:bg-[#F7F8F6] sm:p-4 ${className}`}>
+  <div className={`mobile-image-card flex min-h-[320px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#08221c] p-6 text-left shadow-sm sm:min-h-[360px] sm:bg-[#F7F8F6] sm:p-4 ${className}`}>
     <div>
       <IllustrationTile name={illustration} label={`${title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
       <span className="mt-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#12A33B] shadow-sm">{icon}</span>

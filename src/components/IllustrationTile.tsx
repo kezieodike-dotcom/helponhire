@@ -1,21 +1,21 @@
 import React from 'react';
 
-const tilePositions = {
-  refresh: '0% 0%',
-  signature: '33.333% 0%',
-  care: '66.666% 0%',
-  integrity: '100% 0%',
-  professionalism: '0% 50%',
-  reliability: '33.333% 50%',
-  recruit: '66.666% 50%',
-  train: '100% 50%',
-  assess: '0% 100%',
-  deploy: '33.333% 100%',
-  booking: '66.666% 100%',
-  contact: '100% 100%',
+const imageFocus = {
+  refresh: '50% 46%',
+  signature: '50% 44%',
+  care: '50% 43%',
+  integrity: '55% 48%',
+  professionalism: '50% 42%',
+  reliability: '52% 48%',
+  recruit: '50% 45%',
+  train: '52% 48%',
+  assess: '48% 48%',
+  deploy: '50% 44%',
+  booking: '52% 48%',
+  contact: '50% 42%',
 } as const;
 
-export type IllustrationKey = keyof typeof tilePositions;
+export type IllustrationKey = keyof typeof imageFocus;
 
 interface IllustrationTileProps {
   name: IllustrationKey;
@@ -29,9 +29,8 @@ export const IllustrationTile: React.FC<IllustrationTileProps> = ({ name, label,
     aria-label={label}
     className={`overflow-hidden rounded-xl border border-white/70 bg-cover bg-no-repeat shadow-sm ${className}`}
     style={{
-      backgroundImage: 'url(/illustrations/home-support-card-sprite.png)',
-      backgroundSize: '400% 300%',
-      backgroundPosition: tilePositions[name],
+      backgroundImage: `url(/illustrations/cards/${name}.jpg)`,
+      backgroundPosition: imageFocus[name],
     }}
   />
 );

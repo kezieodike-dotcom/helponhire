@@ -151,7 +151,7 @@ export const JoinProTab: React.FC = () => {
           <p className="text-[10px] font-bold uppercase tracking-widest text-[#12A33B]">Our Professional Standard</p>
           <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-6">
             {process.map((step, index) => (
-              <div key={step.title} className="mobile-image-card min-h-[200px] bg-[#08221c] p-5 sm:min-h-0 sm:bg-white sm:p-4">
+              <div key={step.title} className="mobile-image-card min-h-[180px] bg-[#08221c] p-5 sm:min-h-0 sm:bg-white sm:p-4">
                 <IllustrationTile name={step.illustration} label={`${step.title} illustration`} className="mobile-image-card-media mb-5 aspect-square" />
                 <span className="font-mono text-xs font-bold text-[#12A33B]">{String(index + 1).padStart(2, '0')}</span>
                 <p className="mt-3 text-xs font-bold uppercase tracking-widest text-[#08221c]">{step.title}</p>

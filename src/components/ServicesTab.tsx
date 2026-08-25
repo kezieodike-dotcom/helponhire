@@ -22,7 +22,7 @@ export const ServicesTab: React.FC<ServicesTabProps> = ({ onOpenBooking }) => {
           </p>
         </div>
         <div className="lg:col-span-5">
-          <div className="mobile-image-card min-h-[280px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
+          <div className="mobile-image-card min-h-[250px] rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-0 sm:bg-white sm:p-4">
             <IllustrationTile name="assess" label="Home assessment illustration" className="mobile-image-card-media aspect-[16/10]" />
             <ClipboardCheck className="mt-5 h-7 w-7 text-[#12A33B]" />
             <h2 className="mt-5 text-xl font-extrabold tracking-tight text-[#08221c]">Quoted after assessment</h2>
@@ -71,7 +71,7 @@ const Offer: React.FC<{
   serviceId: string;
   onOpenBooking: (serviceId?: string) => void;
 }> = ({ icon, illustration, title, subtitle, copy, action, serviceId, onOpenBooking }) => (
-  <article className="mobile-image-card flex min-h-[430px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-[470px] sm:bg-white sm:p-4">
+  <article className="mobile-image-card flex min-h-[350px] flex-col justify-between rounded-2xl border border-zinc-200 bg-[#08221c] p-6 shadow-sm sm:min-h-[470px] sm:bg-white sm:p-4">
     <div>
       <IllustrationTile name={illustration} label={`${title} illustration`} className="mobile-image-card-media aspect-[16/10]" />
       <span className="mt-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#EAF6ED] text-[#12A33B]">{icon}</span>
