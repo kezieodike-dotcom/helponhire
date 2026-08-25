@@ -282,10 +282,9 @@ export const BusinessTab: React.FC = () => {
             {/* Image side */}
             <div className="h-64 sm:h-auto sm:w-[50%] overflow-hidden bg-zinc-200 relative">
               <img 
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=400" 
-                alt="Professional conference hospitality desk" 
+                src="/images/nigerian-event-registration-team.jpg" 
+                alt="Nigerian event ushers at a professional registration desk" 
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#F3F4F6] via-transparent to-transparent hidden sm:block" />
             </div>

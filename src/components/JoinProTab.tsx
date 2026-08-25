@@ -117,7 +117,7 @@ export const JoinProTab: React.FC = () => {
         </div>
         <div className="lg:col-span-5">
           <img
-            src="/images/join-our-team-2.jpg"
+            src="/images/nigerian-home-support-team.jpg"
             alt="Help On Hire home support professionals"
             className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl"
           />
