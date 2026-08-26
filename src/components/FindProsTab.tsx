@@ -37,10 +37,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
     <div className="bg-[#F7F8F6] text-zinc-900 font-sans" id="homepage-scaffold">
       <section className="relative min-h-[640px] overflow-hidden bg-[#08221c] text-white sm:min-h-0" id="hero-section">
         <img
-          src="/images/domestic-help.jpg"
+          src="/images/nigerian-home-support-team.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-[58%_center] sm:hidden"
+          className="absolute inset-0 h-full w-full object-cover object-[48%_center] sm:hidden"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.78)_0%,rgba(5,18,15,0.46)_42%,rgba(5,18,15,0.92)_100%)] sm:hidden" />
         <div className="absolute inset-0 hidden bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25 sm:block" />
@@ -76,9 +76,9 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
           <div className="hidden sm:block lg:col-span-5">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-2 shadow-2xl">
               <img
-                src="/images/domestic-help.jpg"
-                alt="Help On Hire home support professional caring for a household"
-                className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
+                src="/images/nigerian-home-support-team.jpg"
+                alt="Nigerian Help On Hire home support professionals ready to serve a household"
+                className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-[48%_center]"
               />
               <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-[#08221c]/85 p-5 text-left backdrop-blur-md">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#D8C690]">Easing Your Burden</p>
