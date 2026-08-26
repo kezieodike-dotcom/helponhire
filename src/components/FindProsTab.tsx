@@ -45,7 +45,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.78)_0%,rgba(5,18,15,0.46)_42%,rgba(5,18,15,0.92)_100%)] sm:hidden" />
         <div className="absolute inset-0 hidden bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25 sm:block" />
         <div className="relative mx-auto grid min-h-[640px] max-w-7xl grid-cols-1 content-end gap-12 px-4 pb-12 pt-28 sm:min-h-0 sm:px-6 sm:py-16 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="min-w-0 max-w-[22rem] sm:max-w-none lg:col-span-7">
+          <div className="min-w-0 max-w-[22rem] -translate-y-12 sm:max-w-none sm:translate-y-0 lg:col-span-7">
             <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D8C690] backdrop-blur-sm sm:border-white/10 sm:bg-white/5 sm:font-bold">
               Home Support That Cares
             </span>
@@ -229,7 +229,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
           className="absolute inset-0 h-full w-full object-cover object-[50%_18%] sm:hidden"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.24)_0%,rgba(5,18,15,0.58)_36%,rgba(5,18,15,0.96)_100%)] sm:hidden" />
-        <div className="relative mx-auto grid min-h-[680px] max-w-7xl grid-cols-1 content-end gap-10 pb-12 pt-72 sm:min-h-0 sm:py-0 lg:grid-cols-12 lg:items-center">
+        <div className="relative mx-auto grid min-h-[560px] max-w-7xl grid-cols-1 content-end gap-10 pb-12 pt-48 sm:min-h-0 sm:py-0 lg:grid-cols-12 lg:items-center">
           <div className="hidden sm:block lg:col-span-5">
             <img
               src="/images/director-oluchukwu.jpeg"
