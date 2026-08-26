@@ -226,10 +226,10 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
           src="/images/director-oluchukwu.jpeg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_18%] sm:hidden"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_10%] sm:hidden"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.24)_0%,rgba(5,18,15,0.58)_36%,rgba(5,18,15,0.96)_100%)] sm:hidden" />
-        <div className="relative mx-auto grid min-h-[560px] max-w-7xl grid-cols-1 content-end gap-10 pb-12 pt-48 sm:min-h-0 sm:py-0 lg:grid-cols-12 lg:items-center">
+        <div className="relative mx-auto grid min-h-[480px] max-w-7xl grid-cols-1 content-end gap-10 pb-10 pt-32 sm:min-h-0 sm:py-0 lg:grid-cols-12 lg:items-center">
           <div className="hidden sm:block lg:col-span-5">
             <img
               src="/images/director-oluchukwu.jpeg"
