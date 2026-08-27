@@ -13,6 +13,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
 
   return (
     <footer className="bg-zinc-900 text-zinc-400 border-t border-zinc-800" id="main-footer">
+      <div className="border-b border-zinc-200 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center px-4 py-5 sm:px-6 lg:px-8">
+          <button className="flex items-center" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
+            <img src={logoImg} alt="Help On Hire Logo" className="h-12 w-auto object-contain" />
+          </button>
+        </div>
+      </div>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 border-b border-zinc-800">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <FooterTrust title="Recruited With Care" copy="Home Support Professionals are recruited, oriented, trained, and assessed before deployment." icon={<ShieldCheck className="h-6 w-6" />} />
@@ -27,14 +34,14 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             <button className="flex items-center" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
               <img src={logoImg} alt="Help On Hire Logo" className="h-10 w-auto object-contain brightness-0 invert" />
             </button>
-            <p className="text-xs leading-relaxed text-zinc-500">
+            <p className="text-sm leading-relaxed text-zinc-500">
               Home Support That Cares. Easing your burden so you can make room for the life you want.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Quick Links</h3>
-            <ul className="space-y-2 text-xs">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
               <FooterLink onClick={() => setActiveTab('find-pros')}>Home</FooterLink>
               <FooterLink onClick={() => setActiveTab('services')}>Services</FooterLink>
               <FooterLink onClick={() => setActiveTab('how-it-works')}>How It Works</FooterLink>
@@ -45,8 +52,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Contact</h3>
-            <ul className="space-y-3 text-xs text-zinc-500">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Contact</h3>
+            <ul className="space-y-3 text-sm text-zinc-500">
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-[#12A33B] shrink-0 mt-0.5" />
                 <span>Woji, Port Harcourt, Rivers State, Nigeria</span>
@@ -63,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Start</h3>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Start</h3>
             <button
               onClick={() => setActiveTab('request-service')}
               className="block rounded-full bg-[#12A33B] px-5 py-3 text-center text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#0f8f34]"
@@ -81,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between border-t border-zinc-800 pt-8 text-[11px] text-zinc-500 sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between border-t border-zinc-800 pt-8 text-sm text-zinc-500 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} Help On Hire Services Int&apos;l. All rights reserved.</p>
           <div className="mt-4 flex gap-6 sm:mt-0">
             <button onClick={() => setActiveModal('terms')} className="hover:text-[#12A33B] transition">Terms of Service</button>
@@ -104,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
                 Close
               </button>
             </div>
-            <div className="max-h-[60vh] space-y-4 overflow-y-auto p-6 text-left text-xs leading-relaxed text-zinc-650">
+            <div className="max-h-[60vh] space-y-4 overflow-y-auto p-6 text-left text-sm leading-relaxed text-zinc-650">
               {activeModal === 'privacy' && (
                 <>
                   <p className="font-bold text-[#08221c]">Last Updated: August 2026</p>
@@ -138,7 +145,7 @@ const FooterTrust: React.FC<{ title: string; copy: string; icon: React.ReactNode
     <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/10 text-[#12A33B]">{icon}</span>
     <div>
       <h4 className="text-sm font-semibold tracking-wider text-white">{title}</h4>
-      <p className="mt-0.5 text-xs text-zinc-500">{copy}</p>
+      <p className="mt-0.5 text-sm text-zinc-500">{copy}</p>
     </div>
   </div>
 );

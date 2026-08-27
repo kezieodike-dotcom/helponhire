@@ -221,34 +221,27 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#08221c] px-4 py-0 text-white sm:bg-white sm:px-6 sm:py-20 sm:text-zinc-900 lg:px-8" id="founder-story-preview">
-        <img
-          src="/images/director-oluchukwu.jpeg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_10%] sm:hidden"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,15,0.24)_0%,rgba(5,18,15,0.58)_36%,rgba(5,18,15,0.96)_100%)] sm:hidden" />
-        <div className="relative mx-auto grid min-h-[480px] max-w-7xl grid-cols-1 content-end gap-10 pb-10 pt-32 sm:min-h-0 sm:py-0 lg:grid-cols-12 lg:items-center">
-          <div className="hidden sm:block lg:col-span-5">
+      <section className="bg-white px-4 py-20 text-zinc-900 sm:px-6 lg:px-8" id="founder-story-preview">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
             <img
               src="/images/director-oluchukwu.jpeg"
               alt="Help On Hire founder"
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-[50%_12%] shadow-xl sm:aspect-[4/5] sm:rounded-[2rem]"
             />
           </div>
           <div className="max-w-[23rem] lg:col-span-7 lg:max-w-none">
             <HeartHandshake className="h-8 w-8 text-[#12A33B]" />
-            <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl sm:font-extrabold sm:text-[#08221c]">Help On Hire was born from experience.</h2>
-            <p className="mt-5 text-[15px] leading-7 text-zinc-100 sm:text-sm sm:leading-relaxed sm:text-zinc-600">
+            <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-[#08221c] sm:text-4xl sm:font-extrabold">Help On Hire was born from experience.</h2>
+            <p className="mt-5 text-base leading-7 text-zinc-600 sm:text-sm sm:leading-relaxed">
               There was a time when managing the home competed with education, personal growth, relationships, and the future our founder was trying to build. That experience led to a simple question: how many other people are living this way?
             </p>
-            <p className="mt-4 text-[15px] leading-7 text-zinc-100 sm:text-sm sm:leading-relaxed sm:text-zinc-600">
+            <p className="mt-4 text-base leading-7 text-zinc-600 sm:text-sm sm:leading-relaxed">
               Help On Hire was born from the desire to provide the support she wished existed: reliable help that allows people to carry less and live more.
             </p>
             <button
               onClick={() => setActiveTab('about')}
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-widest text-[#08221c] transition hover:bg-zinc-100 active:translate-y-[1px] sm:border-zinc-250 sm:bg-[#F7F8F6] sm:font-bold sm:hover:bg-white"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-[#F7F8F6] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-[#08221c] transition hover:bg-white active:translate-y-[1px] sm:font-bold"
             >
               <span>Read Our Story</span>
               <ArrowRight className="h-4 w-4" />
