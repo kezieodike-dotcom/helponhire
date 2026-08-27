@@ -13,13 +13,6 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
 
   return (
     <footer className="bg-zinc-900 text-zinc-400 border-t border-zinc-800" id="main-footer">
-      <div className="border-b border-zinc-200 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center px-4 py-5 sm:px-6 lg:px-8">
-          <button className="flex items-center" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
-            <img src={logoImg} alt="Help On Hire Logo" className="h-12 w-auto object-contain" />
-          </button>
-        </div>
-      </div>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 border-b border-zinc-800">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <FooterTrust title="Recruited With Care" copy="Home Support Professionals are recruited, oriented, trained, and assessed before deployment." icon={<ShieldCheck className="h-6 w-6" />} />
@@ -31,8 +24,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 text-left sm:grid-cols-2 md:grid-cols-4">
           <div className="space-y-4">
-            <button className="flex items-center" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
-              <img src={logoImg} alt="Help On Hire Logo" className="h-10 w-auto object-contain brightness-0 invert" />
+            <button className="inline-flex rounded-xl bg-white px-4 py-3 shadow-sm transition hover:bg-zinc-100 active:translate-y-[1px]" onClick={() => setActiveTab('find-pros')} aria-label="Go to Help On Hire home">
+              <img src={logoImg} alt="Help On Hire Logo" className="h-10 w-auto object-contain" />
             </button>
             <p className="text-sm leading-relaxed text-zinc-500">
               Home Support That Cares. Easing your burden so you can make room for the life you want.
