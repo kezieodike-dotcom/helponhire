@@ -46,7 +46,7 @@ export const FindProsTab: React.FC<FindProsTabProps> = ({ onOpenBooking, setActi
         <div className="absolute inset-0 hidden bg-[radial-gradient(#1d3b32_1px,transparent_1px)] bg-[size:1.4rem_1.4rem] opacity-25 sm:block" />
         <div className="relative mx-auto grid min-h-[640px] max-w-7xl grid-cols-1 content-end gap-12 px-4 pb-12 pt-28 sm:min-h-0 sm:px-6 sm:py-16 lg:grid-cols-12 lg:px-8 lg:py-24">
           <div className="min-w-0 max-w-[22rem] -translate-y-12 sm:max-w-none sm:translate-y-0 lg:col-span-7">
-            <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D8C690] backdrop-blur-sm sm:border-white/10 sm:bg-white/5 sm:font-bold">
+            <span className="inline-flex -translate-y-12 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D8C690] backdrop-blur-sm sm:translate-y-0 sm:border-white/10 sm:bg-white/5 sm:font-bold">
               Home Support That Cares
             </span>
             <h1 className="mt-6 max-w-[11ch] text-[2.45rem] font-bold leading-[1.05] tracking-tight sm:max-w-3xl sm:text-5xl sm:font-extrabold lg:text-6xl">
