@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
+import { SocialLinks } from './SocialLinks';
 // @ts-ignore
 import logoImg from '../logo.jpg';
 
@@ -30,6 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             <p className="text-sm leading-relaxed text-zinc-500">
               Home Support That Cares. Easing your burden so you can make room for the life you want.
             </p>
+            <SocialLinks variant="dark" />
           </div>
 
           <div className="space-y-4">

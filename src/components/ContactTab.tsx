@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CheckCircle2, Mail, MapPin, MessageSquare, Phone, Send } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 import { IllustrationTile } from './IllustrationTile';
+import { SocialLinks } from './SocialLinks';
 
 const CONTACT_RECIPIENT_EMAIL = 'helponhire@gmail.com';
 
@@ -80,6 +81,7 @@ export const ContactTab: React.FC = () => {
                 <ContactItem icon={<Mail className="h-5 w-5" />} label="Email" value={<a href="mailto:helponhire@gmail.com" className="hover:text-[#12A33B]">helponhire@gmail.com</a>} />
                 <ContactItem icon={<MessageSquare className="h-5 w-5" />} label="WhatsApp" value={<a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[#12A33B] hover:text-[#0f8f34]">Chat with us directly</a>} />
               </div>
+              <SocialLinks className="mt-7 border-t border-zinc-100 pt-6" />
             </div>
 
             <div className="mobile-image-card min-h-[280px] rounded-2xl bg-[#08221c] p-7 text-white">
