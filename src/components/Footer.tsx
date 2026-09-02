@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, LockKeyhole, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { CheckCircle, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 import { SocialLinks } from './SocialLinks';
 // @ts-ignore
@@ -80,22 +80,16 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             >
               Chat on WhatsApp
             </a>
-            <button
-              onClick={() => setActiveTab('admin')}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-400 transition hover:border-zinc-600 hover:text-white"
-            >
-              <LockKeyhole className="h-4 w-4" />
-              Admin Panel
-            </button>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between border-t border-zinc-800 pt-8 text-sm text-zinc-500 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} Help On Hire Services Int&apos;l. All rights reserved.</p>
-          <div className="mt-4 flex gap-6 sm:mt-0">
+          <div className="mt-4 flex flex-wrap justify-center gap-6 sm:mt-0">
             <button onClick={() => setActiveModal('terms')} className="hover:text-[#12A33B] transition">Terms of Service</button>
             <button onClick={() => setActiveModal('privacy')} className="hover:text-[#12A33B] transition">Privacy Policy</button>
             <button onClick={() => setActiveModal('refund')} className="hover:text-[#12A33B] transition">Service Policy</button>
+            <button onClick={() => setActiveTab('admin')} className="hover:text-[#12A33B] transition">Admin</button>
           </div>
         </div>
       </div>
