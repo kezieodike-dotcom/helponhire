@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { CheckCircle, LockKeyhole, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 import { SocialLinks } from './SocialLinks';
 // @ts-ignore
@@ -80,6 +80,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             >
               Chat on WhatsApp
             </a>
+            <button
+              onClick={() => setActiveTab('admin')}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-400 transition hover:border-zinc-600 hover:text-white"
+            >
+              <LockKeyhole className="h-4 w-4" />
+              Admin Panel
+            </button>
           </div>
         </div>
 

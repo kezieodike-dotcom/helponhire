@@ -5,6 +5,8 @@ import {
   ClipboardList,
   Download,
   FileText,
+  LockKeyhole,
+  LogOut,
   Mail,
   MapPin,
   Phone,
@@ -27,6 +29,8 @@ import {
 
 const leadTypes: Array<'all' | AdminLeadType> = ['all', 'service-request', 'contact-inquiry'];
 const leadStatuses: Array<'all' | AdminLeadStatus> = ['all', 'new', 'contacted', 'quoted', 'booked', 'closed'];
+const ADMIN_PASSWORD = 'HelpOnHire2026';
+const ADMIN_SESSION_KEY = 'hoh_admin_authenticated';
 
 const statusLabels: Record<AdminLeadStatus, string> = {
   new: 'New',
@@ -42,6 +46,9 @@ const typeLabels: Record<AdminLeadType, string> = {
 };
 
 export const AdminPanel: React.FC = () => {
+  const [authenticated, setAuthenticated] = useState(() => window.sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true');
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [leads, setLeads] = useState<AdminLead[]>(() => getAdminLeads());
   const [query, setQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState<'all' | AdminLeadType>('all');
@@ -82,6 +89,25 @@ export const AdminPanel: React.FC = () => {
     return { serviceRequests, contactInquiries, newLeads, bookedLeads };
   }, [leads]);
 
+  const handlePasswordSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (password !== ADMIN_PASSWORD) {
+      setPasswordError('Incorrect password. Please try again.');
+      return;
+    }
+
+    window.sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+    setAuthenticated(true);
+    setPassword('');
+    setPasswordError('');
+  };
+
+  const handleLogout = () => {
+    window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    setAuthenticated(false);
+  };
+
   const refreshLeads = () => setLeads(getAdminLeads());
 
   const handleStatusChange = (id: string, status: AdminLeadStatus) => {
@@ -106,6 +132,51 @@ export const AdminPanel: React.FC = () => {
     setLeads([]);
   };
 
+  if (!authenticated) {
+    return (
+      <div className="min-h-[70dvh] bg-[#F5F7F4] px-4 py-12 text-[#08221c] sm:px-6 lg:px-8" id="admin-password-view">
+        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1fr_420px] lg:items-center">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#12A33B]">
+              <ShieldCheck className="h-4 w-4" />
+              Restricted Access
+            </span>
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Admin Panel</h1>
+            <p className="mt-4 text-base leading-7 text-zinc-600">
+              Enter the admin password to view client records, monitor inquiries, and download submissions.
+            </p>
+          </div>
+
+          <form onSubmit={handlePasswordSubmit} className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#EAF6ED] text-[#12A33B]">
+              <LockKeyhole className="h-6 w-6" />
+            </div>
+            <label htmlFor="admin-password" className="mt-6 block text-sm font-semibold text-zinc-700">
+              Password
+            </label>
+            <input
+              id="admin-password"
+              type="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                setPasswordError('');
+              }}
+              className="mt-2 h-12 w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 text-base text-zinc-900 outline-none transition focus:border-[#12A33B] focus:ring-2 focus:ring-[#12A33B]/15"
+              placeholder="Enter admin password"
+              autoComplete="current-password"
+            />
+            {passwordError && <p className="mt-2 text-sm font-medium text-rose-600">{passwordError}</p>}
+            <button type="submit" className="admin-action-button mt-5 w-full justify-center bg-[#08221c] text-white">
+              <LockKeyhole className="h-4 w-4" />
+              Open Admin Panel
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F5F7F4] px-4 py-8 text-[#08221c] sm:px-6 lg:px-8" id="admin-panel-view">
       <div className="mx-auto max-w-7xl">
@@ -125,6 +196,10 @@ export const AdminPanel: React.FC = () => {
             <button onClick={refreshLeads} className="admin-action-button bg-white text-[#08221c]">
               <RefreshCw className="h-4 w-4" />
               Refresh
+            </button>
+            <button onClick={handleLogout} className="admin-action-button bg-white text-[#08221c]">
+              <LogOut className="h-4 w-4" />
+              Lock
             </button>
             <button onClick={handleDownloadCsv} className="admin-action-button bg-[#08221c] text-white">
               <Download className="h-4 w-4" />
