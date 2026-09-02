@@ -20,6 +20,14 @@
     @apply w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-950 focus:border-[#12A33B] focus:outline-none focus:ring-2 focus:ring-[#12A33B]/20;
   }
 
+  .admin-action-button {
+    @apply inline-flex h-11 items-center gap-2 rounded-lg border border-zinc-200 px-4 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0;
+  }
+
+  .admin-select {
+    @apply h-12 rounded-lg border border-zinc-200 bg-white px-3 text-base font-medium text-zinc-800 outline-none transition focus:border-[#12A33B] focus:ring-2 focus:ring-[#12A33B]/15;
+  }
+
   .mobile-image-card {
     @apply relative isolate overflow-hidden text-zinc-900;
   }

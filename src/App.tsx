@@ -8,6 +8,7 @@ import { AboutTab } from './components/AboutTab';
 import { JoinProTab } from './components/JoinProTab';
 import { ContactTab } from './components/ContactTab';
 import { RequestServiceTab } from './components/RequestServiceTab';
+import { AdminPanel } from './components/AdminPanel';
 import { ServiceDetailTab, type ServicePageSlug, servicePageSlugs } from './components/ServiceDetailTab';
 import { BlogArticleTab, type BlogArticleSlug, blogArticleSlugs } from './components/BlogArticleTab';
 import { MessageCircle } from 'lucide-react';
@@ -21,6 +22,7 @@ const tabPaths: Record<string, string> = {
   contact: '/contact',
   'request-service': '/request-service',
   'how-it-works': '/how-it-works',
+  admin: '/admin',
 };
 
 const pathTabs: Record<string, string> = {
@@ -33,6 +35,7 @@ const pathTabs: Record<string, string> = {
   '/contact': 'contact',
   '/request-service': 'request-service',
   '/how-it-works': 'find-pros',
+  '/admin': 'admin',
 };
 
 const serviceSlugTabs = servicePageSlugs.reduce<Record<string, string>>((paths, slug) => {
@@ -53,6 +56,7 @@ const pageTitles: Record<string, string> = {
   about: 'About Help On Hire',
   contact: 'Contact Help On Hire',
   'request-service': 'Book Home Support | Help On Hire',
+  admin: 'Admin Panel | Help On Hire',
   'service-cleaning': 'Cleaning Services | Help On Hire',
   'service-errands-deliveries': 'Errands and Deliveries | Help On Hire',
   'service-domestic-help': 'Domestic Help | Help On Hire',
@@ -225,6 +229,9 @@ export default function App() {
         )}
         {activeTab === 'request-service' && (
           <RequestServiceTab initialServiceId={selectedServiceId} />
+        )}
+        {activeTab === 'admin' && (
+          <AdminPanel />
         )}
         {isServiceDetail && activeServiceSlug && (
           <ServiceDetailTab

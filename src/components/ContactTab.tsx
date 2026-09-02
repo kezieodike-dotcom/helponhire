@@ -3,6 +3,7 @@ import { CheckCircle2, Mail, MapPin, MessageSquare, Phone, Send } from 'lucide-r
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_PHONE_TEL, WHATSAPP_URL } from '../constants';
 import { IllustrationTile } from './IllustrationTile';
 import { SocialLinks } from './SocialLinks';
+import { saveAdminLead } from '../lib/adminLeads';
 
 const CONTACT_RECIPIENT_EMAIL = 'helponhire@gmail.com';
 
@@ -50,9 +51,29 @@ export const ContactTab: React.FC = () => {
 
     try {
       await sendContactEmail();
+      saveAdminLead({
+        type: 'contact-inquiry',
+        source: 'Contact page',
+        deliveryStatus: 'sent',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      });
       setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', subject: 'Home support inquiry', message: '' });
     } catch (error) {
+      saveAdminLead({
+        type: 'contact-inquiry',
+        source: 'Contact page',
+        deliveryStatus: 'failed',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      });
       setDeliveryFailed(true);
     } finally {
       setSubmitting(false);

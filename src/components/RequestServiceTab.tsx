@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Calendar, CheckCircle2, Home, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { WHATSAPP_URL } from '../constants';
 import { IllustrationTile } from './IllustrationTile';
+import { saveAdminLead } from '../lib/adminLeads';
 
 type ServiceRequired = 'Essential Home Refresh' | 'Signature Home Care' | 'Not sure yet';
 const REQUEST_RECIPIENT_EMAIL = 'helponhire@gmail.com';
@@ -121,14 +122,28 @@ Home Support That Cares`,
     setSubmitting(true);
     setEmailDeliveryStatus(null);
     const reference = generateReference();
+    let deliveryStatus: 'sent' | 'failed' = 'sent';
     setRequestReference(reference);
 
     try {
       await sendRequestEmail(reference);
       setEmailDeliveryStatus('sent');
     } catch (error) {
+      deliveryStatus = 'failed';
       setEmailDeliveryStatus('failed');
     } finally {
+      saveAdminLead({
+        type: 'service-request',
+        source: 'Request service page',
+        reference,
+        deliveryStatus,
+        name: formData.name,
+        phone: formData.phone,
+        location: formData.location,
+        serviceRequired: formData.serviceRequired,
+        preferredDate: formData.preferredDate,
+        needsDescription: formData.needsDescription,
+      });
       setSubmitting(false);
       setSubmitted(true);
       localStorage.removeItem('hoh_request_service_form');
